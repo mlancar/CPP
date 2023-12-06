@@ -6,7 +6,7 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 16:07:08 by malancar          #+#    #+#             */
-/*   Updated: 2023/12/05 17:10:10 by malancar         ###   ########.fr       */
+/*   Updated: 2023/12/06 16:40:14 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,10 @@
 class PhoneBook {
 
 	private:
-		Contact	contacts[8];
-			
-			
+		Contact	contact[8];
+
+	public:
+		void	addContact(void);	
 };
 
 #endif
