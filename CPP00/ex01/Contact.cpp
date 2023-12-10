@@ -1,34 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Contact.class.hpp                                  :+:      :+:    :+:   */
+/*   Contact.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/05 17:06:52 by malancar          #+#    #+#             */
-/*   Updated: 2023/12/06 16:17:29 by malancar         ###   ########.fr       */
+/*   Created: 2023/12/10 17:51:59 by malancar          #+#    #+#             */
+/*   Updated: 2023/12/10 18:23:41 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CONTACT_CLASS_HPP
-#define CONTACT_CLASS_HPP
+#include "Phonebook.hpp"
 
-class Contact {
-	
-	private:
-		std::string	first_name;
-		std::string	last_name;
-		std::string nickname;
-		std::string	darkest_secret;
-		std::string	phone_number;
+void		Contact::setFirstName(std::string firstName)
+{
+	_firstName = firstName;
+}
 
-	public:
-		void	setFirstName(std::string str){
-			first_name = str;
-		}
-		void	printFirstName(void);
-			
-			
-};
-
-#endif
+std::string	Contact::getFirstName() const
+{
+	return _firstName;
+}

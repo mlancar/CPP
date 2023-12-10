@@ -16,14 +16,14 @@
 
 // }
 
-//surcharger constructeur:
 // Personnage::Personnage(std::string nomArme, int degatsArme) : m_vie(100),
 // m_mana(100), m_arme(nomArme, degatsArme)
 // {
 
 // }
+//surcharger constructeur:
 
-Personnage::Personnage(std::string nomArme, int degtasArme) : m_vie(100),
+Personnage::Personnage(std::string nom) : m_nom (nom), m_vie(100),
 m_mana(100), m_arme("cacahuetes", 1)//m_arme() appelle contructeur Arme
 {
 	
@@ -48,23 +48,27 @@ void	Personnage::recevoirDegats(int nbrDegats)
 		m_vie = 0;
 }
 
-//j'arrive pas a changer cette fonction la avec la classe Arme
-// void	Personnage::attaquer(Personnage &cible)
-// {
-// 	cible.recevoirDegats(m_degatsArme);
-// 	//on inflige a la cible les degats que cause notre arme
-// }
+
+void	Personnage::attaquer(Personnage &cible)
+{
+	cible.recevoirDegats(m_arme.getDegats());
+	//on inflige a la cible les degats que cause notre arme
+	std::cout << m_nom << " inflige " << m_arme.getDegats() << " degats a " << cible.m_nom << " avec : " << m_arme.getArme() << std::endl;
+	std::cout << cible.m_nom << " a : " << cible.m_vie << "PV" << std::endl;
+}
 
 void	Personnage::boirePotionDeVie(int quantitePotion)
 {
 	m_vie = m_vie + quantitePotion;
 	if (m_vie > 100)//interdiction de depasser 100 de vie
 		m_vie = 100;
+	std::cout << m_nom << " boit une potion de vie, + " << quantitePotion << " de vie : " << m_vie << std::endl;
 }
 
 void	Personnage::changerArme(std::string nomNouvelleArme, int degatsNouvelleArme)
 {
 	m_arme.changer(nomNouvelleArme, degatsNouvelleArme);
+	std::cout << m_nom << " prend une nouvelle arme : " << nomNouvelleArme << std::endl;
 }
 
 bool	Personnage::estVivant() const

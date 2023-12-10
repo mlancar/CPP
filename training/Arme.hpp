@@ -9,14 +9,16 @@ class	Arme
 		
 		Arme();//constructeur
 		Arme(std::string nom, int degats);//constructeur surcharge
-		void changer(std::string nom, int degats);
-		
-		void afficher() const;
+
+		void 		changer(std::string nom, int degats);
+		void 		afficher() const;
+		int			getDegats() const;//getter : methode public pour acceder a attribut prive de la meme classe
+		std::string	getArme() const;
 	
 	private:
 
 		std::string m_nom;
-		int	m_degats;
+		int			m_degats;
 };
 
 #endif

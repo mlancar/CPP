@@ -4,8 +4,8 @@ int	main()
 {
 	//Personnage marine, louis;
 	//Personnage marine, louis("Tsuki", 1);//louis constructeur surcharge
-	Personnage louis("Tsuki", 1);
-	Personnage marine(louis);//copie de louis
+	Personnage louis("Louis");
+	Personnage marine("Marine");//copie de louis
 
 
 	//creation de 2 objets de type Personnage : marine et louis

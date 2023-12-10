@@ -12,7 +12,7 @@ class Personnage
 	public:
 	
 		Personnage();
-		Personnage(std::string nomArme, int degtasArme);
+		Personnage(std::string nom);
 		~Personnage();
 
 		void	recevoirDegats(int nbrDegats);//pas const car modifie valeur
@@ -21,16 +21,19 @@ class Personnage
 		void	changerArme(std::string nomNouvelleArme, int degatsNouvelleArme);
 		bool	estVivant() const;//const modifie pas l'objet
 		void	afficherEtat() const;
+		void	printAttaque(std::string cible, std::string attaquant) const;
 
 	//Attributs
 	//tout ce qui suit est prive
 	private:
 
+
 		int			m_vie;
 		int			m_mana;
+		std::string	m_nom;
 		// std::string	m_nomArme;
 		// int			m_degatsArme;
-		Arme	m_arme;
+		Arme		m_arme;
 };
 
 //const:
