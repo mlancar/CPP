@@ -6,7 +6,7 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 17:51:59 by malancar          #+#    #+#             */
-/*   Updated: 2023/12/10 18:23:41 by malancar         ###   ########.fr       */
+/*   Updated: 2023/12/11 18:59:33 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,22 @@ void		Contact::setFirstName(std::string firstName)
 	_firstName = firstName;
 }
 
-std::string	Contact::getFirstName() const
+void		Contact::setLastName(std::string lastName)
 {
-	return _firstName;
+	_lastName = lastName;
+}
+
+void		Contact::setNickname(std::string nickname)
+{
+	_nickname = nickname;
+}
+
+void		Contact::setDarkestSecret(std::string darkestSecret)
+{
+	_darkestSecret = darkestSecret;
+}
+
+void		Contact::setPhoneNumber(std::string phoneNumber)
+{
+	_phoneNumber = phoneNumber;
 }

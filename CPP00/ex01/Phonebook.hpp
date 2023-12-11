@@ -6,7 +6,7 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 16:07:08 by malancar          #+#    #+#             */
-/*   Updated: 2023/12/10 18:13:20 by malancar         ###   ########.fr       */
+/*   Updated: 2023/12/11 20:18:40 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,21 @@
 #define PHONE_BOOK_HPP
 
 # include <iostream>
+# include <string>
 # include "Contact.hpp"
 
 class PhoneBook {
 
 	public:
-		void	addContact(void);
+		PhoneBook();
+		~PhoneBook();
+		void	addContact(std::string firstName, std::string lastName, std::string nickname, std::string darkestSecret, std::string phoneNumber);
 	
 	private:
-		Contact	contact[8];
+		Contact	_contact[8];
+		int		_index;
+
+		
 
 };
 

@@ -6,7 +6,7 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 17:06:52 by malancar          #+#    #+#             */
-/*   Updated: 2023/12/10 18:22:25 by malancar         ###   ########.fr       */
+/*   Updated: 2023/12/11 16:46:03 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,19 +16,19 @@
 class Contact {
 	
 	public:
-		void		setFirstName(std::string str);
+		void		setFirstName(std::string firstName);
+		void		setLastName(std::string lastName);
+		void		setNickname(std::string nickname);
+		void		setDarkestSecret(std::string darkestSecret);
+		void		setPhoneNumber(std::string phoneNumber);
 		std::string	getFirstName() const;
-		void		addFirstName();
-		void		printFirstName(void);
 	
 	private:
 		std::string	_firstName;
-		std::string	last_name;
-		std::string nickname;
-		std::string	darkest_secret;
-		std::string	phone_number;
-
-			
+		std::string	_lastName;
+		std::string _nickname;
+		std::string	_darkestSecret;
+		std::string	_phoneNumber;		
 			
 };
 
