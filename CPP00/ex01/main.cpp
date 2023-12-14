@@ -6,7 +6,7 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 15:46:16 by malancar          #+#    #+#             */
-/*   Updated: 2023/12/14 17:37:27 by malancar         ###   ########.fr       */
+/*   Updated: 2023/12/14 20:38:46 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,9 @@ void	createContact(PhoneBook &phoneBook)
 	std::getline(std::cin, darkestSecret);
 	std::cout << "Phone number : ";
 	std::getline(std::cin, phoneNumber);
+	while (Contact::isPhoneNumberValid(phoneNumber) == 0)
+		std::getline(std::cin, phoneNumber);
 	phoneBook.addContact(firstName, lastName, nickname, darkestSecret, phoneNumber);
-	//phoneBook.printContact();
 }
 
 
@@ -51,19 +52,15 @@ int	main()
 			//phoneBook.printContact();
 			
 		}
-		break ;
-		// 	addContact();
-		// else if (str == "SEARCH")
-		// 	//function
-		// else if (str == "EXIT")
-		// 	//function
+		if (input == "SEARCH")
+		{
+			getline(std::cin, input);
+			if (phoneBook.isIndexValid(input) == 1)
+				phoneBook.displayContact(input);
+		}
+		if (input == "EXIT")
+			break;
 	}
 	return 0;
 	
 }
-
-//// std::cin >> last_name;
-	// std::cout << "So, " << last_name << "how do your friends call you ? What your nickname ?" << std::endl;
-	// std::cin >> nickname;
-	// std::cout << "Cute, and finafinally, what's your number ?" << std::endl;
-	// std::cin >> phone_number;

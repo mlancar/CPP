@@ -6,7 +6,7 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 17:06:52 by malancar          #+#    #+#             */
-/*   Updated: 2023/12/14 17:12:12 by malancar         ###   ########.fr       */
+/*   Updated: 2023/12/14 20:30:40 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,12 @@
 class Contact {
 	
 	public:
+
+		Contact();
+		~Contact();
+
+		static int	isPhoneNumberValid(std::string phoneNumber);
+			
 		void		setFirstName(std::string firstName);
 		void		setLastName(std::string lastName);
 		void		setNickname(std::string nickname);

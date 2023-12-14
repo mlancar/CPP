@@ -6,16 +6,25 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 17:51:59 by malancar          #+#    #+#             */
-/*   Updated: 2023/12/14 17:23:03 by malancar         ###   ########.fr       */
+/*   Updated: 2023/12/14 20:30:18 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Phonebook.hpp"
 
+Contact::Contact()
+{
+	//std::cout << "Contact created" << std::endl;
+}
+
+Contact::~Contact()
+{
+	//std::cout << "Contact destroyed" << std::endl;
+}
+
 void		Contact::setFirstName(std::string firstName)
 {
 	_firstName = firstName;
-	//std::cout << _firstName << std::endl;
 }
 
 void		Contact::setLastName(std::string lastName)
@@ -60,4 +69,14 @@ std::string	Contact::getDarkestSecret() const
 std::string	Contact::getPhoneNumber() const
 {
 	return _phoneNumber;
+}
+
+int		Contact::isPhoneNumberValid(std::string phoneNumber)
+{
+	for(int i = 0; phoneNumber[i] ; i++)
+	{
+		if (isdigit(phoneNumber[i]) == 0)
+			return 0;
+	}
+	return 1;
 }
