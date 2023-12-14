@@ -6,7 +6,7 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 14:14:00 by malancar          #+#    #+#             */
-/*   Updated: 2023/12/14 17:32:04 by malancar         ###   ########.fr       */
+/*   Updated: 2023/12/14 17:38:38 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	PhoneBook::addContact(std::string firstName, std::string lastName, std::str
 	_contact[_index].setNickname(nickname);
 	_contact[_index].setDarkestSecret(darkestSecret);
 	_contact[_index].setPhoneNumber(phoneNumber);
-	//printContact();
+	printContact();
 	_index++;
 }
 
