@@ -6,7 +6,7 @@
 /*   By: lcalvie <lcalvie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 14:14:00 by malancar          #+#    #+#             */
-/*   Updated: 2024/01/01 18:50:55 by lcalvie          ###   ########.fr       */
+/*   Updated: 2024/01/01 20:14:05 by lcalvie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ void	PhoneBook::setIndex(int index)
 
 void	PhoneBook::addContact(std::string firstName, std::string lastName, std::string nickname, std::string darkestSecret, std::string phoneNumber)
 {
-	if (getIndex() > 7)
-		setIndex(0);
+	if (_index > 7)
+		_index = 0;
 	_contact[_index].setFirstName(firstName);
 	_contact[_index].setLastName(lastName);
 	_contact[_index].setNickname(nickname);
@@ -44,7 +44,7 @@ void	PhoneBook::addContact(std::string firstName, std::string lastName, std::str
 	_contact[_index].setPhoneNumber(phoneNumber);
 	//printContacts();
 	_index++;
-	if (_index < 8)
+	if (_indexMax < 7)
 		_indexMax++;
 }
 
