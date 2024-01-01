@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Contact.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lcalvie <lcalvie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 17:51:59 by malancar          #+#    #+#             */
-/*   Updated: 2023/12/14 20:30:18 by malancar         ###   ########.fr       */
+/*   Updated: 2023/12/31 20:50:54 by lcalvie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,10 +73,29 @@ std::string	Contact::getPhoneNumber() const
 
 int		Contact::isPhoneNumberValid(std::string phoneNumber)
 {
-	for(int i = 0; phoneNumber[i] ; i++)
+	if (phoneNumber.empty())
+	{
+		std::cout << "Enter a number" << std::endl;
+		return 0;
+	}
+	for(size_t i = 0; i < phoneNumber.length() ; i++)
 	{
 		if (isdigit(phoneNumber[i]) == 0)
+		{
+			std::cout << "Enter a number" << std::endl;
 			return 0;
+		}
 	}
 	return 1;
+	//return !phoneNumber.empty();
+}
+
+int	Contact::isInfoValid(std::string info, std::string errorMessage)
+{
+	if (info.empty())
+	{
+		std::cout << errorMessage << " : " << std::endl;
+		return 1;
+	}
+	return 0;
 }

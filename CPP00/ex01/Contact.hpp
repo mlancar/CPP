@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Contact.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lcalvie <lcalvie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 17:06:52 by malancar          #+#    #+#             */
-/*   Updated: 2023/12/14 20:30:40 by malancar         ###   ########.fr       */
+/*   Updated: 2023/12/31 20:51:45 by lcalvie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ class Contact {
 		~Contact();
 
 		static int	isPhoneNumberValid(std::string phoneNumber);
-			
+		static int	isInfoValid(std::string info, std::string errorMessage);
+		
 		void		setFirstName(std::string firstName);
 		void		setLastName(std::string lastName);
 		void		setNickname(std::string nickname);

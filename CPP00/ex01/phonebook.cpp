@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   phonebook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lcalvie <lcalvie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 14:14:00 by malancar          #+#    #+#             */
-/*   Updated: 2023/12/14 21:39:05 by malancar         ###   ########.fr       */
+/*   Updated: 2024/01/01 18:50:55 by lcalvie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Phonebook.hpp"
 #include "Contact.hpp"
 
-PhoneBook::PhoneBook(): _index(0)
+PhoneBook::PhoneBook(): _index(0), _indexMax(0)
 {
 	//std::cout << "PhoneBook created" << std::endl;
 }
@@ -28,15 +28,24 @@ int		PhoneBook::getIndex() const
 	return _index;
 }
 
+void	PhoneBook::setIndex(int index)
+{
+	_index = index;
+}
+
 void	PhoneBook::addContact(std::string firstName, std::string lastName, std::string nickname, std::string darkestSecret, std::string phoneNumber)
 {
+	if (getIndex() > 7)
+		setIndex(0);
 	_contact[_index].setFirstName(firstName);
 	_contact[_index].setLastName(lastName);
 	_contact[_index].setNickname(nickname);
 	_contact[_index].setDarkestSecret(darkestSecret);
 	_contact[_index].setPhoneNumber(phoneNumber);
-	printContacts();
+	//printContacts();
 	_index++;
+	if (_index < 8)
+		_indexMax++;
 }
 
 void	PhoneBook::printContact(int index) const
@@ -86,32 +95,11 @@ void	PhoneBook::displayContact(std::string input) const
 	std::cout << "|";
 	displayInfo(_contact[index].getNickname());
 	std::cout << "|";
-	std::cout << std::endl;
+	std::cout << std::endl << std::endl;
 }
 
-//je crois aue cette fonction n'est pas tres "C++ manners"
 void	PhoneBook::displayInfo(std::string info) const
 {
-	int	i = 0;
-		
-	// while (i < 10)
-	// {
-	// 	while (info[i] && i <= 9)
-	// 	{
-	// 		std::cout << info[i];
-	// 		i++;
-	// 	}
-	// 	if (info.length() > 10)
-	// 	{
-	// 		std::cout << ".";
-	// 		i++;
-	// 	}
-	// 	else if (i < 10)
-	// 	{
-	// 		std::cout << " ";
-	// 		i++;
-	// 	}
-	// }
 	std::string	info_sub;
 
 	if (info.length() > 10)
@@ -128,12 +116,11 @@ void	PhoneBook::displayInfo(std::string info) const
 int		PhoneBook::isIndexValid(std::string input)
 {
 	int	index;
-	
-	
+		
 	if (isdigit(input[0]) == 0)
 		return 0;
 	index = std::stoi(input);
-	for (int i = 0; i < _index ; i++)
+	for (int i = 0; i <= _indexMax ; i++)
 	{
 		if (index == i)
 			return 1;

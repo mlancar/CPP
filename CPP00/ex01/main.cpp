@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lcalvie <lcalvie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 15:46:16 by malancar          #+#    #+#             */
-/*   Updated: 2023/12/14 20:38:46 by malancar         ###   ########.fr       */
+/*   Updated: 2024/01/01 20:01:56 by lcalvie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,20 +21,45 @@ void	createContact(PhoneBook &phoneBook)
 	std::string	darkestSecret;
 	std::string	phoneNumber;
 	
+	std::cout << std::endl;
 	std::cout << "Please enter your informations to register to my crappy awesome PhoneBook" << std::endl;
 	std::cout << "First name : ";
-	std::getline(std::cin, firstName);
+	do
+	{
+		if(!std::getline(std::cin, firstName))
+			return ;
+	}
+	while(Contact::isInfoValid(firstName, "Enter a valid first name"));
 	std::cout << "Last name : ";
-	std::getline(std::cin, lastName);
+	do
+	{
+		if (!std::getline(std::cin, lastName))
+			return ;
+	}
+	while(Contact::isInfoValid(lastName,  "Enter a valid last name"));
 	std::cout << "Nickname :  ";
-	std::getline(std::cin, nickname);
+	do
+	{
+		if (!std::getline(std::cin, nickname))
+			return ;
+	}
+	while (Contact::isInfoValid(nickname,  "Enter a valid nickname"));
 	std::cout << "Darkest secret : ";
-	std::getline(std::cin, darkestSecret);
+	do 
+	{
+		if (!std::getline(std::cin, darkestSecret))
+			return ;
+	}
+	while (Contact::isInfoValid(darkestSecret, "Enter a valid Secret"));
 	std::cout << "Phone number : ";
-	std::getline(std::cin, phoneNumber);
-	while (Contact::isPhoneNumberValid(phoneNumber) == 0)
-		std::getline(std::cin, phoneNumber);
+	do
+	{
+		if (!std::getline(std::cin, phoneNumber))
+			return ;
+	}
+	while (Contact::isPhoneNumberValid(phoneNumber) == 0);
 	phoneBook.addContact(firstName, lastName, nickname, darkestSecret, phoneNumber);
+	std::cout << "A contact is registered" << std::endl <<std::endl;
 }
 
 
@@ -45,12 +70,13 @@ int	main()
 	
 	while (1)
 	{
-		getline(std::cin, input);
+		std::cout << "Enter ADD, SEARCH, or EXIT" << std::endl;
+		if (!getline(std::cin, input))
+			break;
 		if (input == "ADD")
 		{
 			createContact(phoneBook);
 			//phoneBook.printContact();
-			
 		}
 		if (input == "SEARCH")
 		{
@@ -64,3 +90,4 @@ int	main()
 	return 0;
 	
 }
+
