@@ -1,33 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.cpp                                         :+:      :+:    :+:   */
+/*   HumanB.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/05 16:03:07 by malancar          #+#    #+#             */
-/*   Updated: 2024/01/08 14:29:28 by malancar         ###   ########.fr       */
+/*   Created: 2024/01/08 17:20:22 by malancar          #+#    #+#             */
+/*   Updated: 2024/01/08 17:20:33 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#ifndef HUMANB_HPP
+#define HUMANB_HPP
 
-Zombie::Zombie(std::string name): _name(name)
-{
-    
-}
+class HumanB {
+	
+	public:
 
-Zombie::Zombie()
-{
-    
-}
+	private:
+};
 
-Zombie::~Zombie()
-{
-    
-}
-
-void    Zombie::announce()
-{
-    std::cout << _name << ": BraiiiiiiinnnzzzZ..." << std::endl;
-}
+#endif

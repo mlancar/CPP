@@ -1,33 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.cpp                                         :+:      :+:    :+:   */
+/*   HumanA.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/05 16:03:07 by malancar          #+#    #+#             */
-/*   Updated: 2024/01/08 14:29:28 by malancar         ###   ########.fr       */
+/*   Created: 2024/01/08 17:18:55 by malancar          #+#    #+#             */
+/*   Updated: 2024/01/08 17:19:37 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#ifndef HUMANA_HPP
+#define HUMANA_HPP
 
-Zombie::Zombie(std::string name): _name(name)
-{
-    
-}
+class HumanA {
+	
+	public:
 
-Zombie::Zombie()
-{
-    
-}
+	private:
+};
 
-Zombie::~Zombie()
-{
-    
-}
-
-void    Zombie::announce()
-{
-    std::cout << _name << ": BraiiiiiiinnnzzzZ..." << std::endl;
-}
+#endif
