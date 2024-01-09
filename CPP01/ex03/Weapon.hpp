@@ -6,7 +6,7 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 17:17:27 by malancar          #+#    #+#             */
-/*   Updated: 2024/01/08 17:43:05 by malancar         ###   ########.fr       */
+/*   Updated: 2024/01/09 17:49:39 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,10 @@
 class Weapon {
 	
 	public:
-		const std::string&	getType(); const
+		Weapon(std::string weapon);
+		~Weapon();
+		const std::string&	getType() const;
+		void				setType(std::string type);
 
 	private:
 		std::string	_type;

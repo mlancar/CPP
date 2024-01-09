@@ -6,9 +6,13 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 17:20:41 by malancar          #+#    #+#             */
-/*   Updated: 2024/01/08 17:20:49 by malancar         ###   ########.fr       */
+/*   Updated: 2024/01/09 17:47:10 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "HumanA.hpp"
+#include "HumanB.hpp"
 
+HumanB::HumanB(std::string name)
+{
+	
+}
