@@ -6,7 +6,7 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 16:07:08 by malancar          #+#    #+#             */
-/*   Updated: 2024/01/03 13:16:53 by malancar         ###   ########.fr       */
+/*   Updated: 2024/01/09 16:52:23 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <iostream>
 # include <string>
+# include <sstream>
 # include "Contact.hpp"
 
 class PhoneBook {
@@ -29,6 +30,7 @@ class PhoneBook {
 		void	setIndex(int index);
 
 		void	addContact(std::string firstName, std::string lastName, std::string nickname, std::string darkestSecret, std::string phoneNumber);
+		void	displayContacts() const;
 		void	displayContact(std::string input) const;
 		void	displayInfo(std::string info) const;
 		void	printContact(int index) const;
