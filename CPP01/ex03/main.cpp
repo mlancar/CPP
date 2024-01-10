@@ -6,7 +6,7 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 17:16:44 by malancar          #+#    #+#             */
-/*   Updated: 2024/01/10 00:48:33 by malancar         ###   ########.fr       */
+/*   Updated: 2024/01/10 02:25:55 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ int main()
 	HumanA bob("Bob", club);
 	bob.attack();
 	club.setType("some other type of club");
+	//std::cout << "TEST" << club.getType() << std::endl;
 	bob.attack();
 	}
 	{
