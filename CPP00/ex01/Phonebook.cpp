@@ -6,13 +6,13 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 14:14:00 by malancar          #+#    #+#             */
-/*   Updated: 2024/01/09 17:02:40 by malancar         ###   ########.fr       */
+/*   Updated: 2024/01/11 15:00:37 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Phonebook.hpp"
 #include "Contact.hpp"
-
+#include <stdio.h>
 PhoneBook::PhoneBook(): _index(0), _indexMax(0)
 {
 	//std::cout << "PhoneBook created" << std::endl;
@@ -103,11 +103,8 @@ void	PhoneBook::displayContacts() const
 	
 	for (int i = 0; i < _indexMax; i++)
 	{
-		sIndex << i;
-		sIndex >> input;
-		
 		std::cout << "|";
-		displayInfo(input);
+		std::cout << std::setw(10) << i;
 		std::cout << "|";
 		displayInfo(_contact[i].getFirstName());
 		std::cout << "|";
@@ -129,14 +126,10 @@ void	PhoneBook::displayInfo(std::string info) const
 	std::string	info_sub;
 
 	if (info.length() > 10)
-		info_sub = info.substr(0, 9);
+		info_sub = info.substr(0, 9) + '.';
 	else
 		info_sub = info.substr(0, 10);
-	std::cout << info_sub;
-	if (info.length() > 10)
-		std::cout << ".";
-	for (int i = info.length() ; i < 10 ; i++)
-		std::cout << " ";
+	std::cout << std::setw(10) << info_sub;
 }
 
 int		PhoneBook::isIndexValid(std::string input)

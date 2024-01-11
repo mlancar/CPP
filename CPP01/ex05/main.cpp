@@ -6,7 +6,7 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 10:44:44 by malancar          #+#    #+#             */
-/*   Updated: 2024/01/11 11:28:47 by malancar         ###   ########.fr       */
+/*   Updated: 2024/01/11 17:38:27 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,11 @@
 int	main()
 {
 	Harl	harl;
-	std::string	
-	getline(std::cin::, input);
-	complain(input);
+	
+	std::string	input;
+	while (getline(std::cin, input))
+	{
+		harl.complain(input);
+		
+	}
 }

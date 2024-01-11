@@ -6,7 +6,7 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 15:46:16 by malancar          #+#    #+#             */
-/*   Updated: 2024/01/09 16:52:30 by malancar         ###   ########.fr       */
+/*   Updated: 2024/01/11 14:03:54 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ void	createContact(PhoneBook &phoneBook)
 	std::string	phoneNumber;
 	
 	std::cout << std::endl;
-	std::cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"<< std::endl;
-	std::cout << "| Please enter your informations to register to my crappy awesome PhoneBook |" << std::endl;
-	std::cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"<< std::endl << std::endl;
+	std::cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"<< std::endl;
+	std::cout << "| Please enter your informations to register |" << std::endl;
+	std::cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"<< std::endl << std::endl;
 	std::cout << "~First name : ";
 	do
 	{
@@ -73,6 +73,11 @@ int	main()
 	PhoneBook 	phoneBook;
 	std::string	input;
 	
+	std::cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << std::endl;;
+	std::cout << "|          WELCOME           |" << std::endl;
+	std::cout << "|       TO MY CRAPPY         |" << std::endl;
+	std::cout << "|     AWESOME PHONEBOOK!     |" << std::endl;
+	std::cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << std::endl << std::endl;;
 	while (1)
 	{
 		std::cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << std::endl;;

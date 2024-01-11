@@ -6,7 +6,7 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 10:45:04 by malancar          #+#    #+#             */
-/*   Updated: 2024/01/11 11:26:44 by malancar         ###   ########.fr       */
+/*   Updated: 2024/01/11 17:54:13 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,15 +45,10 @@ void    Harl::error()
     std::cout << "This is unacceptable! I want to speak to the manager now." << std::endl;
 }
 
-void    complain(std::string level)
+void    Harl::complain(std::string level)
 {
-    std::string 
-    if (input == "DEBUG")
-		complain(input);
-	else if (input == "INFO")
-		complain(input);
-	else if (input == "WARNING")
-		complain(input);
-	else if (input == "ERROR")
-		complain(input);
+	void		(Harl::*harl[4])(void) = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
+	std::string	input[] = {"DEBUG", "INFO", "WARNING", "ERROR"};
+
+    
 }
