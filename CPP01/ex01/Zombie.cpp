@@ -6,7 +6,7 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 16:03:07 by malancar          #+#    #+#             */
-/*   Updated: 2024/01/08 16:48:13 by malancar         ###   ########.fr       */
+/*   Updated: 2024/01/15 16:28:39 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ Zombie::~Zombie()
     
 }
 
-void  Zombie::setName(std::string name)
+void  Zombie::setName(std::string &name)
 {
     _name = name;
 }

@@ -6,15 +6,20 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 17:20:41 by malancar          #+#    #+#             */
-/*   Updated: 2024/01/10 02:24:08 by malancar         ###   ########.fr       */
+/*   Updated: 2024/01/15 16:36:03 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "HumanB.hpp"
 
-HumanB::HumanB(std::string name): _name(name)
+HumanB::HumanB(const std::string &name): _name(name), _weapon(NULL)
 {
-	_weapon = Weapon("stick");
+
+}
+
+HumanB::HumanB(const std::string &name, Weapon &weapon): _name(name), _weapon(&weapon)
+{
+	
 }
 
 HumanB::~HumanB()
@@ -22,12 +27,18 @@ HumanB::~HumanB()
 
 }
 
-void    HumanB::setWeapon(Weapon weapon)
+void    HumanB::setWeapon(Weapon &weapon)
 {
-    _weapon = weapon;
+    _weapon = &weapon;
 }
 
 void	HumanB::attack() const
 {
-    std::cout << _name << " attacks with their " << _weapon.getType() << std::endl;
+    //std::string weaponType = _weapon?_weapon->getType():"naked";
+    std::string weaponType;
+    if (_weapon)
+        weaponType = _weapon->getType();
+    else
+        weaponType = "fists and sharp teeth and big foot";
+    std::cout << _name << " attacks with their " << weaponType << std::endl;
 }

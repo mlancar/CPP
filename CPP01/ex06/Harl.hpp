@@ -1,26 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Harl.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/08 14:17:44 by malancar          #+#    #+#             */
-/*   Updated: 2024/01/15 15:18:53 by malancar         ###   ########.fr       */
+/*   Created: 2024/01/11 10:45:28 by malancar          #+#    #+#             */
+/*   Updated: 2024/01/15 17:32:54 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#ifndef HARL_HPP
+#define HARL_HPP
 
-int	main()
-{
-    Zombie      *zombie;
-    int			N = 20;
-	
-    //if (N < Zombie::_limitMin || N > _limitMax)
-    if (N < 0 || N > 500)
-        return 1;
-    zombie = zombieHorde(N, "Marine");
-    zombie->announce();
-    delete[]  zombie;
-}
+#include <iostream>
+#include <iomanip>
+
+class   Harl {
+
+    public:
+        Harl();
+        ~Harl();
+    
+        void    complain(std::string level);
+
+    private:
+        void    debug(void);
+        void    info(void);
+        void    warning(void);
+        void    error(void);
+};
+
+#endif
