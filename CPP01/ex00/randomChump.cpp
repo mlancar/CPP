@@ -6,7 +6,7 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 16:03:44 by malancar          #+#    #+#             */
-/*   Updated: 2024/01/08 16:07:45 by malancar         ###   ########.fr       */
+/*   Updated: 2024/01/16 20:18:22 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,5 @@
 void    randomChump(std::string name)
 {
 	Zombie	zombie(name);
-	
 	zombie.announce();
 }
