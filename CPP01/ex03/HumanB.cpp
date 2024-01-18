@@ -6,7 +6,7 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 17:20:41 by malancar          #+#    #+#             */
-/*   Updated: 2024/01/15 16:36:03 by malancar         ###   ########.fr       */
+/*   Updated: 2024/01/18 15:36:27 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ HumanB::HumanB(const std::string &name, Weapon &weapon): _name(name), _weapon(&w
 
 HumanB::~HumanB()
 {
-
+    
 }
 
 void    HumanB::setWeapon(Weapon &weapon)
