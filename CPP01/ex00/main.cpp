@@ -6,7 +6,7 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 16:02:23 by malancar          #+#    #+#             */
-/*   Updated: 2024/01/18 15:18:23 by malancar         ###   ########.fr       */
+/*   Updated: 2024/01/18 15:33:22 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,10 @@
 
 int main()
 {
-    Zombie  zombie("Foo");
-
-    zombie.announce();
-    Zombie  *otherZombie;
+    randomChump("Foo");
     
-    otherZombie = newZombie("Tsuki");
-    otherZombie->announce();
-    delete otherZombie;
+    Zombie  *zombie;
+    zombie = newZombie("Tsuki");
+    zombie->announce();
+    delete zombie;
 }
