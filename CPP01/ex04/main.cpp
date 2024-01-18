@@ -6,7 +6,7 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 17:33:00 by malancar          #+#    #+#             */
-/*   Updated: 2024/01/16 20:15:07 by malancar         ###   ########.fr       */
+/*   Updated: 2024/01/18 15:07:57 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,16 @@
 
 int	main(int ac, char **av)
 {
-	if (ac < 3)
+	if (ac < 4 || ac > 4)
+	{
+		std::cerr << "3 parameters are expected" << std::endl;
 		return 1;
-	//gestion d'erreur mieux
+	}
+	if (av[2][0] == '\0' || av[3][0] == '\0')
+	{
+		std::cerr << "Enter valid argument" << std::endl;
+		return 1;
+	}
 	std::basic_string<char>::size_type	position = 0;
 	std::string		toFind = av[2];
 	std::string		toReplace = av[3];
@@ -54,7 +61,8 @@ int	main(int ac, char **av)
 		}
 	}
 	else
-		std::cout << "cannot open" << std::endl;
-	
-	
+	{
+		std::cerr << "File cannot be open" << std::endl;
+		return 1;
+	}
 }

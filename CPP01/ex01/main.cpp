@@ -6,7 +6,7 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 14:17:44 by malancar          #+#    #+#             */
-/*   Updated: 2024/01/15 15:18:53 by malancar         ###   ########.fr       */
+/*   Updated: 2024/01/18 15:19:01 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,12 @@
 int	main()
 {
     Zombie      *zombie;
-    int			N = 20;
+    int			N = 10;
 	
-    //if (N < Zombie::_limitMin || N > _limitMax)
-    if (N < 0 || N > 500)
+    if (N > 2000000 || N < 0)
         return 1;
     zombie = zombieHorde(N, "Marine");
-    zombie->announce();
+    for (int i = 0; i < N; i++)
+        zombie[i].announce();
     delete[]  zombie;
 }

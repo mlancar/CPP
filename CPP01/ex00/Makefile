@@ -6,7 +6,7 @@
 #    By: malancar <malancar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/11 17:31:42 by malancar          #+#    #+#              #
-#    Updated: 2024/01/16 20:18:48 by malancar         ###   ########.fr        #
+#    Updated: 2024/01/18 14:16:03 by malancar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,7 +44,7 @@ clean:
 	@$(RM) $(OBJS) $(DEPS)
 
 fclean: clean
-	@$(RM) $(NAME) $(DEPS)
+	@$(RM) $(NAME) $(DEPS) rm -rf ./Objects
 
 re:	fclean all
 

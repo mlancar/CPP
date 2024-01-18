@@ -6,7 +6,7 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 16:02:23 by malancar          #+#    #+#             */
-/*   Updated: 2024/01/16 20:19:31 by malancar         ###   ########.fr       */
+/*   Updated: 2024/01/18 15:18:23 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ int main()
     Zombie  zombie("Foo");
 
     zombie.announce();
-    Zombie  *zombie2;
+    Zombie  *otherZombie;
     
-    zombie2 = newZombie("Tsuki");
-    zombie2->announce();
-    delete zombie2;
+    otherZombie = newZombie("Tsuki");
+    otherZombie->announce();
+    delete otherZombie;
 }

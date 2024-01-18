@@ -6,7 +6,7 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 17:16:44 by malancar          #+#    #+#             */
-/*   Updated: 2024/01/15 16:38:12 by malancar         ###   ########.fr       */
+/*   Updated: 2024/01/18 14:54:51 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int main()
 		jim.attack();
 	}
 	{
-		Weapon bagContent = Weapon("chips and smartphone");
+		Weapon bagContent = Weapon("chips and greasy hands");
 		HumanB	mathieu("Mathieu", bagContent);
 		mathieu.attack();
 	}
