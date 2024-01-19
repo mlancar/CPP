@@ -1,23 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   training.cpp                                       :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/07 14:15:42 by malancar          #+#    #+#             */
-/*   Updated: 2023/12/07 14:16:38 by malancar         ###   ########.fr       */
+/*   Created: 2024/01/19 13:02:20 by malancar          #+#    #+#             */
+/*   Updated: 2024/01/19 17:29:43 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include <string>
+#include "Fixed.hpp"
 
-int	main()
+int main(void) 
 {
-	std::string	maChaine;
+	Fixed a ;
+	Fixed b(a);
+	Fixed c;
 	
+	c = b;
 	
+	std::cout << a.getRawBits() << std::endl;
+	std::cout << b.getRawBits() << std::endl;
+	std::cout << c.getRawBits() << std::endl;
 	
 	return 0;
 }
