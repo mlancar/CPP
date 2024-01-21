@@ -6,7 +6,7 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 13:15:07 by malancar          #+#    #+#             */
-/*   Updated: 2024/01/19 18:43:30 by malancar         ###   ########.fr       */
+/*   Updated: 2024/01/19 18:47:46 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,7 @@ Fixed::Fixed(Fixed const& copy): _rawBits(copy._rawBits)
 Fixed::Fixed(const int nbr)
 {
 	std::cout << "Int constructor called" << std::endl;
-	//std::cout << "rawbits = " << _rawBits << std::endl;
-	//std::cout << "nbr = " << nbr << std::endl;
 	_rawBits = nbr * (1 << _fractionalBits);
-
-	//_rawBits = nbr;
-	//std::cout << "rawbits = " << _rawBits << std::endl;
 }
 
 Fixed::Fixed(const float nbr)

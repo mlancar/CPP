@@ -6,7 +6,7 @@
 #    By: malancar <malancar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/11 17:31:42 by malancar          #+#    #+#              #
-#    Updated: 2024/01/21 14:12:19 by malancar         ###   ########.fr        #
+#    Updated: 2024/01/21 20:05:05 by malancar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,9 +14,11 @@ CXX = c++
 
 FLAGS = -Wall -Werror -Wextra -g -std=c++98
 
-NAME = fixed
+NAME = bsp
 
 SOURCES = Fixed.cpp	\
+		  Point.cpp	\
+		  bsp.cpp	\
 		  main.cpp
 
 HEADER = Fixed.hpp
