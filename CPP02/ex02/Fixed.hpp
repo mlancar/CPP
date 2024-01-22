@@ -6,7 +6,7 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 13:02:55 by malancar          #+#    #+#             */
-/*   Updated: 2024/01/21 20:03:02 by malancar         ###   ########.fr       */
+/*   Updated: 2024/01/22 16:25:22 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,10 @@ class	Fixed {
 		
 		int		getRawBits(void) const;
 		void	setRawBits(int const raw);
+		
 		float	toFloat(void) const;
 		int		toInt(void) const;
-		void	displayNbr(std::ostream &flux) const;
+		
 		static Fixed	&min(Fixed &a, Fixed &b);
 		static const Fixed	&min(Fixed const& a, Fixed const& b);
 		static Fixed	&max(Fixed &a, Fixed &b);

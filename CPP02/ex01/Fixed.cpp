@@ -6,7 +6,7 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 13:15:07 by malancar          #+#    #+#             */
-/*   Updated: 2024/01/19 18:47:46 by malancar         ###   ########.fr       */
+/*   Updated: 2024/01/22 16:23:24 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,12 +61,6 @@ void	Fixed::setRawBits(int const raw)
 {
 	std::cout << "setRawBits member function called" << std::endl;
 	_rawBits = raw;
-}
-
-void	Fixed::displayNbr(std::ostream &flux) const
-{
-	flux << _rawBits;
-	//std::cout << "rawbits = " << _rawBits << std::endl;
 }
 
 float	Fixed::toFloat(void)  const

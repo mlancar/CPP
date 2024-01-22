@@ -6,7 +6,7 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 19:43:10 by malancar          #+#    #+#             */
-/*   Updated: 2024/01/21 20:04:21 by malancar         ###   ########.fr       */
+/*   Updated: 2024/01/22 16:03:16 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,10 @@ class Point {
 		Point(float const x, float const y);
 		Point(Point const &copy);
 		~Point();
+
+		Point	operator=(Point const &n);
+		static Fixed areaCalculation(Point const a, Point const b, Point const c);
+
 
 	private:
 		const Fixed		_x;

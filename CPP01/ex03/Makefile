@@ -6,7 +6,7 @@
 #    By: malancar <malancar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/11 17:31:42 by malancar          #+#    #+#              #
-#    Updated: 2024/01/18 15:16:59 by malancar         ###   ########.fr        #
+#    Updated: 2024/01/22 19:07:37 by malancar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,6 +33,8 @@ RM = rm -rf ./Objects
 
 $(NAME) : Objects $(OBJS)
 		 $(CC) $(FLAGS) -o $(NAME) $(OBJS)
+
+all:	$(NAME)
 
 Objects/%.o :	%.cpp
 		        $(CC) $(FLAGS) -MMD -o $@ -c $<

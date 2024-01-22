@@ -6,7 +6,7 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 13:15:07 by malancar          #+#    #+#             */
-/*   Updated: 2024/01/21 20:03:10 by malancar         ###   ########.fr       */
+/*   Updated: 2024/01/22 17:11:13 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,37 +53,22 @@ void	Fixed::operator=(Fixed const &n)
 
 Fixed	Fixed::operator+(Fixed const& n) const
 {
-	Fixed result;
-	
-	result._rawBits =  _rawBits + n._rawBits;
-	return result;
+	return this->toFloat() + n.toFloat();
 }
 
 Fixed	Fixed::operator-(Fixed const& n) const
 {
-	Fixed result;
-	
-	result._rawBits =  _rawBits - n._rawBits;
-	return result;
+	return this->toFloat() - n.toFloat();
 }
 
 Fixed	Fixed::operator*(Fixed const& n) const
 {
-	Fixed result;
-	
-	result._rawBits =  _rawBits * n._rawBits;
-	result._rawBits = result._rawBits / (1 << _fractionalBits);
-	return result;
+	return this->toFloat() * n.toFloat();
 }
 
 Fixed	Fixed::operator/(Fixed const& n) const
 {
-	Fixed result;
-	
-	result._rawBits =  _rawBits / n._rawBits;
-	result._rawBits = result._rawBits * (1 << _fractionalBits);
-
-	return result;
+	return this->toFloat() / n.toFloat();
 }
 
 Fixed	&Fixed::operator++() 
