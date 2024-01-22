@@ -6,7 +6,7 @@
 #    By: malancar <malancar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/11 17:31:42 by malancar          #+#    #+#              #
-#    Updated: 2024/01/22 13:52:47 by malancar         ###   ########.fr        #
+#    Updated: 2024/01/22 20:21:12 by malancar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,8 @@ DEPS = $(addprefix Objects/, $(DEPENDENCIES))
 
 $(NAME) : Objects $(OBJS)
 		 $(CXX) $(FLAGS) -o $(NAME) $(OBJS)
+
+all:	$(NAME)
 
 Objects/%.o :	%.cpp
 		        $(CXX) $(FLAGS) -MMD -o $@ -c $<
