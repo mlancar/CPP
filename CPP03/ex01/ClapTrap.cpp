@@ -6,37 +6,37 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 19:28:30 by malancar          #+#    #+#             */
-/*   Updated: 2024/01/23 18:21:25 by malancar         ###   ########.fr       */
+/*   Updated: 2024/01/23 19:03:20 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
-ClapTrap::ClapTrap(): _name("qwerty"), _hitPoints(10), _energyPoints(10), _attackDamage(0), _className("Claptrap")
+
+ClapTrap::ClapTrap(): _name("qwerty"), _hitPoints(10), _energyPoints(10), _attackDamage(0), _className("ClapTrap")
 {
 	//std::cout << "Default constructor called" << std::endl;
-	std::cout << _className << " " << _name << " is created with default constructor" << std::endl;
+	std::cout << "ClapTrap " << _name << " is created with default constructor" << std::endl;
 }
 
-ClapTrap::ClapTrap(std::string const &name): _name(name), _hitPoints(10), _energyPoints(10), _attackDamage(0), _className("Claptrap")
+ClapTrap::ClapTrap(std::string const &name): _name(name), _hitPoints(10), _energyPoints(10), _attackDamage(0), _className("ClapTrap")
 {
 	//std::cout << "Constructor called with name" << std::endl;
-	std::cout << _className << " " << _name << " is created" << std::endl;
+	std::cout << "ClapTrap " << _name << " is created" << std::endl;
 }
 
 ClapTrap::ClapTrap(ClapTrap const &copy):_name(copy._name), _hitPoints(copy._hitPoints),
 _energyPoints(copy._energyPoints), _attackDamage(copy._attackDamage), _className(copy._className)
 {
-	std::cout << _className << " " << _name << " is created" << std::endl;
+	std::cout << "ClapTrap " << _name << " is created" << std::endl;
 	//*this = copy;
 }
 
 ClapTrap::~ClapTrap()
 {
 	//std::cout << "Destructor called" << std::endl;
-	std::cout << _className << " " << _name << " is destroyed" << std::endl;
+	std::cout << _name << " is destroyed" << std::endl;
 }
-
 ClapTrap	&ClapTrap::operator=(ClapTrap const &rhs)
 {
 	_name = rhs._name;
@@ -54,6 +54,11 @@ std::string	ClapTrap::getName()
 unsigned int	ClapTrap::getAttackDamage()
 {
 	return _attackDamage;
+}
+
+int		ClapTrap::getHitPoints()
+{
+	return _hitPoints;
 }
 
 void	ClapTrap::attack(const std::string &target)
@@ -97,5 +102,7 @@ void	ClapTrap::beRepaired(unsigned int amount)
 
 void	ClapTrap::displayState() const
 {
-	std::cout << _className << " " << _name << ": " << _hitPoints << "HP, " << _energyPoints << " stamina" << std::endl;
+	std::cout << _className << " " << _name << ": " << _hitPoints << "HP" << std::endl;
+	std::cout << _className << " " << _name << ": " << _energyPoints << " stamina" << std::endl;
 }
+

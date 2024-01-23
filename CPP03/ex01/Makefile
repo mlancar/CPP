@@ -6,7 +6,7 @@
 #    By: malancar <malancar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/11 17:31:42 by malancar          #+#    #+#              #
-#    Updated: 2024/01/23 16:11:53 by malancar         ###   ########.fr        #
+#    Updated: 2024/01/23 18:34:56 by malancar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,12 +14,11 @@ CXX = c++
 
 FLAGS = -Wall -Werror -Wextra -g -std=c++98
 
-NAME = claptrap
+NAME = scavtrap
 
 SOURCES = ClapTrap.cpp	\
+		  ScavTrap.cpp	\
 		  main.cpp
-
-HEADER = Fixed.hpp
 
 OBJECTS =	$(SOURCES:.cpp=.o)
 OBJS = $(addprefix Objects/, $(OBJECTS))

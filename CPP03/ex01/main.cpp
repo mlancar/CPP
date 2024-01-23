@@ -6,18 +6,20 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 19:18:34 by malancar          #+#    #+#             */
-/*   Updated: 2024/01/23 18:26:17 by malancar         ###   ########.fr       */
+/*   Updated: 2024/01/23 19:08:58 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
+#include "ScavTrap.hpp"
 
 int	main()
 {
-	ClapTrap	mathieu("Mathieu");
-	ClapTrap	louis("Louis");
+	std::string	className;
+	ScavTrap	mathieu("Mathieu");
+	ScavTrap	louis("Louis");
 	
-	std::cout << "Player :" << std::endl;
+	std::cout << "Fighter :" << std::endl;
 	mathieu.displayState();
 	louis.displayState();
 	
@@ -26,12 +28,16 @@ int	main()
 	louis.takeDamage(mathieu.getAttackDamage());
 	louis.displayState();
 	louis.beRepaired(mathieu.getAttackDamage());
-	for (int i = 0; i < 11 ; i++)
+	for (int i = 0; i < mathieu.getHitPoints() > 0  ; i++)
+	{
 		louis.attack(mathieu.getName());
-	
-	std::cout << "*** FIGHT OVER ***" << std::endl;
+		mathieu.takeDamage(louis.getAttackDamage());
+	}
+	ScavTrap::winner(louis, mathieu);
 	louis.displayState();
 	mathieu.displayState();
-
+	std::cout << "*** FIGHT OVER ***" << std::endl;
+	
+	
 	return 0;	
 }
