@@ -6,7 +6,7 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 19:28:30 by malancar          #+#    #+#             */
-/*   Updated: 2024/01/23 19:03:20 by malancar         ###   ########.fr       */
+/*   Updated: 2024/01/24 23:18:44 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ _energyPoints(copy._energyPoints), _attackDamage(copy._attackDamage), _className
 ClapTrap::~ClapTrap()
 {
 	//std::cout << "Destructor called" << std::endl;
-	std::cout << _name << " is destroyed" << std::endl;
+	std::cout << "ClapTrap " << _name << " is destroyed" << std::endl;
 }
 ClapTrap	&ClapTrap::operator=(ClapTrap const &rhs)
 {
@@ -85,13 +85,15 @@ void	ClapTrap::takeDamage(unsigned int amount)
 
 void	ClapTrap::beRepaired(unsigned int amount)
 {
-	if (_hitPoints < 10)
+	if (_hitPoints <= 100)
 	{
 		if (_energyPoints > 0)
 		{
 			_hitPoints += amount;
 			_energyPoints -= 1;
-			std::cout << _className << " " << _name << " is repaired, healed:  " << amount << "HP" << std::endl;
+			std::cout << _className << " " << _name << " is repairing. Healed:  " << amount << "HP" << std::endl;
+			if (_hitPoints >= 100)
+				std::cout << _className << " " << _name << " is fully healed!" << std::endl;
 		}
 		else
 			std::cout << _className << " " << _name << " tried to be repaired but not enought stamina" << std::endl;

@@ -6,7 +6,7 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 16:27:58 by malancar          #+#    #+#             */
-/*   Updated: 2024/01/23 19:10:54 by malancar         ###   ########.fr       */
+/*   Updated: 2024/01/24 23:19:55 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ ScavTrap::ScavTrap(ScavTrap const &copy): ClapTrap(copy)
 
 ScavTrap::~ScavTrap()
 {
-	
+	std::cout << _className << " " << _name << " is destroyed" << std::endl;
 }
 
 void	ScavTrap::attack(std::string const &target)
@@ -63,19 +63,14 @@ void	ScavTrap::guardGate()
 
 void	ScavTrap::winner(ScavTrap &fighter1, ScavTrap &fighter2)
 {
-	std::string	winner;
-	std::string	loser;
+	std::string	winner = fighter1.getName();
+	std::string	loser = fighter2.getName();
 	
-	if (fighter1.getHitPoints() > fighter2.getHitPoints())
-	{
-		winner = fighter1.getName();
-		loser = fighter2.getName();
-	}
-	else
+	if (fighter2.getHitPoints() > fighter1.getHitPoints())
 	{
 		winner = fighter2.getName();
 		loser = fighter1.getName();
 	}
-	std::cout << loser << " died" << std::endl;
+	std::cout << loser << " KO" << std::endl;
 	std::cout << winner << " WIN!" << std::endl;
 }
