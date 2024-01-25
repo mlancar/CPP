@@ -6,7 +6,7 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 19:18:34 by malancar          #+#    #+#             */
-/*   Updated: 2024/01/25 18:07:37 by malancar         ###   ########.fr       */
+/*   Updated: 2024/01/25 21:40:36 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int	actionsDiamond(DiamondTrap &give, DiamondTrap &take)
 	return 0;
 }
 
-void	fightDiamond(DiamondTrap &fighter1, DiamondTrap fighter2)
+void	fightDiamond(DiamondTrap &fighter1, DiamondTrap &fighter2)
 {
 	std::string input;
 	
@@ -73,8 +73,11 @@ void	fightDiamond(DiamondTrap &fighter1, DiamondTrap fighter2)
 	while (1)
 	{
 		getline(std::cin, input);
+		std::cout << fighter1.getName() << std::endl;
 		if (input == fighter1.getName())
 		{
+			std::cout << input << std::endl;
+			
 			if (actionsDiamond(fighter1, fighter2) == 1)
 				return ;
 		}
@@ -106,9 +109,6 @@ int	addFighter(std::string &name)
 			return 0;
 	}
 	while (input != "DiamondTrap" );
-	std::cout << "You can now choose a name: " << std::endl;
-	getline(std::cin, input);
-	name = input;
 	std::cout << std::endl;
 	return 1;
 }
@@ -120,6 +120,7 @@ int	play()
 	std::string name1;
 	std::string name2;
 	
+	
 	while (1)
 	{
 		// if (className == "ClapTrap")
@@ -127,14 +128,17 @@ int	play()
 		// else if (className == "ScavTrap")
 		std::cout << "Welcome to the arena" <<std::endl;
 		std::cout << "You can quit at any moment by entering: give up" << std::endl << "Add two fighter to play." << std::endl;
-		if (addFighter(name1) == 0)
+		if (addFighter(className) == 0)
 			return 0;
-		DiamondTrap	fighter1(name1);
-		if (addFighter(name2) == 0)
-			return 0;
-		DiamondTrap	fighter2(name2);
-		if (className == "DiamondTrap")
-			fightDiamond(fighter1, fighter2);
+		std::cout << "Choose a name for fighter1: " << std::endl;
+		getline(std::cin, input);
+		name1 = input;
+		std::cout << "Choose a name for fighter2: " << std::endl;
+		getline(std::cin, input);
+		name2 = input;
+		DiamondTrap fighter1(name1);
+		DiamondTrap fighter2(name2);
+		fightDiamond(fighter1, fighter2);
 		while (1)
 		{
 			std::cout << "Do you want to play again ? yes or no ?" << std::endl;
@@ -146,7 +150,7 @@ int	play()
 		}
 	}
 }
-
+//BOUCLE INFINIE CONTROLD
 int	main()
 {
 	// std::string	className;
