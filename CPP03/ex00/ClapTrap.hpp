@@ -6,7 +6,7 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 19:18:48 by malancar          #+#    #+#             */
-/*   Updated: 2024/01/23 18:33:14 by malancar         ###   ########.fr       */
+/*   Updated: 2024/01/25 14:38:21 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,7 @@
 class	ClapTrap {
 	
 	public:
-		ClapTrap();
-		ClapTrap(std::string const &name);
+		ClapTrap(std::string name = "default");
 		ClapTrap(ClapTrap const &copy);
 		~ClapTrap();
 
@@ -35,6 +34,7 @@ class	ClapTrap {
 		void	displayState() const;
 		
 		protected:
+			//ClapTrap(std::string name = "default", int hitPoints = 10, int energyPoints = 10, int attackDamage = 0, std::string className = "ClapTrap");
 			std::string		_name;
 			int				_hitPoints;
 			int				_energyPoints;

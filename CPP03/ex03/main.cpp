@@ -6,15 +6,13 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 19:18:34 by malancar          #+#    #+#             */
-/*   Updated: 2024/01/25 18:05:56 by malancar         ###   ########.fr       */
+/*   Updated: 2024/01/25 18:07:37 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ClapTrap.hpp"
-#include "ScavTrap.hpp"
+#include "DiamondTrap.hpp"
 
-
-int	isFightEnding(ScavTrap &fighter1, ScavTrap &fighter2)
+int	isFightEndingDiamond(DiamondTrap &fighter1, DiamondTrap &fighter2)
 {
 	if (fighter1.getHitPoints() <= 0)
 	{
@@ -32,7 +30,7 @@ int	isFightEnding(ScavTrap &fighter1, ScavTrap &fighter2)
 	
 }
 
-int	actions(ScavTrap &give, ScavTrap &take)
+int	actionsDiamond(DiamondTrap &give, DiamondTrap &take)
 {
 	std::string input;
 	
@@ -47,7 +45,7 @@ int	actions(ScavTrap &give, ScavTrap &take)
 	else if (input == "state")
 		give.displayState();
 	else if (input == "highfive")
-		give.guardGate();
+		give.highFivesGuys();
 	else if (input == "give up")
 	{
 		std::cout << give.getName() << " gives up" << std::endl;
@@ -59,15 +57,14 @@ int	actions(ScavTrap &give, ScavTrap &take)
 	return 0;
 }
 
-void	fight(ScavTrap &fighter1, ScavTrap fighter2)
+void	fightDiamond(DiamondTrap &fighter1, DiamondTrap fighter2)
 {
 	std::string input;
 	
 	std::cout << std::endl ;
 	std::cout << "This is your available actions : - attack" << std::endl;
 	std::cout << "                                 - heal" << std::endl;
-	std::cout << "                                 - state (display fighter state)" << std::endl;//display fighter state
-	std::cout << "                                 - high five" << std::endl;
+	std::cout << "                                 - state (display fighter state)" << std::endl;
 	std::cout << "                                 - give up" << std::endl;
 	std::cout << "Each action cost one stamina point." << std::endl;
 	std::cout << "First select fighter, press enter, then choose an action and press enter" << std::endl;
@@ -78,19 +75,19 @@ void	fight(ScavTrap &fighter1, ScavTrap fighter2)
 		getline(std::cin, input);
 		if (input == fighter1.getName())
 		{
-			if (actions(fighter1, fighter2) == 1)
+			if (actionsDiamond(fighter1, fighter2) == 1)
 				return ;
 		}
 		else if (input == fighter2.getName())
 		{
-			if (actions(fighter2, fighter1) == 1)
+			if (actionsDiamond(fighter2, fighter1) == 1)
 				return ;
 		}
 		else if (input == "give up")
 			return ;
 		else
 			std::cout << "First select fighter, press enter, then choose an action and press enter" << std::endl;
-		if (isFightEnding(fighter1, fighter2) == 1)
+		if (isFightEndingDiamond(fighter1, fighter2) == 1)
 			return ;
 	}
 	return ;
@@ -102,13 +99,13 @@ int	addFighter(std::string &name)
 	
 	std::cout << "First you have to choose a class." <<std::endl << std::endl;
 	do {
-		std::cout << "Class available: -ScavTrap (100HP, 100 stamina, 20 damage)" << std::endl;
+		std::cout << "Class available: -DiamondTrap (100HP, 100 stamina, 30 damage)" << std::endl;
 		std::cout << "                 " << std::endl;
 		getline(std::cin, input);
 		if (input == "give up")
 			return 0;
 	}
-	while (input != "ScavTrap" );
+	while (input != "DiamondTrap" );
 	std::cout << "You can now choose a name: " << std::endl;
 	getline(std::cin, input);
 	name = input;
@@ -132,11 +129,12 @@ int	play()
 		std::cout << "You can quit at any moment by entering: give up" << std::endl << "Add two fighter to play." << std::endl;
 		if (addFighter(name1) == 0)
 			return 0;
-		ScavTrap	fighter1(name1);
+		DiamondTrap	fighter1(name1);
 		if (addFighter(name2) == 0)
 			return 0;
-		ScavTrap	fighter2(name2);
-		fight(fighter1, fighter2);
+		DiamondTrap	fighter2(name2);
+		if (className == "DiamondTrap")
+			fightDiamond(fighter1, fighter2);
 		while (1)
 		{
 			std::cout << "Do you want to play again ? yes or no ?" << std::endl;

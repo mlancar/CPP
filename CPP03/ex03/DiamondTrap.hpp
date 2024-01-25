@@ -1,32 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
+/*   DiamondTrap.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/23 16:20:45 by malancar          #+#    #+#             */
-/*   Updated: 2024/01/25 14:54:23 by malancar         ###   ########.fr       */
+/*   Created: 2024/01/25 16:07:20 by malancar          #+#    #+#             */
+/*   Updated: 2024/01/25 16:15:52 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCAVTRAP_HPP
-#define	SCAVTRAP_HPP
+#ifndef DIAMONTRAP_HPP
+#define	DIAMONTRAP_HPP
 
 #include <iostream>
 #include "ClapTrap.hpp"
+#include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 
-class	ScavTrap : public ClapTrap {
+class	DiamondTrap : public ScavTrap, public FragTrap {
 
 	public:
-		ScavTrap(std::string name = "default");
-		ScavTrap(ScavTrap const &copy);
-		~ScavTrap();
+		DiamondTrap(std::string name = "default");
+		DiamondTrap(DiamondTrap const &copy);
+		~DiamondTrap();
 		
-		void	attack(std::string const &target);
-		void	guardGate();
-
-		static void	winner(ScavTrap &fighter1, ScavTrap &fighter2);
+		void	whoAmI();
+	private:
+		std::string	_name;
 };
 
 #endif

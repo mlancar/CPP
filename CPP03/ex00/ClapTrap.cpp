@@ -6,23 +6,34 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 19:28:30 by malancar          #+#    #+#             */
-/*   Updated: 2024/01/23 18:21:25 by malancar         ###   ########.fr       */
+/*   Updated: 2024/01/25 14:38:34 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
-ClapTrap::ClapTrap(): _name("qwerty"), _hitPoints(10), _energyPoints(10), _attackDamage(0), _className("Claptrap")
+ClapTrap::ClapTrap(std::string name): _name(name), _className("ClapTrap")
 {
-	//std::cout << "Default constructor called" << std::endl;
-	std::cout << _className << " " << _name << " is created with default constructor" << std::endl;
+	std::cout << "ClapTrap" << " " << _name << " is created with default constructor" << std::endl;
 }
 
-ClapTrap::ClapTrap(std::string const &name): _name(name), _hitPoints(10), _energyPoints(10), _attackDamage(0), _className("Claptrap")
-{
-	//std::cout << "Constructor called with name" << std::endl;
-	std::cout << _className << " " << _name << " is created" << std::endl;
-}
+// ClapTrap::ClapTrap(std::string name): _name(name), _hitPoints(10), _energyPoints(10), _attackDamage(0), _className("ClapTrap")
+// {
+// 	std::cout << "Default constructor called" << std::endl;
+// 	if (_hitPoints < 0)
+// 		_hitPoints = _hitPoints * -1;
+// 	if (_energyPoints < 0)
+// 		_energyPoints = _energyPoints * -1;
+// 	if (_attackDamage < 0)
+// 		_attackDamage = _attackDamage * -1;
+// 	std::cout << _className << " " << _name << " is created with default constructor" << std::endl;
+// }
+
+// ClapTrap::ClapTrap(std::string const &name): _name(name), _hitPoints(10), _energyPoints(10), _attackDamage(0), _className("Claptrap")
+// {
+// 	//std::cout << "Constructor called with name" << std::endl;
+// 	std::cout << _className << " " << _name << " is created" << std::endl;
+// }
 
 ClapTrap::ClapTrap(ClapTrap const &copy):_name(copy._name), _hitPoints(copy._hitPoints),
 _energyPoints(copy._energyPoints), _attackDamage(copy._attackDamage), _className(copy._className)

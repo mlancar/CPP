@@ -6,7 +6,7 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 19:28:30 by malancar          #+#    #+#             */
-/*   Updated: 2024/01/25 14:53:14 by malancar         ###   ########.fr       */
+/*   Updated: 2024/01/25 15:36:43 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	ClapTrap::attack(const std::string &target)
 	if (_energyPoints > 0)
 	{
 		_energyPoints -= 1;
-		std::cout << _className << " " << _name << " attacks " << target << " with their bare hands" << std::endl;
+		std::cout << _className << " " << _name << " attacks " << target << " with their sharp fists" << std::endl;
 	}
 	else
 		std::cout << _className << " " << _name << " tried to attack but not enought stamina" << std::endl;

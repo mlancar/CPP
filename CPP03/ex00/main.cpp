@@ -6,7 +6,7 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 19:18:34 by malancar          #+#    #+#             */
-/*   Updated: 2024/01/23 18:26:17 by malancar         ###   ########.fr       */
+/*   Updated: 2024/01/25 14:12:41 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 int	main()
 {
-	ClapTrap	mathieu("Mathieu");
+	//ClapTrap	mathieu("Mathieu");
+	ClapTrap	mathieu;
 	ClapTrap	louis("Louis");
 	
 	std::cout << "Player :" << std::endl;

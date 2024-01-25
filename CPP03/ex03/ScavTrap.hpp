@@ -6,7 +6,7 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 16:20:45 by malancar          #+#    #+#             */
-/*   Updated: 2024/01/25 14:54:23 by malancar         ###   ########.fr       */
+/*   Updated: 2024/01/25 16:18:58 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@
 #include <iostream>
 #include "ClapTrap.hpp"
 
-class	ScavTrap : public ClapTrap {
+class	ScavTrap : public virtual ClapTrap {
 
 	public:
-		ScavTrap(std::string name = "default");
+		ScavTrap(std::string name= "default");
 		ScavTrap(ScavTrap const &copy);
 		~ScavTrap();
 		
