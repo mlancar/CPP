@@ -6,7 +6,7 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 19:18:48 by malancar          #+#    #+#             */
-/*   Updated: 2024/01/26 00:16:41 by malancar         ###   ########.fr       */
+/*   Updated: 2024/01/26 16:27:33 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,6 @@ class	ClapTrap {
 		void	beRepaired(unsigned int amount);
 		
 		void	displayState() const;
-
-		void action();
 		
 		protected:
 			std::string		_name;

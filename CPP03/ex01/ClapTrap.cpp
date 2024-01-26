@@ -6,22 +6,28 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 19:28:30 by malancar          #+#    #+#             */
-/*   Updated: 2024/01/26 15:05:11 by malancar         ###   ########.fr       */
+/*   Updated: 2024/01/26 16:38:22 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
-ClapTrap::ClapTrap(std::string name): _name(name), _className("ClapTrap")
+ClapTrap::ClapTrap(std::string name)
 {
-	std::cout << "ClapTrap" << " " << _name << " is created" << std::endl;
+	_className = "ClapTrap";
+	_name = name;
+	std::cout << _className << " " << _name << " is created" << std::endl;
+	_hitPoints = 10;
+	_energyPoints = 10;
+	_attackDamage = 0;
 }
 
-ClapTrap::ClapTrap(ClapTrap const &copy):_name(copy._name), _hitPoints(copy._hitPoints),
-_energyPoints(copy._energyPoints), _attackDamage(copy._attackDamage), _className(copy._className)
+ClapTrap::ClapTrap(ClapTrap const &copy)
 {
-	std::cout << "ClapTrap " << _name << " is created" << std::endl;
-	//*this = copy;
+	std::cout << _className << " " << _name << " is created with copy constructor" << std::endl;
+	_name = copy._name;
+	_energyPoints = copy._energyPoints;
+	_attackDamage = copy._attackDamage;
 }
 
 ClapTrap::~ClapTrap()
@@ -29,6 +35,7 @@ ClapTrap::~ClapTrap()
 	//std::cout << "Destructor called" << std::endl;
 	std::cout << "ClapTrap " << _name << " is destroyed" << std::endl;
 }
+
 ClapTrap	&ClapTrap::operator=(ClapTrap const &rhs)
 {
 	_name = rhs._name;
@@ -58,7 +65,7 @@ void	ClapTrap::attack(const std::string &target)
 	if (_energyPoints > 0)
 	{
 		_energyPoints -= 1;
-		std::cout << _className << " " << _name << " attacks " << target << " with their bare hands" << std::endl;
+		std::cout << _className << " " << _name << " attacks " << target << " with their sharp fists" << std::endl;
 	}
 	else
 		std::cout << _className << " " << _name << " tried to attack but not enought stamina" << std::endl;
@@ -77,7 +84,7 @@ void	ClapTrap::takeDamage(unsigned int amount)
 
 void	ClapTrap::beRepaired(unsigned int amount)
 {
-	if (_hitPoints <= 100)
+	if (_hitPoints < 100)
 	{
 		if (_energyPoints > 0)
 		{
@@ -98,9 +105,4 @@ void	ClapTrap::displayState() const
 {
 	std::cout << _className << " " << _name << ": " << _hitPoints << "HP" << std::endl;
 	std::cout << _className << " " << _name << ": " << _energyPoints << " stamina" << std::endl;
-}
-
-void ClapTrap::action()  
-{
-	return ;
 }

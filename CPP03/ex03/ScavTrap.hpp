@@ -6,7 +6,7 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 16:20:45 by malancar          #+#    #+#             */
-/*   Updated: 2024/01/25 16:18:58 by malancar         ###   ########.fr       */
+/*   Updated: 2024/01/26 18:25:14 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,18 @@ class	ScavTrap : public virtual ClapTrap {
 		ScavTrap(std::string name= "default");
 		ScavTrap(ScavTrap const &copy);
 		~ScavTrap();
+
+		int		getEnergyPoints();
 		
 		void	attack(std::string const &target);
 		void	guardGate();
 
-		static void	winner(ScavTrap &fighter1, ScavTrap &fighter2);
+	protected:
+		std::string		_name;
+		int				_hitPoints;
+		int				_energyPoints;
+		unsigned int	_attackDamage;
+		std::string		_className;
 };
 
 #endif

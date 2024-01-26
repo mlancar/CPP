@@ -6,7 +6,7 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 19:18:34 by malancar          #+#    #+#             */
-/*   Updated: 2024/01/25 21:40:36 by malancar         ###   ########.fr       */
+/*   Updated: 2024/01/26 16:50:59 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ void	fightDiamond(DiamondTrap &fighter1, DiamondTrap &fighter2)
 	return ;
 }
 
-int	addFighter(std::string &name)
+int	addFighter(std::string className)
 {
 	std::string input;
 	
@@ -109,6 +109,7 @@ int	addFighter(std::string &name)
 			return 0;
 	}
 	while (input != "DiamondTrap" );
+	className = input;
 	std::cout << std::endl;
 	return 1;
 }
@@ -119,7 +120,6 @@ int	play()
 	std::string className;
 	std::string name1;
 	std::string name2;
-	
 	
 	while (1)
 	{

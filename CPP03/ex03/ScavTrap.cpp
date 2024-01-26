@@ -6,7 +6,7 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 16:27:58 by malancar          #+#    #+#             */
-/*   Updated: 2024/01/25 14:54:48 by malancar         ###   ########.fr       */
+/*   Updated: 2024/01/26 18:26:03 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,11 @@ ScavTrap::~ScavTrap()
 	std::cout << _className << " " << _name << " is destroyed" << std::endl;
 }
 
+int		ScavTrap::getEnergyPoints()
+{
+	return _energyPoints;
+}
+
 void	ScavTrap::attack(std::string const &target)
 {
 	if (_energyPoints > 0)
@@ -58,18 +63,4 @@ void	ScavTrap::guardGate()
 	else
 		std::cout << _name << ": not enought stamina" << std::endl;
 		
-}
-
-void	ScavTrap::winner(ScavTrap &fighter1, ScavTrap &fighter2)
-{
-	std::string	winner = fighter1.getName();
-	std::string	loser = fighter2.getName();
-	
-	if (fighter2.getHitPoints() > fighter1.getHitPoints())
-	{
-		winner = fighter2.getName();
-		loser = fighter1.getName();
-	}
-	std::cout << loser << " KO" << std::endl;
-	std::cout << winner << " WIN!" << std::endl;
 }

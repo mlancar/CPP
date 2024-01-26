@@ -6,7 +6,7 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 19:18:48 by malancar          #+#    #+#             */
-/*   Updated: 2024/01/25 14:38:21 by malancar         ###   ########.fr       */
+/*   Updated: 2024/01/26 16:39:47 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ class	ClapTrap {
 
 		std::string		getName();
 		unsigned int	getAttackDamage();
+		int				getHitPoints();
 
 		void	attack(const std::string &target);
 		void	takeDamage(unsigned int amount);
@@ -34,13 +35,11 @@ class	ClapTrap {
 		void	displayState() const;
 		
 		protected:
-			//ClapTrap(std::string name = "default", int hitPoints = 10, int energyPoints = 10, int attackDamage = 0, std::string className = "ClapTrap");
 			std::string		_name;
 			int				_hitPoints;
 			int				_energyPoints;
 			unsigned int	_attackDamage;
 			std::string		_className;
-		
 };
 
 #endif
