@@ -6,7 +6,7 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 19:18:34 by malancar          #+#    #+#             */
-/*   Updated: 2024/01/25 18:05:56 by malancar         ###   ########.fr       */
+/*   Updated: 2024/01/26 00:23:55 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "ScavTrap.hpp"
 
 
-int	isFightEnding(ScavTrap &fighter1, ScavTrap &fighter2)
+int	isFightEnding(ClapTrap &fighter1, ClapTrap &fighter2)
 {
 	if (fighter1.getHitPoints() <= 0)
 	{
@@ -32,7 +32,7 @@ int	isFightEnding(ScavTrap &fighter1, ScavTrap &fighter2)
 	
 }
 
-int	actions(ScavTrap &give, ScavTrap &take)
+int	actions(ClapTrap &give, ClapTrap &take)
 {
 	std::string input;
 	
@@ -46,8 +46,6 @@ int	actions(ScavTrap &give, ScavTrap &take)
 		give.beRepaired(give.getAttackDamage());
 	else if (input == "state")
 		give.displayState();
-	else if (input == "highfive")
-		give.guardGate();
 	else if (input == "give up")
 	{
 		std::cout << give.getName() << " gives up" << std::endl;
@@ -59,7 +57,7 @@ int	actions(ScavTrap &give, ScavTrap &take)
 	return 0;
 }
 
-void	fight(ScavTrap &fighter1, ScavTrap fighter2)
+void	fight(ClapTrap &fighter1, ClapTrap fighter2)
 {
 	std::string input;
 	
@@ -88,6 +86,9 @@ void	fight(ScavTrap &fighter1, ScavTrap fighter2)
 		}
 		else if (input == "give up")
 			return ;
+		else if (input == "special") {
+			fighter1.action();
+		}
 		else
 			std::cout << "First select fighter, press enter, then choose an action and press enter" << std::endl;
 		if (isFightEnding(fighter1, fighter2) == 1)
@@ -122,6 +123,9 @@ int	play()
 	std::string className;
 	std::string name1;
 	std::string name2;
+	ClapTrap fighter1;
+	ClapTrap fighter2;
+
 	
 	while (1)
 	{
@@ -132,10 +136,21 @@ int	play()
 		std::cout << "You can quit at any moment by entering: give up" << std::endl << "Add two fighter to play." << std::endl;
 		if (addFighter(name1) == 0)
 			return 0;
-		ScavTrap	fighter1(name1);
+		if (class== "ClapTrap") {
+			fighter1 = ClapTrap(name1);
+		}
+		else if (class== "FragTrap") {
+			fighter1 = FragTrap(name1);
+		}
+		else if (class== "DiamondTrap") {
+			fighter1 = DiamondTrap(name1);
+		}
+		else {
+			fighter1 = ScavTrap(name1);
+		}
 		if (addFighter(name2) == 0)
 			return 0;
-		ScavTrap	fighter2(name2);
+		fighter2 = ScavTrap(name2);
 		fight(fighter1, fighter2);
 		while (1)
 		{

@@ -6,7 +6,7 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 19:28:30 by malancar          #+#    #+#             */
-/*   Updated: 2024/01/25 14:53:14 by malancar         ###   ########.fr       */
+/*   Updated: 2024/01/26 00:21:52 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 ClapTrap::ClapTrap(std::string name): _name(name), _className("ClapTrap")
 {
-	std::cout << "ClapTrap" << " " << _name << " is created with default constructor" << std::endl;
+	std::cout << "ClapTrap" << " " << _name << " is created" << std::endl;
 }
 
 ClapTrap::ClapTrap(ClapTrap const &copy):_name(copy._name), _hitPoints(copy._hitPoints),
@@ -100,3 +100,6 @@ void	ClapTrap::displayState() const
 	std::cout << _className << " " << _name << ": " << _energyPoints << " stamina" << std::endl;
 }
 
+void ClapTrap::action()  {
+	return ;
+}

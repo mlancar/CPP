@@ -6,7 +6,7 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 16:27:58 by malancar          #+#    #+#             */
-/*   Updated: 2024/01/25 16:01:26 by malancar         ###   ########.fr       */
+/*   Updated: 2024/01/26 00:14:07 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,4 +72,8 @@ void	ScavTrap::winner(ScavTrap &fighter1, ScavTrap &fighter2)
 	}
 	std::cout << loser << " KO" << std::endl;
 	std::cout << winner << " WIN!" << std::endl;
+}
+
+void ScavTrap::action() {
+	guardGate();
 }

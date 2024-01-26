@@ -6,7 +6,7 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 16:20:45 by malancar          #+#    #+#             */
-/*   Updated: 2024/01/25 14:54:23 by malancar         ###   ########.fr       */
+/*   Updated: 2024/01/26 00:13:54 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ class	ScavTrap : public ClapTrap {
 		void	guardGate();
 
 		static void	winner(ScavTrap &fighter1, ScavTrap &fighter2);
+
+		void action();
 };
 
 #endif
