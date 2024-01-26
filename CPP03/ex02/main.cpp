@@ -6,13 +6,11 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 19:18:34 by malancar          #+#    #+#             */
-/*   Updated: 2024/01/26 15:24:41 by malancar         ###   ########.fr       */
+/*   Updated: 2024/01/26 15:12:48 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ClapTrap.hpp"
-#include "ScavTrap.hpp"
-
+#include "FragTrap.hpp"
 
 int	isFightEnding(ClapTrap &fighter1, ClapTrap &fighter2)
 {
@@ -59,7 +57,7 @@ int	actions(ClapTrap &give, ClapTrap &take)
 	return 0;
 }
 
-void	fight(ClapTrap &fighter1, ClapTrap fighter2)
+void	fight(ClapTrap &fighter1, ClapTrap &fighter2)
 {
 	std::string input;
 	
@@ -67,7 +65,7 @@ void	fight(ClapTrap &fighter1, ClapTrap fighter2)
 	std::cout << "This is your available actions : - attack" << std::endl;
 	std::cout << "                                 - heal" << std::endl;
 	std::cout << "                                 - state (display fighter state)" << std::endl;//display fighter state
-	std::cout << "                                 - special" << std::endl;
+	std::cout << "                                 - high five" << std::endl;
 	std::cout << "                                 - give up" << std::endl;
 	std::cout << "Each action cost one stamina point." << std::endl;
 	std::cout << "First select fighter, press enter, then choose an action and press enter" << std::endl;
@@ -88,9 +86,6 @@ void	fight(ClapTrap &fighter1, ClapTrap fighter2)
 		}
 		else if (input == "give up")
 			return ;
-		else if (input == "special") {
-			fighter1.action();
-		}
 		else
 			std::cout << "First select fighter, press enter, then choose an action and press enter" << std::endl;
 		if (isFightEnding(fighter1, fighter2) == 1)
@@ -105,14 +100,16 @@ int	addFighter(std::string &className)
 	
 	std::cout << "First you have to choose a class." <<std::endl << std::endl;
 	do {
-		std::cout << "Class available: -ScavTrap (100HP, 50 stamina, 20 damage)" << std::endl;
-		std::cout << "                 -ClapTrap (10HP, 10 stamina, 0 damage)" << std::endl << std::endl;
+		std::cout << "Class available: -FragTrap (100HP, 100 stamina, 30 damage)" << std::endl;
+		std::cout << "                 -ScavTrap (100HP, 50 stamina, 20 damage)" << std::endl;
+		std::cout << "                 -ClapTrap (10HP, 10 stamina, 0 damage)" << std::endl;
 		getline(std::cin, input);
 		if (input == "give up")
 			return 0;
 	}
-	while (input != "ScavTrap" && input != "ClapTrap");
+	while (input != "FragTrap" && input != "ClapTrap" && input != "ScavTrap");
 	className = input;
+	
 	return 1;
 }
 
@@ -124,7 +121,6 @@ int	play()
 	std::string name2;
 	ClapTrap fighter1;
 	ClapTrap fighter2;
-
 	
 	while (1)
 	{
@@ -139,10 +135,18 @@ int	play()
 		getline(std::cin, input);
 		name2 = input;
 		std::cout << std::endl;
-		if (className == "ScavTrap")
+		//std::cout << std::endl;
+		if (className == "FragTrap")
+		{
+			fighter1 = FragTrap(name1);
+			fighter2 = FragTrap(name2);
+			
+		}
+		else if (className == "ScavTrap")
 		{
 			fighter1 = ScavTrap(name1);
 			fighter2 = ScavTrap(name2);
+
 		}
 		else if (className == "ClapTrap")
 		{
@@ -150,7 +154,7 @@ int	play()
 			fighter2 = ClapTrap(name2);
 
 		}
-		fight(fighter1, fighter2);
+		fight(fighter1, fighter2);	
 		while (1)
 		{
 			std::cout << "Do you want to play again ? yes or no ?" << std::endl;

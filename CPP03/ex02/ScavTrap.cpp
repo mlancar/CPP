@@ -6,17 +6,17 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 16:27:58 by malancar          #+#    #+#             */
-/*   Updated: 2024/01/26 15:22:44 by malancar         ###   ########.fr       */
+/*   Updated: 2024/01/26 15:06:34 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScavTrap.hpp"
 
-ScavTrap::ScavTrap(std::string name): ClapTrap()
+ScavTrap::ScavTrap(std::string name): ClapTrap(name)
 {
 	_className = "ScavTrap";
 	_name = name;
-	std::cout << _className << " " << _name << " is created with default constructor" << std::endl;
+	std::cout << _className << " " << _name << " is created" << std::endl;
 	_hitPoints = 100;
 	_energyPoints = 50;
 	_attackDamage = 20;

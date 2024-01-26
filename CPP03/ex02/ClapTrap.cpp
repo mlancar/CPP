@@ -6,7 +6,7 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 19:28:30 by malancar          #+#    #+#             */
-/*   Updated: 2024/01/26 15:05:11 by malancar         ###   ########.fr       */
+/*   Updated: 2024/01/26 15:05:22 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 ClapTrap::ClapTrap(std::string name): _name(name), _className("ClapTrap")
 {
-	std::cout << "ClapTrap" << " " << _name << " is created" << std::endl;
+	std::cout << "ClapTrap" << " " << _name << " is created with default constructor" << std::endl;
 }
 
 ClapTrap::ClapTrap(ClapTrap const &copy):_name(copy._name), _hitPoints(copy._hitPoints),
@@ -58,7 +58,7 @@ void	ClapTrap::attack(const std::string &target)
 	if (_energyPoints > 0)
 	{
 		_energyPoints -= 1;
-		std::cout << _className << " " << _name << " attacks " << target << " with their bare hands" << std::endl;
+		std::cout << _className << " " << _name << " attacks " << target << " with their sharp fists" << std::endl;
 	}
 	else
 		std::cout << _className << " " << _name << " tried to attack but not enought stamina" << std::endl;
@@ -99,6 +99,7 @@ void	ClapTrap::displayState() const
 	std::cout << _className << " " << _name << ": " << _hitPoints << "HP" << std::endl;
 	std::cout << _className << " " << _name << ": " << _energyPoints << " stamina" << std::endl;
 }
+
 
 void ClapTrap::action()  
 {
