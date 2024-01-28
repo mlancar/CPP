@@ -6,7 +6,7 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 16:27:58 by malancar          #+#    #+#             */
-/*   Updated: 2024/01/26 16:07:46 by malancar         ###   ########.fr       */
+/*   Updated: 2024/01/28 13:12:08 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,23 +16,33 @@ ScavTrap::ScavTrap(std::string name): ClapTrap()
 {
 	_className = "ScavTrap";
 	_name = name;
-	std::cout << _className << " " << _name << " is created" << std::endl;
 	_hitPoints = 100;
 	_energyPoints = 50;
 	_attackDamage = 20;
+	std::cout << _className << " " << _name << " is created" << std::endl;
 }
 
 ScavTrap::ScavTrap(ScavTrap const &copy): ClapTrap(copy)
 {
-	std::cout << _className << " " << _name << " is created with copy constructor" << std::endl;
 	_name = copy._name;
 	_energyPoints = copy._energyPoints;
 	_attackDamage = copy._attackDamage;
+	_className = copy._className;
+	std::cout << _className << " " << _name << " is created with copy constructor" << std::endl;
 }
 
 ScavTrap::~ScavTrap()
 {
 	std::cout << _className << " " << _name << " is destroyed" << std::endl;
+}
+
+ScavTrap	&ScavTrap::operator=(ScavTrap const &rhs)
+{
+	_name = rhs._name;
+	_hitPoints = rhs._hitPoints;
+	_energyPoints = rhs._energyPoints;
+	_attackDamage = rhs._attackDamage;
+	return *this;
 }
 
 void	ScavTrap::attack(std::string const &target)

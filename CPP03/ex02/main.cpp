@@ -6,7 +6,7 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 19:18:34 by malancar          #+#    #+#             */
-/*   Updated: 2024/01/26 16:39:13 by malancar         ###   ########.fr       */
+/*   Updated: 2024/01/28 19:02:36 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ int	actionsClap(ClapTrap &give, ClapTrap &take)
 	std::string input;
 	
 	getline(std::cin, input);
+	if (std::cin.eof())
+		return 1;
 	if (input == "attack")
 	{
 		give.attack(take.getName());
@@ -71,6 +73,8 @@ void	fightClap(ClapTrap &fighter1, ClapTrap &fighter2)
 	while (1)
 	{
 		getline(std::cin, input);
+		if (std::cin.eof())
+			return;
 		if (input == fighter1.getName())
 		{
 			if (actionsClap(fighter1, fighter2) == 1)
@@ -114,6 +118,8 @@ int	actionsScav(ScavTrap &give, ScavTrap &take)
 	std::string input;
 	
 	getline(std::cin, input);
+	if (std::cin.eof())
+		return 1;
 	if (input == "attack")
 	{
 		give.attack(take.getName());
@@ -153,6 +159,8 @@ void	fightScav(ScavTrap &fighter1, ScavTrap &fighter2)
 	while (1)
 	{
 		getline(std::cin, input);
+		if (std::cin.eof())
+			return ;
 		if (input == fighter1.getName())
 		{
 			if (actionsScav(fighter1, fighter2) == 1)
@@ -196,6 +204,8 @@ int	actionsFrag(FragTrap &give, FragTrap &take)
 	std::string input;
 	
 	getline(std::cin, input);
+	if (std::cin.eof())
+		return 1;
 	if (input == "attack")
 	{
 		give.attack(take.getName());
@@ -235,6 +245,8 @@ void	fightFrag(FragTrap &fighter1, FragTrap &fighter2)
 	while (1)
 	{
 		getline(std::cin, input);
+		if (std::cin.eof())
+			return ;
 		if (input == fighter1.getName())
 		{
 			if (actionsFrag(fighter1, fighter2) == 1)
@@ -265,6 +277,8 @@ int	addFighter(std::string &className)
 		std::cout << "                 -ScavTrap (100HP, 100 stamina, 20 damage)" << std::endl;
 		std::cout << "                 -ClapTrap (10HP, 10 stamina, 0 damage)" << std::endl;
 		getline(std::cin, input);
+		if (std::cin.eof())
+			return 0;
 		if (input == "give up")
 			return 0;
 	}
@@ -285,21 +299,21 @@ int	play()
 	
 	while (1)
 	{
-		// if (className == "ClapTrap")
-		// 	ClapTrap	fighter1(name1);
-		// else if (className == "ScavTrap")
 		std::cout << "Welcome to the arena" <<std::endl;
 		std::cout << "You can quit at any moment by entering: give up" << std::endl << "Add two fighter to play." << std::endl;
 		if (addFighter(className) == 0)
 			return 0;
 		std::cout << "Choose a name for fighter1: " << std::endl;
 		getline(std::cin, input);
+		if (std::cin.eof())
+			return 0;
 		name1 = input;
 		std::cout << "Choose a name for fighter2: " << std::endl;
 		getline(std::cin, input);
+		if (std::cin.eof())
+			return 0;
 		name2 = input;
 		std::cout << std::endl;
-		//std::cout << std::endl;
 		if (className == "FragTrap")
 		{
 			fighter1 = new FragTrap(name1);
@@ -329,10 +343,20 @@ int	play()
 		{
 			std::cout << "Do you want to play again ? yes or no ?" << std::endl;
 			getline(std::cin, input);
+			if (std::cin.eof())
+			{
+				delete fighter1;
+				delete fighter2;
+				return 0;
+			}
 			if (input == "yes")
 				break;
 			else if (input == "no")
+			{
+				delete fighter1;
+				delete fighter2;
 				return 0;
+			}
 		}
 	}
 }
@@ -340,6 +364,6 @@ int	play()
 int	main()
 {
 
-	play();//ca serait cool que ca marche mais sinon je laisse le test au dessus cést deja bien
+	play();
 	return 0;
 }

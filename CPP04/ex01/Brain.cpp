@@ -1,34 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
+/*   Brain.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/23 16:20:45 by malancar          #+#    #+#             */
-/*   Updated: 2024/01/28 16:53:43 by malancar         ###   ########.fr       */
+/*   Created: 2024/01/28 19:16:49 by malancar          #+#    #+#             */
+/*   Updated: 2024/01/28 20:07:21 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCAVTRAP_HPP
-#define	SCAVTRAP_HPP
+#include "Brain.hpp"
 
-#include <iostream>
-#include "ClapTrap.hpp"
+Brain::Brain()
+{
+	std::cout << " is created" << std::endl;
+}
 
-class	ScavTrap : public ClapTrap {
+Brain::Brain(Brain const& copy)
+{
+	(void)copy;
+}
 
-	public:
-		ScavTrap(std::string name = "default");
-		ScavTrap(ScavTrap const &copy);
-		~ScavTrap();
-		
-		ScavTrap	&operator=(ScavTrap const& rhs);
-		
-		void	attack(std::string const &target);
-		void	guardGate();
+Brain::~Brain()
+{
+	std::cout << " is destroyed" << std::endl;
+}
 
-		void action();
-};
-
-#endif
+Brain	&Brain::operator=(Brain const& rhs)
+{
+	(void)rhs;
+	return *this;
+}

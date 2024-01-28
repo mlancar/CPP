@@ -6,7 +6,7 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 13:48:56 by malancar          #+#    #+#             */
-/*   Updated: 2024/01/26 16:07:11 by malancar         ###   ########.fr       */
+/*   Updated: 2024/01/28 13:11:48 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,23 +16,33 @@ FragTrap::FragTrap(std::string name): ClapTrap()
 {
 	_className = "FragTrap";
 	_name = name;
-	std::cout << _className << " " << _name << " is created" << std::endl;
 	_hitPoints = 100;
 	_energyPoints = 100;
 	_attackDamage = 30;
+	std::cout << _className << " " << _name << " is created" << std::endl;
 }
 
 FragTrap::FragTrap(FragTrap const &copy): ClapTrap(copy)
 {
-	std::cout << _className << " " << _name << " is created with copy constructor" << std::endl;
 	_name = copy._name;
 	_energyPoints = copy._energyPoints;
 	_attackDamage = copy._attackDamage;
+	_className = copy._className;
+	std::cout << _className << " " << _name << " is created with copy constructor" << std::endl;
 }
 
 FragTrap::~FragTrap()
 {
 	std::cout << _className << " " << _name << " is destroyed" << std::endl;
+}
+
+FragTrap	&FragTrap::operator=(FragTrap const &rhs)
+{
+	_name = rhs._name;
+	_hitPoints = rhs._hitPoints;
+	_energyPoints = rhs._energyPoints;
+	_attackDamage = rhs._attackDamage;
+	return *this;
 }
 
 void	FragTrap::highFivesGuys()

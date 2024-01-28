@@ -6,7 +6,7 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 13:48:53 by malancar          #+#    #+#             */
-/*   Updated: 2024/01/26 15:50:01 by malancar         ###   ########.fr       */
+/*   Updated: 2024/01/28 16:54:00 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ class	FragTrap : public ClapTrap {
 		FragTrap(FragTrap const &copy);
 		~FragTrap();
 		
+		FragTrap	&operator=(FragTrap const& rhs);
+
 		void	highFivesGuys();
 };
 

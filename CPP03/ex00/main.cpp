@@ -6,7 +6,7 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 19:18:34 by malancar          #+#    #+#             */
-/*   Updated: 2024/01/26 16:30:09 by malancar         ###   ########.fr       */
+/*   Updated: 2024/01/28 18:23:27 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ int	actions(ClapTrap &give, ClapTrap &take)
 	std::string input;
 	
 	getline(std::cin, input);
+	if (std::cin.eof())
+		return 1;
 	if (input == "attack")
 	{
 		give.attack(take.getName());
@@ -71,6 +73,10 @@ void	fight(ClapTrap &fighter1, ClapTrap &fighter2)
 	while (1)
 	{
 		getline(std::cin, input);
+		if (std::cin.eof())
+			return ;
+		if (std::cin.eof())
+			return;
 		if (input == fighter1.getName())
 		{
 			if (actions(fighter1, fighter2) == 1)
@@ -105,10 +111,14 @@ int	play()
 		std::cout << "Your class is ClapTrap" << std::endl;
 		std::cout << "Choose a name for fighter1: " << std::endl;
 		getline(std::cin, input);
+		if (std::cin.eof())
+			return 0;
 		name = input;
 		ClapTrap fighter1(name);
 		std::cout << "Choose a name for fighter2: " << std::endl;
 		getline(std::cin, input);
+		if (std::cin.eof())
+			return 0;
 		name = input;
 		std::cout << std::endl;
 		ClapTrap fighter2(name);
@@ -117,6 +127,8 @@ int	play()
 		{
 			std::cout << "Do you want to play again ? yes or no ?" << std::endl;
 			getline(std::cin, input);
+			if (std::cin.eof())
+				return 0;
 			if (input == "yes")
 				break;
 			else if (input == "no")

@@ -6,7 +6,7 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 13:48:53 by malancar          #+#    #+#             */
-/*   Updated: 2024/01/26 17:30:10 by malancar         ###   ########.fr       */
+/*   Updated: 2024/01/28 16:54:25 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ class	FragTrap : virtual public ClapTrap {
 		FragTrap(FragTrap const &copy);
 		~FragTrap();
 		
+		FragTrap	&operator=(FragTrap const& rhs);
 
 		int				getHitPoints();
 		unsigned int	getAttackDamage();
@@ -31,11 +32,11 @@ class	FragTrap : virtual public ClapTrap {
 		void	highFivesGuys();
 		
 	protected:
-		std::string		_name;
-		int				_hitPoints;
-		int				_energyPoints;
-		unsigned int	_attackDamage;
-		std::string		_className;
+		// std::string		_name;
+		// int				_hitPoints;
+		// int				_energyPoints;
+		// unsigned int	_attackDamage;
+		// std::string		_className;
 		
 };
 

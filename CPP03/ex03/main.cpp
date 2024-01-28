@@ -6,11 +6,12 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 19:18:34 by malancar          #+#    #+#             */
-/*   Updated: 2024/01/26 16:50:59 by malancar         ###   ########.fr       */
+/*   Updated: 2024/01/28 18:28:20 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "DiamondTrap.hpp"
+
 
 int	isFightEndingDiamond(DiamondTrap &fighter1, DiamondTrap &fighter2)
 {
@@ -35,6 +36,8 @@ int	actionsDiamond(DiamondTrap &give, DiamondTrap &take)
 	std::string input;
 	
 	getline(std::cin, input);
+	if (std::cin.eof())
+		return 1;
 	if (input == "attack")
 	{
 		give.attack(take.getName());
@@ -44,8 +47,8 @@ int	actionsDiamond(DiamondTrap &give, DiamondTrap &take)
 		give.beRepaired(give.getAttackDamage());
 	else if (input == "state")
 		give.displayState();
-	else if (input == "highfive")
-		give.highFivesGuys();
+	else if (input == "who am i")
+		give.whoAmI();
 	else if (input == "give up")
 	{
 		std::cout << give.getName() << " gives up" << std::endl;
@@ -65,6 +68,7 @@ void	fightDiamond(DiamondTrap &fighter1, DiamondTrap &fighter2)
 	std::cout << "This is your available actions : - attack" << std::endl;
 	std::cout << "                                 - heal" << std::endl;
 	std::cout << "                                 - state (display fighter state)" << std::endl;
+	std::cout << "                                 - who am i" << std::endl;
 	std::cout << "                                 - give up" << std::endl;
 	std::cout << "Each action cost one stamina point." << std::endl;
 	std::cout << "First select fighter, press enter, then choose an action and press enter" << std::endl;
@@ -73,7 +77,8 @@ void	fightDiamond(DiamondTrap &fighter1, DiamondTrap &fighter2)
 	while (1)
 	{
 		getline(std::cin, input);
-		std::cout << fighter1.getName() << std::endl;
+		if (std::cin.eof())
+			return;
 		if (input == fighter1.getName())
 		{
 			std::cout << input << std::endl;
@@ -105,6 +110,8 @@ int	addFighter(std::string className)
 		std::cout << "Class available: -DiamondTrap (100HP, 100 stamina, 30 damage)" << std::endl;
 		std::cout << "                 " << std::endl;
 		getline(std::cin, input);
+		if (std::cin.eof())
+			return 0;
 		if (input == "give up")
 			return 0;
 	}
@@ -123,9 +130,6 @@ int	play()
 	
 	while (1)
 	{
-		// if (className == "ClapTrap")
-		// 	ClapTrap	fighter1(name1);
-		// else if (className == "ScavTrap")
 		std::cout << "Welcome to the arena" <<std::endl;
 		std::cout << "You can quit at any moment by entering: give up" << std::endl << "Add two fighter to play." << std::endl;
 		if (addFighter(className) == 0)
@@ -135,6 +139,8 @@ int	play()
 		name1 = input;
 		std::cout << "Choose a name for fighter2: " << std::endl;
 		getline(std::cin, input);
+		if (std::cin.eof())
+			return 0;
 		name2 = input;
 		DiamondTrap fighter1(name1);
 		DiamondTrap fighter2(name2);
@@ -153,35 +159,7 @@ int	play()
 //BOUCLE INFINIE CONTROLD
 int	main()
 {
-	// std::string	className;
-	// ScavTrap	mathieu("Mathieu");
-	// ScavTrap	louis("Louis");
-	// //unsigned int amount = 20;
-
-	
-	// std::cout << "Fighter :" << std::endl;
-	// mathieu.displayState();
-	// louis.displayState();
-	
-	// std::cout << std::endl << "*** FIGHT ***" << std::endl << std::endl;
-	// mathieu.attack(louis.getName());
-	// louis.takeDamage(mathieu.getAttackDamage());
-	// louis.displayState();
-	// louis.beRepaired(mathieu.getAttackDamage());
-	// for (int i = 0; mathieu.getHitPoints() > 0  ; i++)
-	// {
-	// 	louis.attack(mathieu.getName());
-	// 	mathieu.takeDamage(mathieu.getAttackDamage());
-	// }
-	// ScavTrap::winner(louis, mathieu);
-	// louis.displayState();
-	// mathieu.displayState();
-	// std::cout << "*** FIGHT OVER ***" << std::endl;
-	// for(int i = 0; mathieu.getHitPoints() < 100; i++)
-	// 	mathieu.beRepaired(mathieu.getAttackDamage());
-	
-	// mathieu.displayState();
-	// mathieu.guardGate();
 	play();//ca serait cool que ca marche mais sinon je laisse le test au dessus cést deja bien
 	return 0;
 }
+
