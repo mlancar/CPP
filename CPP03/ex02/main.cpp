@@ -6,7 +6,7 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 19:18:34 by malancar          #+#    #+#             */
-/*   Updated: 2024/01/28 19:02:36 by malancar         ###   ########.fr       */
+/*   Updated: 2024/01/29 14:38:45 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,14 @@ int	isFightEndingClap(ClapTrap &fighter1, ClapTrap &fighter2)
 {
 	if (fighter1.getHitPoints() <= 0)
 	{
+		std::cout << std::endl;
 		std::cout << fighter1.getName() << " KO" << std::endl;
 		std::cout << fighter2.getName() << " WIN!" << std::endl;
 		return 1;
 	}
 	else if (fighter2.getHitPoints() <= 0)
 	{
+		std::cout << std::endl;
 		std::cout << fighter2.getName() << " KO" << std::endl;
 		std::cout << fighter1.getName() << " WIN!" << std::endl;
 		return 1;
@@ -36,7 +38,7 @@ int	actionsClap(ClapTrap &give, ClapTrap &take)
 	
 	getline(std::cin, input);
 	if (std::cin.eof())
-		return 1;
+		return 0;
 	if (input == "attack")
 	{
 		give.attack(take.getName());
@@ -50,14 +52,14 @@ int	actionsClap(ClapTrap &give, ClapTrap &take)
 	{
 		std::cout << give.getName() << " gives up" << std::endl;
 		std::cout << take.getName() << " wins" << std::endl;
-		return 1;
+		return 0;
 	}
 	else
 		std::cout << "This is your available actions : - attack" << std::endl;
-	return 0;
+	return 1;
 }
 
-void	fightClap(ClapTrap &fighter1, ClapTrap &fighter2)
+int	fightClap(ClapTrap &fighter1, ClapTrap &fighter2)
 {
 	std::string input;
 	
@@ -67,44 +69,48 @@ void	fightClap(ClapTrap &fighter1, ClapTrap &fighter2)
 	std::cout << "                                 - state (display fighter state)" << std::endl;
 	std::cout << "                                 - give up" << std::endl;
 	std::cout << "Each action cost one stamina point." << std::endl;
-	std::cout << "First select fighter, press enter, then choose an action and press enter" << std::endl;
 	std::cout << "You are know ready to play!" <<std::endl << std::endl;
-	std::cout << "          *** FIGHT ***         " << std::endl << std::endl;
+	std::cout << "First select fighter, press enter, then choose an action and press enter" << std::endl;
+	std::cout << std::setfill ('~') << std::setw (70) << "" << std::endl;
+	std::cout << "                           *** FIGHT ***         " << std::endl << std::endl;
+
 	while (1)
 	{
 		getline(std::cin, input);
 		if (std::cin.eof())
-			return;
+			return 0;
 		if (input == fighter1.getName())
 		{
-			if (actionsClap(fighter1, fighter2) == 1)
-				return ;
+			if (actionsClap(fighter1, fighter2) == 0)
+				return 0;
 		}
 		else if (input == fighter2.getName())
 		{
-			if (actionsClap(fighter2, fighter1) == 1)
-				return ;
+			if (actionsClap(fighter2, fighter1) == 0)
+				return 0;
 		}
 		else if (input == "give up")
-			return ;
+			return 0;
 		else
 			std::cout << "First select fighter, press enter, then choose an action and press enter" << std::endl;
 		if (isFightEndingClap(fighter1, fighter2) == 1)
-			return ;
+			return 1;
 	}
-	return ;
+	return 1;
 }
 
 int	isFightEndingScav(ScavTrap &fighter1, ScavTrap &fighter2)
 {
 	if (fighter1.getHitPoints() <= 0)
 	{
+		std::cout << std::endl;
 		std::cout << fighter1.getName() << " KO" << std::endl;
 		std::cout << fighter2.getName() << " WIN!" << std::endl;
 		return 1;
 	}
 	else if (fighter2.getHitPoints() <= 0)
 	{
+		std::cout << std::endl;
 		std::cout << fighter2.getName() << " KO" << std::endl;
 		std::cout << fighter1.getName() << " WIN!" << std::endl;
 		return 1;
@@ -116,17 +122,18 @@ int	isFightEndingScav(ScavTrap &fighter1, ScavTrap &fighter2)
 int	actionsScav(ScavTrap &give, ScavTrap &take)
 {
 	std::string input;
+	unsigned int	amount = 10;
 	
 	getline(std::cin, input);
 	if (std::cin.eof())
-		return 1;
+		return 0;
 	if (input == "attack")
 	{
 		give.attack(take.getName());
 		take.takeDamage(give.getAttackDamage());
 	}
 	else if (input == "heal")
-		give.beRepaired(give.getAttackDamage());
+		give.beRepaired(amount);
 	else if (input == "state")
 		give.displayState();
 	else if (input == "guard")
@@ -135,14 +142,14 @@ int	actionsScav(ScavTrap &give, ScavTrap &take)
 	{
 		std::cout << give.getName() << " gives up" << std::endl;
 		std::cout << take.getName() << " wins" << std::endl;
-		return 1;
+		return 0;
 	}
 	else
 		std::cout << "This is your available actions : - attack" << std::endl;
-	return 0;
+	return 1;
 }
 
-void	fightScav(ScavTrap &fighter1, ScavTrap &fighter2)
+int	fightScav(ScavTrap &fighter1, ScavTrap &fighter2)
 {
 	std::string input;
 	
@@ -153,44 +160,47 @@ void	fightScav(ScavTrap &fighter1, ScavTrap &fighter2)
 	std::cout << "                                 - guard" << std::endl;
 	std::cout << "                                 - give up" << std::endl;
 	std::cout << "Each action cost one stamina point." << std::endl;
-	std::cout << "First select fighter, press enter, then choose an action and press enter" << std::endl;
 	std::cout << "You are know ready to play!" <<std::endl << std::endl;
-	std::cout << "          *** FIGHT ***         " << std::endl << std::endl;
+	std::cout << "First select fighter, press enter, then choose an action and press enter" << std::endl;
+	std::cout << std::setfill ('~') << std::setw (70) << "" << std::endl;
+	std::cout << "                           *** FIGHT ***         " << std::endl << std::endl;
 	while (1)
 	{
 		getline(std::cin, input);
 		if (std::cin.eof())
-			return ;
+			return 0;
 		if (input == fighter1.getName())
 		{
-			if (actionsScav(fighter1, fighter2) == 1)
-				return ;
+			if (actionsScav(fighter1, fighter2) == 0)
+				return 0;
 		}
 		else if (input == fighter2.getName())
 		{
-			if (actionsScav(fighter2, fighter1) == 1)
-				return ;
+			if (actionsScav(fighter2, fighter1) == 0)
+				return 0;
 		}
 		else if (input == "give up")
-			return ;
+			return 0;
 		else
 			std::cout << "First select fighter, press enter, then choose an action and press enter" << std::endl;
 		if (isFightEndingScav(fighter1, fighter2) == 1)
-			return ;
+			return 1;
 	}
-	return ;
+	return 1;
 }
 
 int	isFightEndingFrag(FragTrap &fighter1, FragTrap &fighter2)
 {
 	if (fighter1.getHitPoints() <= 0)
 	{
+		std::cout << std::endl;
 		std::cout << fighter1.getName() << " KO" << std::endl;
 		std::cout << fighter2.getName() << " WIN!" << std::endl;
 		return 1;
 	}
 	else if (fighter2.getHitPoints() <= 0)
 	{
+		std::cout << std::endl;
 		std::cout << fighter2.getName() << " KO" << std::endl;
 		std::cout << fighter1.getName() << " WIN!" << std::endl;
 		return 1;
@@ -202,17 +212,18 @@ int	isFightEndingFrag(FragTrap &fighter1, FragTrap &fighter2)
 int	actionsFrag(FragTrap &give, FragTrap &take)
 {
 	std::string input;
+	unsigned int	amount = 15;
 	
 	getline(std::cin, input);
 	if (std::cin.eof())
-		return 1;
+		return 0;
 	if (input == "attack")
 	{
 		give.attack(take.getName());
 		take.takeDamage(give.getAttackDamage());
 	}
 	else if (input == "heal")
-		give.beRepaired(give.getAttackDamage());
+		give.beRepaired(amount);
 	else if (input == "state")
 		give.displayState();
 	else if (input == "high five")
@@ -221,14 +232,14 @@ int	actionsFrag(FragTrap &give, FragTrap &take)
 	{
 		std::cout << give.getName() << " gives up" << std::endl;
 		std::cout << take.getName() << " wins" << std::endl;
-		return 1;
+		return 0;
 	}
 	else
 		std::cout << "This is your available actions : - attack" << std::endl;
-	return 0;
+	return 1;
 }
 
-void	fightFrag(FragTrap &fighter1, FragTrap &fighter2)
+int	fightFrag(FragTrap &fighter1, FragTrap &fighter2)
 {
 	std::string input;
 	
@@ -239,32 +250,33 @@ void	fightFrag(FragTrap &fighter1, FragTrap &fighter2)
 	std::cout << "                                 - high five" << std::endl;
 	std::cout << "                                 - give up" << std::endl;
 	std::cout << "Each action cost one stamina point." << std::endl;
-	std::cout << "First select fighter, press enter, then choose an action and press enter" << std::endl;
 	std::cout << "You are know ready to play!" <<std::endl << std::endl;
-	std::cout << "          *** FIGHT ***         " << std::endl << std::endl;
+	std::cout << "First select fighter, press enter, then choose an action and press enter" << std::endl;
+	std::cout << std::setfill ('~') << std::setw (70) << "" << std::endl;
+	std::cout << "                           *** FIGHT ***         " << std::endl << std::endl;
 	while (1)
 	{
 		getline(std::cin, input);
 		if (std::cin.eof())
-			return ;
+			return 0;
 		if (input == fighter1.getName())
 		{
-			if (actionsFrag(fighter1, fighter2) == 1)
-				return ;
+			if (actionsFrag(fighter1, fighter2) == 0)
+				return 0;
 		}
 		else if (input == fighter2.getName())
 		{
-			if (actionsFrag(fighter2, fighter1) == 1)
-				return ;
+			if (actionsFrag(fighter2, fighter1) == 0)
+				return 0;
 		}
 		else if (input == "give up")
-			return ;
+			return 0;
 		else
 			std::cout << "First select fighter, press enter, then choose an action and press enter" << std::endl;
 		if (isFightEndingFrag(fighter1, fighter2) == 1)
-			return ;
+			return 1;
 	}
-	return ;
+	return 1;
 }
 
 int	addFighter(std::string &className)
@@ -272,6 +284,7 @@ int	addFighter(std::string &className)
 	std::string input;
 	
 	std::cout << "First you have to choose a class." <<std::endl << std::endl;
+	std::cout << "You can quit at any moment by entering: give up" << std::endl;
 	do {
 		std::cout << "Class available: -FragTrap (100HP, 100 stamina, 30 damage)" << std::endl;
 		std::cout << "                 -ScavTrap (100HP, 100 stamina, 20 damage)" << std::endl;
@@ -284,7 +297,6 @@ int	addFighter(std::string &className)
 	}
 	while (input != "FragTrap" && input != "ClapTrap" && input != "ScavTrap");
 	className = input;
-	
 	return 1;
 }
 
@@ -299,8 +311,8 @@ int	play()
 	
 	while (1)
 	{
-		std::cout << "Welcome to the arena" <<std::endl;
-		std::cout << "You can quit at any moment by entering: give up" << std::endl << "Add two fighter to play." << std::endl;
+		std::cout << "                        *** WELCOME TO THE ARENA ***" <<std::endl << std::endl;
+		std::cout << "Add two fighter to play." << std::endl << std::endl;
 		if (addFighter(className) == 0)
 			return 0;
 		std::cout << "Choose a name for fighter1: " << std::endl;
@@ -333,12 +345,32 @@ int	play()
 
 		}
 		if (className == "FragTrap")
-			fightFrag(*((FragTrap*)fighter1), *(FragTrap*)fighter2);
-		else if (className == "ScavTrap")
-			fightScav(*((ScavTrap*)fighter1), *(ScavTrap*)fighter2);
+		{
+			if (fightFrag(*((FragTrap*)fighter1), *(FragTrap*)fighter2) == 0)
+			{
+				delete fighter1;
+				delete fighter2;
+				return 0;
+			}
+		}
+		if (className == "ScavTrap")
+		{
+			if (fightScav(*((ScavTrap*)fighter1), *(ScavTrap*)fighter2) == 0)
+			{
+				delete fighter1;
+				delete fighter2;
+				return 0;
+			}
+		}
 		else if (className == "ClapTrap")
-			fightClap(*((ClapTrap*)fighter1), *(ClapTrap*)fighter2);
-			
+		{
+			if (fightClap(*((ClapTrap*)fighter1), *(ClapTrap*)fighter2) == 0)
+			{
+				delete fighter1;
+				delete fighter2;
+				return 0;
+			}
+		}
 		while (1)
 		{
 			std::cout << "Do you want to play again ? yes or no ?" << std::endl;

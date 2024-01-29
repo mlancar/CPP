@@ -6,7 +6,7 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 19:18:34 by malancar          #+#    #+#             */
-/*   Updated: 2024/01/28 18:28:20 by malancar         ###   ########.fr       */
+/*   Updated: 2024/01/29 13:59:43 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ int	isFightEndingDiamond(DiamondTrap &fighter1, DiamondTrap &fighter2)
 int	actionsDiamond(DiamondTrap &give, DiamondTrap &take)
 {
 	std::string input;
+	unsigned int	amount = 10;
 	
 	getline(std::cin, input);
 	if (std::cin.eof())
@@ -44,7 +45,7 @@ int	actionsDiamond(DiamondTrap &give, DiamondTrap &take)
 		take.takeDamage(give.getAttackDamage());
 	}
 	else if (input == "heal")
-		give.beRepaired(give.getAttackDamage());
+		give.beRepaired(amount);
 	else if (input == "state")
 		give.displayState();
 	else if (input == "who am i")
@@ -101,54 +102,38 @@ void	fightDiamond(DiamondTrap &fighter1, DiamondTrap &fighter2)
 	return ;
 }
 
-int	addFighter(std::string className)
-{
-	std::string input;
-	
-	std::cout << "First you have to choose a class." <<std::endl << std::endl;
-	do {
-		std::cout << "Class available: -DiamondTrap (100HP, 100 stamina, 30 damage)" << std::endl;
-		std::cout << "                 " << std::endl;
-		getline(std::cin, input);
-		if (std::cin.eof())
-			return 0;
-		if (input == "give up")
-			return 0;
-	}
-	while (input != "DiamondTrap" );
-	className = input;
-	std::cout << std::endl;
-	return 1;
-}
-
 int	play()
 {
 	std::string input;
 	std::string className;
-	std::string name1;
-	std::string name2;
+	std::string name;
 	
 	while (1)
 	{
-		std::cout << "Welcome to the arena" <<std::endl;
-		std::cout << "You can quit at any moment by entering: give up" << std::endl << "Add two fighter to play." << std::endl;
-		if (addFighter(className) == 0)
-			return 0;
+		std::cout << "                        *** WELCOME TO THE ARENA ***" <<std::endl << std::endl;
+		std::cout << "Add two fighter to play." << std::endl << std::endl;
+		std::cout << "Class available:  -DiamondTrap (10HP, 10 stamina, 0 damage)" << std::endl << std::endl;;
+		std::cout << "Your class is DiamondTrap" << std::endl;
+		std::cout << "You can quit at any moment by entering: give up" << std::endl << std::endl;
 		std::cout << "Choose a name for fighter1: " << std::endl;
 		getline(std::cin, input);
-		name1 = input;
+		if (std::cin.eof())
+			return 0;
+		name = input;
+		DiamondTrap fighter1(name);
 		std::cout << "Choose a name for fighter2: " << std::endl;
 		getline(std::cin, input);
 		if (std::cin.eof())
 			return 0;
-		name2 = input;
-		DiamondTrap fighter1(name1);
-		DiamondTrap fighter2(name2);
+		name = input;
+		DiamondTrap fighter2(name);
 		fightDiamond(fighter1, fighter2);
 		while (1)
 		{
 			std::cout << "Do you want to play again ? yes or no ?" << std::endl;
 			getline(std::cin, input);
+			if (std::cin.eof())
+				return 0;
 			if (input == "yes")
 				break;
 			else if (input == "no")
@@ -156,10 +141,10 @@ int	play()
 		}
 	}
 }
-//BOUCLE INFINIE CONTROLD
+
 int	main()
 {
-	play();//ca serait cool que ca marche mais sinon je laisse le test au dessus cést deja bien
+	play();
 	return 0;
 }
 

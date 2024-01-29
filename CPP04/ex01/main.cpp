@@ -6,7 +6,7 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 15:37:32 by malancar          #+#    #+#             */
-/*   Updated: 2024/01/28 20:09:45 by malancar         ###   ########.fr       */
+/*   Updated: 2024/01/29 18:17:46 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,20 @@ int	main()
 	// delete dog;
 	// delete wrongCat;
 
+	unsigned int size = 10;
+	//const Animal* dog = new Dog();
+	//const Animal* cat = new Cat();
+	 (Animal*)  *animals = new (Animal*)[size];
+	//type                       type
+	 // type a l inteireur du tableau  * nom du tableau = new type a l inteireur du tableau [taille du tableua ]
+
+	for (unsigned int i = 0; i < (size / 2) ;i++)
 	{
-	const Animal* j = new Dog();
-	const Animal* i = new Cat();
+		animals[i] = new Cat();
+		
+		
+	}
 	
-	delete j;//should not create a leak
-	delete i;
+	
 	return 0;
 }

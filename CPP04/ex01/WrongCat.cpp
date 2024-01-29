@@ -6,7 +6,7 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 16:41:27 by malancar          #+#    #+#             */
-/*   Updated: 2024/01/28 19:57:01 by malancar         ###   ########.fr       */
+/*   Updated: 2024/01/29 13:08:13 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,4 +33,9 @@ WrongCat	&WrongCat::operator=(WrongCat const& rhs)
 {
 	type = rhs.type;
 	return *this;
+}
+
+void	WrongCat::makeSound() const
+{
+	std::cout << ": wrong meow" << std::endl;
 }

@@ -6,7 +6,7 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 19:18:48 by malancar          #+#    #+#             */
-/*   Updated: 2024/01/28 16:53:35 by malancar         ###   ########.fr       */
+/*   Updated: 2024/01/29 14:07:20 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #define CLAPTRAP_HPP
 
 #include <iostream>
+#include <iomanip>
 
 class	ClapTrap {
 	
@@ -40,6 +41,7 @@ class	ClapTrap {
 			int				_energyPoints;
 			unsigned int	_attackDamage;
 			std::string		_className;
+			int				_hitPointsMax;
 };
 
 #endif

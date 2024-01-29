@@ -6,7 +6,7 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 19:28:30 by malancar          #+#    #+#             */
-/*   Updated: 2024/01/28 20:02:18 by malancar         ###   ########.fr       */
+/*   Updated: 2024/01/29 14:07:35 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ ClapTrap::ClapTrap(std::string name)
 	_hitPoints = 10;
 	_energyPoints = 10;
 	_attackDamage = 0;
-	std::cout << _className << " " << _name << " is created" << std::endl;
+	_hitPointsMax = 10;
+	//std::cout << _className << " " << _name << " is created" << std::endl;
 }
 
 ClapTrap::ClapTrap(ClapTrap const &copy)
@@ -28,13 +29,14 @@ ClapTrap::ClapTrap(ClapTrap const &copy)
 	_energyPoints = copy._energyPoints;
 	_attackDamage = copy._attackDamage;
 	_className = copy._className;
-	std::cout << _className << " " << _name << " is created with copy constructor" << std::endl;
+	_hitPointsMax = copy._hitPointsMax;
+	//std::cout << _className << " " << _name << " is created with copy constructor" << std::endl;
 }
 
 ClapTrap::~ClapTrap()
 {
 	//std::cout << "Destructor called" << std::endl;
-	std::cout << "ClapTrap " << _name << " is destroyed" << std::endl;
+	//std::cout << "ClapTrap " << _name << " is destroyed" << std::endl;
 }
 
 ClapTrap	&ClapTrap::operator=(ClapTrap const &rhs)
@@ -43,6 +45,7 @@ ClapTrap	&ClapTrap::operator=(ClapTrap const &rhs)
 	_hitPoints = rhs._hitPoints;
 	_energyPoints = rhs._energyPoints;
 	_attackDamage = rhs._attackDamage;
+	_hitPointsMax = rhs._hitPointsMax;
 	return *this;
 }
 
@@ -85,14 +88,14 @@ void	ClapTrap::takeDamage(unsigned int amount)
 
 void	ClapTrap::beRepaired(unsigned int amount)
 {
-	if (_hitPoints < 100)
+	if (_hitPoints < _hitPointsMax)
 	{
 		if (_energyPoints > 0)
 		{
 			_hitPoints += amount;
 			_energyPoints -= 1;
 			std::cout << _className << " " << _name << " is repairing. Healed:  " << amount << "HP" << std::endl;
-			if (_hitPoints >= 100)
+			if (_hitPoints >= _hitPointsMax)
 				std::cout << _className << " " << _name << " is fully healed!" << std::endl;
 		}
 		else

@@ -6,7 +6,7 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 16:27:58 by malancar          #+#    #+#             */
-/*   Updated: 2024/01/28 13:12:04 by malancar         ###   ########.fr       */
+/*   Updated: 2024/01/29 14:38:27 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ ScavTrap::ScavTrap(ScavTrap const &copy): ClapTrap(copy)
 	_name = copy._name;
 	_energyPoints = copy._energyPoints;
 	_attackDamage = copy._attackDamage;
-	_className = cpoy._className;
+	_className = copy._className;
 	std::cout << _className << " " << _name << " is created with copy constructor" << std::endl;
 }
 

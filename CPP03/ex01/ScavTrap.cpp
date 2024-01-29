@@ -6,7 +6,7 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 16:27:58 by malancar          #+#    #+#             */
-/*   Updated: 2024/01/28 13:12:08 by malancar         ###   ########.fr       */
+/*   Updated: 2024/01/29 13:23:12 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ void	ScavTrap::attack(std::string const &target)
 
 void	ScavTrap::guardGate()
 {
-	//peut etre quand en guardmode le fighter prend moitie de degat? 
 	if (_energyPoints > 0)
 	{
 		_energyPoints -= 1;

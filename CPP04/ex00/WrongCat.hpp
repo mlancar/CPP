@@ -6,7 +6,7 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 16:39:23 by malancar          #+#    #+#             */
-/*   Updated: 2024/01/28 19:57:24 by malancar         ###   ########.fr       */
+/*   Updated: 2024/01/29 12:59:29 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ public:
 	virtual ~WrongCat();
 
 	WrongCat	&operator=(WrongCat const &rhs);
+
+	void	makeSound() const;
 };
 
 #endif

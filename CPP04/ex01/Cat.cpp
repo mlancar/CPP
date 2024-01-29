@@ -6,7 +6,7 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 15:48:43 by malancar          #+#    #+#             */
-/*   Updated: 2024/01/28 20:04:50 by malancar         ###   ########.fr       */
+/*   Updated: 2024/01/29 17:26:28 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,10 @@ Cat::Cat(): Animal()
 
 Cat::Cat(Cat const& copy): Animal()
 {
-	type = copy.type;
+	//type = copy.type;
 	_brain = new Brain();//?
+	//*this = copy;//appelle operateur = qui copie deja tout
+	_brain = copy._brain;
 	std::cout << type << " is clone" << std::endl;
 }
 
@@ -35,7 +37,8 @@ Cat::~Cat()
 
 Cat	&Cat::operator=(Cat const& rhs)
 {
-	type = rhs.type;
+	//type = rhs.type;
+	_brain = rhs._brain;
 	return *this;
 }
 

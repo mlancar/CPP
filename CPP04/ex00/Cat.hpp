@@ -6,7 +6,7 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 15:47:27 by malancar          #+#    #+#             */
-/*   Updated: 2024/01/28 19:52:14 by malancar         ###   ########.fr       */
+/*   Updated: 2024/01/29 12:40:00 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ class Cat: public Animal {
 		Cat();
 		Cat(Cat const& copy);
 
-		virtual ~Cat();
+		virtual ~Cat();// pas oblige de mettre virtual poru les classes fille ?
 		
 		Cat	&operator=(Cat const &rhs);
 
