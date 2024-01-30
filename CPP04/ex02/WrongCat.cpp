@@ -1,48 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.cpp                                            :+:      :+:    :+:   */
+/*   WrongCat.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/28 15:48:43 by malancar          #+#    #+#             */
-/*   Updated: 2024/01/30 15:45:47 by malancar         ###   ########.fr       */
+/*   Created: 2024/01/28 16:41:27 by malancar          #+#    #+#             */
+/*   Updated: 2024/01/29 13:08:13 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Cat.hpp"
+#include "WrongCat.hpp"
 
-Cat::Cat(): Animal()
+WrongCat::WrongCat(): WrongAnimal()
 {
-	type = "Cat";
-	_brain = new Brain();
+	type = "Wrong Cat";
 	std::cout << type << " is born" << std::endl;
-	
 }
 
-Cat::Cat(Cat const& copy): Animal()
+WrongCat::WrongCat(WrongCat const& copy): WrongAnimal()
 {
-	//type = copy.type;
-	_brain = new Brain();//?
-	//*this = copy;//appelle operateur = qui copie deja tout
-	_brain = copy._brain;
+	type = copy.type;
 	std::cout << type << " is clone" << std::endl;
 }
 
-Cat::~Cat()
+WrongCat::~WrongCat()
 {
-	delete _brain;
 	std::cout << type << " is killed" << std::endl;
 }
 
-Cat	&Cat::operator=(Cat const& rhs)
+WrongCat	&WrongCat::operator=(WrongCat const& rhs)
 {
-	//type = rhs.type;
-	_brain = rhs._brain;
+	type = rhs.type;
 	return *this;
 }
 
-void	Cat::makeSound() const
+void	WrongCat::makeSound() const
 {
-	std::cout << ": Meow" << std::endl;
+	std::cout << ": wrong meow" << std::endl;
 }

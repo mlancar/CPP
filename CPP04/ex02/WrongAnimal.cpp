@@ -1,44 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.cpp                                            :+:      :+:    :+:   */
+/*   WrongAnimal.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/28 15:44:26 by malancar          #+#    #+#             */
-/*   Updated: 2024/01/30 15:38:07 by malancar         ###   ########.fr       */
+/*   Created: 2024/01/28 16:35:19 by malancar          #+#    #+#             */
+/*   Updated: 2024/01/28 19:56:14 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Dog.hpp"
+#include "WrongAnimal.hpp"
 
-Dog::Dog(): Animal()
+WrongAnimal::WrongAnimal(): type("Wrong Animal")
 {
-	type = "Dog";
-	_brain = new Brain();
-	std::cout << type << " is born" << std::endl;
+	std::cout << type << " is created" << std::endl;
 }
 
-Dog::Dog(Dog const& copy): Animal()
+WrongAnimal::WrongAnimal(WrongAnimal const& copy): type(copy.type)
 {
-	type = copy.type;
-	_brain = new Brain();//?
 	std::cout << type << " is clone" << std::endl;
 }
 
-Dog::~Dog()
+WrongAnimal::~WrongAnimal()
 {
-	delete _brain;
-	std::cout << type << " is killed" << std::endl;
+	std::cout << type << " is destroyed" << std::endl;
 }
 
-Dog	&Dog::operator=(Dog const& rhs)
+WrongAnimal	&WrongAnimal::operator=(WrongAnimal const& rhs)
 {
 	type = rhs.type;
 	return *this;
 }
 
-void	Dog::makeSound() const 
+std::string	WrongAnimal::getType() const
 {
-	std::cout << ": Woof" << std::endl;	
+	return type;
+}
+
+void	WrongAnimal::makeSound() const
+{
+	std::cout << ": wrong sound" << std::endl;
 }

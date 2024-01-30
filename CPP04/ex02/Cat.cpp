@@ -6,13 +6,13 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 15:48:43 by malancar          #+#    #+#             */
-/*   Updated: 2024/01/30 15:45:47 by malancar         ###   ########.fr       */
+/*   Updated: 2024/01/30 15:50:20 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Cat.hpp"
 
-Cat::Cat(): Animal()
+Cat::Cat(): AAnimal()
 {
 	type = "Cat";
 	_brain = new Brain();
@@ -20,7 +20,7 @@ Cat::Cat(): Animal()
 	
 }
 
-Cat::Cat(Cat const& copy): Animal()
+Cat::Cat(Cat const& copy): AAnimal()
 {
 	//type = copy.type;
 	_brain = new Brain();//?

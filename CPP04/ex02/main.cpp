@@ -6,11 +6,11 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 15:37:32 by malancar          #+#    #+#             */
-/*   Updated: 2024/01/30 15:02:13 by malancar         ###   ########.fr       */
+/*   Updated: 2024/01/30 16:14:47 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Animal.hpp"
+#include "AAnimal.hpp"
 #include "Dog.hpp"
 #include "Cat.hpp"
 #include "WrongAnimal.hpp"
@@ -18,33 +18,28 @@
 
 int	main()
 {
-	int size = 10;
-	//const Animal* dog = new Dog();
-	//const Animal* cat = new Cat();
-	//const Animal* cat2 = cat;
+	//const AAnimal* animal = new AAnimal();
+	const AAnimal* dog = new Dog();
+	const AAnimal* cat = new Cat();
+	const WrongAnimal* wrongCat = new WrongCat();
 
-	Animal*  *animals = new Animal*[size];
-	//type                       type
-	 // type a l inteireur du tableau  * nom du tableau = new type a l inteireur du tableau [taille du tableua ]
-
-	for (int i = 0; i < (size / 2) ;i++)
-	{
-		std::cout << i << ": " ;
-		animals[i] = new Cat();
-	}
+	//AAnimal	animal2;
+	Cat		cat2;
+	Dog		dog2;
+	WrongCat	wrongCat2;
+	
 	std::cout << std::endl;
-	for (int i = (size / 2); i < size; i++)
-	{
-		std::cout << i << ": " ;
-		animals[i] = new Dog();
-	}
+	std::cout << "POINTEUR:" << std::endl;
+	std::cout << "-Methode make sound virtuelle: " << std::endl;
+	//std::cout << "My " << animal->getType() << " says ";
+	//animal->makeSound();
+	std::cout << "My " << dog->getType() << " says ";
+	dog->makeSound();
+	std::cout << "My " << cat->getType() << " says ";
+	cat->makeSound();
 	std::cout << std::endl;
-	for (int i = 0; i < size; i++)
-	{
-		std::cout << i << ": " ;
-		delete animals[i];
-	}
+	std::cout << "-Methode make sound non virtuelle: " << std::endl;
+	std::cout << "My "<< wrongCat->getType() << " says ";
+	wrongCat->makeSound();
 	std::cout << std::endl;
-	delete[] animals;
-	return 0;
 }

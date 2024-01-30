@@ -1,36 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.hpp                                         :+:      :+:    :+:   */
+/*   AMateria.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/28 13:44:59 by malancar          #+#    #+#             */
-/*   Updated: 2024/01/30 15:31:22 by malancar         ###   ########.fr       */
+/*   Created: 2024/01/30 16:29:37 by malancar          #+#    #+#             */
+/*   Updated: 2024/01/30 16:33:59 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ANIMAL_HPP
-#define ANIMAL_HPP
+#include "AMateria.hpp"
 
-#include <iostream>
+AMateria::AMateria(std::string const& type)
+{
+	std::cout << "is created" << std::endl;
+}
 
-class Animal {
+AMateria::AMateria(AMateria const& copy)
+{
+	std::cout << "is cloned" << std::endl;	
+}
 
-	public:
-		Animal();
-		Animal(Animal const& copy);
-		virtual ~Animal();
+AMateria	&AMateria::operator=(AMateria const& rhs)
+{
+	
+	return *this;
+}
 
-		std::string	getType() const;
-
-		Animal	&operator=(Animal const &rhs);
-		
-		virtual void	makeSound() const;
-		
-	protected:
-		std::string	type;
-		
-};
-
-#endif
+AMateria::~AMateria()
+{
+	std::cout << "is destroyed" << std::endl;
+}

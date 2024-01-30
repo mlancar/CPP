@@ -1,36 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.hpp                                         :+:      :+:    :+:   */
+/*   Brain.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/28 13:44:59 by malancar          #+#    #+#             */
-/*   Updated: 2024/01/30 15:31:22 by malancar         ###   ########.fr       */
+/*   Created: 2024/01/28 19:16:49 by malancar          #+#    #+#             */
+/*   Updated: 2024/01/28 20:07:21 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ANIMAL_HPP
-#define ANIMAL_HPP
+#include "Brain.hpp"
 
-#include <iostream>
+Brain::Brain()
+{
+	std::cout << " is created" << std::endl;
+}
 
-class Animal {
+Brain::Brain(Brain const& copy)
+{
+	(void)copy;
+}
 
-	public:
-		Animal();
-		Animal(Animal const& copy);
-		virtual ~Animal();
+Brain::~Brain()
+{
+	std::cout << " is destroyed" << std::endl;
+}
 
-		std::string	getType() const;
-
-		Animal	&operator=(Animal const &rhs);
-		
-		virtual void	makeSound() const;
-		
-	protected:
-		std::string	type;
-		
-};
-
-#endif
+Brain	&Brain::operator=(Brain const& rhs)
+{
+	(void)rhs;
+	return *this;
+}

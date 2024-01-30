@@ -1,44 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.cpp                                            :+:      :+:    :+:   */
+/*   AAnimal.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/28 15:44:26 by malancar          #+#    #+#             */
-/*   Updated: 2024/01/30 15:38:07 by malancar         ###   ########.fr       */
+/*   Created: 2024/01/28 13:44:44 by malancar          #+#    #+#             */
+/*   Updated: 2024/01/30 16:14:03 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Dog.hpp"
+#include "AAnimal.hpp"
 
-Dog::Dog(): Animal()
+AAnimal::AAnimal(): type("AAnimal")
 {
-	type = "Dog";
-	_brain = new Brain();
-	std::cout << type << " is born" << std::endl;
+	std::cout << type << " is created" << std::endl;
 }
 
-Dog::Dog(Dog const& copy): Animal()
+AAnimal::AAnimal(AAnimal const& copy): type(copy.type)
 {
-	type = copy.type;
-	_brain = new Brain();//?
-	std::cout << type << " is clone" << std::endl;
+	std::cout << type << " is cloned" << std::endl;
 }
 
-Dog::~Dog()
+AAnimal::~AAnimal()
 {
-	delete _brain;
-	std::cout << type << " is killed" << std::endl;
+	std::cout << type << " is destroyed" << std::endl;
 }
 
-Dog	&Dog::operator=(Dog const& rhs)
+AAnimal	&AAnimal::operator=(AAnimal const& rhs)
 {
 	type = rhs.type;
 	return *this;
 }
 
-void	Dog::makeSound() const 
+std::string	AAnimal::getType() const
 {
-	std::cout << ": Woof" << std::endl;	
+	return type;
 }
