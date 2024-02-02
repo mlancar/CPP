@@ -6,7 +6,7 @@
 #    By: malancar <malancar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/11 17:31:42 by malancar          #+#    #+#              #
-#    Updated: 2024/01/30 16:45:22 by malancar         ###   ########.fr        #
+#    Updated: 2024/02/02 15:47:14 by malancar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,9 +14,13 @@ CXX = c++
 
 FLAGS = -Wall -Werror -Wextra -g -std=c++98 -Wshadow -Wno-shadow
 
-NAME = animal
+NAME = materia
 
 SOURCES = AMateria.cpp		\
+		  Character.cpp		\
+		  Cure.cpp			\
+		  Ice.cpp			\
+		  MateriaSource.cpp	\
 		  main.cpp
 
 OBJECTS =	$(SOURCES:.cpp=.o)

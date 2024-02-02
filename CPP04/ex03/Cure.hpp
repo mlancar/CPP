@@ -6,7 +6,7 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 16:54:14 by malancar          #+#    #+#             */
-/*   Updated: 2024/02/01 17:35:16 by malancar         ###   ########.fr       */
+/*   Updated: 2024/02/02 13:43:17 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ class Cure: public AMateria {
         
         Cure    &operator=(Cure const& rhs);
 
+        AMateria* clone() const;
         void    use(ICharacter &target);
 };
 

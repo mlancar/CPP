@@ -1,42 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   AMateria.hpp                                       :+:      :+:    :+:   */
+/*   Character.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/30 16:24:55 by malancar          #+#    #+#             */
-/*   Updated: 2024/02/02 14:56:52 by malancar         ###   ########.fr       */
+/*   Created: 2024/02/02 12:14:23 by malancar          #+#    #+#             */
+/*   Updated: 2024/02/02 14:22:23 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef AMATERIA_HPP
-#define AMATERIA_HPP
+#ifndef CHARACTER_HPP
+#define CHARACTER_HPP
 
-#include <iostream>
 #include "ICharacter.hpp"
 
-class ICharacter;
-
-class AMateria {
-	
+class Character: public ICharacter 
+{
 	public:
-		AMateria(std::string const& type);
-		AMateria(AMateria const& copy);
-		virtual ~AMateria();
-	
-		AMateria	&operator=(AMateria const& rhs);
+		Character(std::string name = "default");
+		Character(Character const& copy);
+		~Character();
 
-		
-		std::string const&	getType() const;
+		Character	&operator=(Character const& rhs);
 
-		virtual AMateria* clone() const = 0;
-		virtual void use(ICharacter& target);//estce que je dois la definir?
-	
-	protected:
-		std::string	type;
+		std::string const& getName() const;
 		
-	
+		void equip(AMateria* m);
+		void unequip(int idx);
+		void use(int idx, ICharacter& target);
+		
+		private:
+			std::string _name;
+			AMateria	*inventory[4];
 };
 
 #endif

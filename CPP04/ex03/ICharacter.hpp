@@ -6,7 +6,7 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 17:35:39 by malancar          #+#    #+#             */
-/*   Updated: 2024/02/01 18:11:03 by malancar         ###   ########.fr       */
+/*   Updated: 2024/02/02 13:41:29 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,14 @@
 
 #include "AMateria.hpp"
 
+class AMateria;
+
 class ICharacter {
     public:
         virtual ~ICharacter() {}
+
         virtual std::string const & getName() const = 0;
+        
         virtual void equip(AMateria* m) = 0;
         virtual void unequip(int idx) = 0;
         virtual void use(int idx, ICharacter& target) = 0;

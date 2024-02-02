@@ -6,7 +6,7 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 15:37:32 by malancar          #+#    #+#             */
-/*   Updated: 2024/01/30 15:02:13 by malancar         ###   ########.fr       */
+/*   Updated: 2024/02/02 16:28:35 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,10 @@ int	main()
 	}
 	std::cout << std::endl;
 	delete[] animals;
+
+	Cat chat;
+	{
+	Cat chat2 = chat;
+	}
 	return 0;
 }
