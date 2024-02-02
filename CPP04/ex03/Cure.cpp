@@ -1,40 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   AMateria.cpp                                       :+:      :+:    :+:   */
+/*   Cure.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/30 16:29:37 by malancar          #+#    #+#             */
-/*   Updated: 2024/02/01 18:29:54 by malancar         ###   ########.fr       */
+/*   Created: 2024/02/01 16:56:43 by malancar          #+#    #+#             */
+/*   Updated: 2024/02/01 17:34:35 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "AMateria.hpp"
+#include "Cure.hpp"
 
-AMateria::AMateria(std::string const& type)
+Cure::Cure(): AMateria("cure")
 {
-	std::cout << type << "is created" << std::endl;
+    std::cout << type << "is created" << std::endl;
 }
 
-AMateria::AMateria(AMateria const& copy)
+Cure::cure(Cure const& copy)
 {
-	std::cout << "is cloned" << std::endl;	
-	*this = copy;
+    *this = copy;
+    return *this;
 }
 
-AMateria	&AMateria::operator=(AMateria const& rhs)
+Cure::~cure()
 {
-	type = rhs.type;
-	return *this;
+    std::cout << type << " is destroyed" << std::endl;
 }
 
-AMateria::~AMateria()
+Cure    &Cure::operator=(Cure const& rhs)
 {
-	std::cout << "is destroyed" << std::endl;
+    type = copy.type;
 }
 
-const std::string	&AMateria::getType() const
+void    Cure::use(ICharacter &target)
 {
-	return type;
+    std::cout << "* heals " << target._name << " wound's *" << std::endl;
 }

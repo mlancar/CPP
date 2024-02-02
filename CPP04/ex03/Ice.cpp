@@ -1,40 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   AMateria.cpp                                       :+:      :+:    :+:   */
+/*   Ice.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/30 16:29:37 by malancar          #+#    #+#             */
-/*   Updated: 2024/02/01 18:29:54 by malancar         ###   ########.fr       */
+/*   Created: 2024/02/01 13:16:54 by malancar          #+#    #+#             */
+/*   Updated: 2024/02/01 17:34:41 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "AMateria.hpp"
+#include "Ice.hpp"
 
-AMateria::AMateria(std::string const& type)
+Ice::Ice(): AMateria("ice")
 {
-	std::cout << type << "is created" << std::endl;
+    std::cout << type << " is created" << std::endl;
 }
 
-AMateria::AMateria(AMateria const& copy)
+Ice::Ice(Ice const& copy)
 {
-	std::cout << "is cloned" << std::endl;	
-	*this = copy;
+    *this = copy;
+    return *this;
 }
 
-AMateria	&AMateria::operator=(AMateria const& rhs)
+Ice::~Ice()
 {
-	type = rhs.type;
-	return *this;
+    std::cout << type << " is destroyed" << std::endl;
 }
 
-AMateria::~AMateria()
+Ice     &Ice::operator=(Ice const& rhs)
 {
-	std::cout << "is destroyed" << std::endl;
+    type = copy.type;
 }
 
-const std::string	&AMateria::getType() const
+void    Cure::use(ICharacter &target)
 {
-	return type;
+    std::cout << "* shoots an ice bolt at " << target._name << std::endl;
 }
