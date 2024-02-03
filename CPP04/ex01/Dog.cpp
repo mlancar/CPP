@@ -6,7 +6,7 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 15:44:26 by malancar          #+#    #+#             */
-/*   Updated: 2024/01/30 15:38:07 by malancar         ###   ########.fr       */
+/*   Updated: 2024/02/03 17:29:08 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ Dog::Dog(): Animal()
 Dog::Dog(Dog const& copy): Animal()
 {
 	type = copy.type;
-	_brain = new Brain();//?
+	_brain = new Brain();
 	std::cout << type << " is clone" << std::endl;
 }
 
@@ -34,7 +34,8 @@ Dog::~Dog()
 
 Dog	&Dog::operator=(Dog const& rhs)
 {
-	type = rhs.type;
+	std::cout << "Dog = operator" << std::endl;
+	*_brain = *rhs._brain;
 	return *this;
 }
 

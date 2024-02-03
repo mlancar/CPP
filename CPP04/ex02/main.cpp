@@ -6,7 +6,7 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 15:37:32 by malancar          #+#    #+#             */
-/*   Updated: 2024/01/30 16:14:47 by malancar         ###   ########.fr       */
+/*   Updated: 2024/02/03 18:05:23 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,14 @@ int	main()
 	//const AAnimal* animal = new AAnimal();
 	const AAnimal* dog = new Dog();
 	const AAnimal* cat = new Cat();
-	const WrongAnimal* wrongCat = new WrongCat();
+	//const WrongAnimal* wrongCat = new WrongCat();
 
-	//AAnimal	animal2;
+
 	Cat		cat2;
 	Dog		dog2;
-	WrongCat	wrongCat2;
+	//WrongCat	wrongCat2;
 	
 	std::cout << std::endl;
-	std::cout << "POINTEUR:" << std::endl;
 	std::cout << "-Methode make sound virtuelle: " << std::endl;
 	//std::cout << "My " << animal->getType() << " says ";
 	//animal->makeSound();
@@ -38,8 +37,19 @@ int	main()
 	std::cout << "My " << cat->getType() << " says ";
 	cat->makeSound();
 	std::cout << std::endl;
-	std::cout << "-Methode make sound non virtuelle: " << std::endl;
-	std::cout << "My "<< wrongCat->getType() << " says ";
-	wrongCat->makeSound();
+	//std::cout << "-Methode make sound non virtuelle: " << std::endl;
+	//std::cout << "My "<< wrongCat->getType() << " says ";
+	//wrongCat->makeSound();
 	std::cout << std::endl;
+
+	delete dog;
+	delete cat;
+	//delete wrongCat;
+
+
+	Cat chat;
+	{
+	Cat chat2 = chat;
+	}
+	return 0;
 }

@@ -6,7 +6,7 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 12:53:26 by malancar          #+#    #+#             */
-/*   Updated: 2024/02/02 16:08:04 by malancar         ###   ########.fr       */
+/*   Updated: 2024/02/03 17:48:47 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ void	MateriaSource::learnMateria(AMateria *m)
 		if (inventory[i] == NULL)
 		{
 			inventory[i] = m;
+			std::cout << "learn new materia " << m->getType() << std::endl;
 			return ;
 		}
 	}
@@ -76,6 +77,7 @@ AMateria*	MateriaSource::createMateria(std::string const& type)
 		if (inventory[i] && inventory[i]->getType() == type)
 		{
 			return inventory[i]->clone();
+			std::cout << "create new materia " << type << std::endl;
 		}
 	}
 	std::cout << "cannot create new materia" << std::endl;

@@ -6,7 +6,7 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 13:16:54 by malancar          #+#    #+#             */
-/*   Updated: 2024/02/02 16:08:36 by malancar         ###   ########.fr       */
+/*   Updated: 2024/02/03 17:39:54 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 Ice::Ice(): AMateria("ice")
 {
-    std::cout << type << " is created" << std::endl;
+    //std::cout << type << " is created" << std::endl;
 }
 
 Ice::Ice(Ice const& copy): AMateria("ice")
@@ -24,7 +24,7 @@ Ice::Ice(Ice const& copy): AMateria("ice")
 
 Ice::~Ice()
 {
-    std::cout << type << " is destroyed" << std::endl;
+    //std::cout << type << " is destroyed" << std::endl;
 }
 
 Ice     &Ice::operator=(Ice const& rhs)

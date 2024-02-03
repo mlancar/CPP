@@ -6,7 +6,7 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 16:56:43 by malancar          #+#    #+#             */
-/*   Updated: 2024/02/02 15:01:25 by malancar         ###   ########.fr       */
+/*   Updated: 2024/02/03 17:39:38 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 Cure::Cure(): AMateria("cure")
 {
-    std::cout << type << " is created" << std::endl;
+    //std::cout << type << " is created" << std::endl;
 }
 
 Cure::Cure(Cure const& copy): AMateria("cure")
@@ -24,7 +24,7 @@ Cure::Cure(Cure const& copy): AMateria("cure")
 
 Cure::~Cure()
 {
-    std::cout << type << " is destroyed" << std::endl;
+    //std::cout << type << " is destroyed" << std::endl;
 }
 
 Cure    &Cure::operator=(Cure const& rhs)

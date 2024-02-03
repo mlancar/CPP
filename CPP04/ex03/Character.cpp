@@ -6,7 +6,7 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 12:15:34 by malancar          #+#    #+#             */
-/*   Updated: 2024/02/02 16:17:15 by malancar         ###   ########.fr       */
+/*   Updated: 2024/02/03 17:56:03 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ Character::Character(std::string name):_name(name)
 Character::Character(Character const& copy)
 {
 	*this = copy;
+	std::cout << _name << " is cloned" << std::endl;
 }
 
 Character::~Character()
@@ -34,7 +35,7 @@ Character::~Character()
 			inventory[i] = NULL;
 		}
 	}
-	std::cout << "is destroyed" << std::endl;
+	std::cout << _name << " is destroyed" << std::endl;
 }
 
 Character	&Character::operator=(Character const& rhs)
@@ -66,11 +67,20 @@ void	Character::equip(AMateria *m)
 
 void	Character::unequip(int idx)
 {
-	inventory[idx] = NULL;//verifier si deja null
+	if (idx < 4)
+	{
+		if (inventory[idx] != NULL)
+			inventory[idx] = NULL;
+	}
+	else
+		std::cout << idx << " is not a slot of the inventory" << std::endl;
 }
 
 void	Character::use(int idx, ICharacter &target)
 {
 	if ((idx < 4 && idx >= 0) && inventory[idx])
-		std::cout << "use " << inventory[idx]->getType() << " on " << target.getName() << std::endl;
+		inventory[idx]->use(target);
+	else
+		std::cout << idx << " is not a slot of the inventory" << std::endl;
+	
 }
