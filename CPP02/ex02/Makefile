@@ -6,7 +6,7 @@
 #    By: malancar <malancar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/11 17:31:42 by malancar          #+#    #+#              #
-#    Updated: 2024/01/22 20:21:05 by malancar         ###   ########.fr        #
+#    Updated: 2024/02/04 18:27:51 by malancar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,32 +19,30 @@ NAME = fixed
 SOURCES = Fixed.cpp	\
 		  main.cpp
 
-HEADER = Fixed.hpp
-
 OBJECTS =	$(SOURCES:.cpp=.o)
 OBJS = $(addprefix Objects/, $(OBJECTS))
 
 DEPENDENCIES = $(SOURCES:.cpp=.d)
 DEPS = $(addprefix Objects/, $(DEPENDENCIES))
 
+RM = rm -rf
+
+all : $(NAME)
+
 $(NAME) : Objects $(OBJS)
 		 $(CXX) $(FLAGS) -o $(NAME) $(OBJS)
 
-all:	$(NAME)
-
-Objects/%.o :	%.cpp
-		        $(CXX) $(FLAGS) -MMD -o $@ -c $<
-
--include $(DEPS)
+Objects/%.o :	Sources/%.cpp
+		        $(CXX) $(FLAGS) -MMD -I ./Includes -o $@ -c $<
 
 Objects:
 			mkdir -p Objects
 
 clean:
-	@$(RM) $(OBJS) $(DEPS)
+	$(RM) $(OBJS) $(DEPS) ./Objects
 
 fclean: clean
-	@$(RM) $(NAME) $(DEPS) rm -rf ./Objects
+	$(RM) $(NAME)
 
 re:	fclean all
 
