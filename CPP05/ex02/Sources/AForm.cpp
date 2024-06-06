@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   AForm.cpp                                           :+:      :+:    :+:   */
+/*   AAForm.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 17:56:03 by malancar          #+#    #+#             */
-/*   Updated: 2024/06/06 16:36:23 by malancar         ###   ########.fr       */
+/*   Updated: 2024/06/06 16:47:52 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,9 @@ AForm &AForm::operator=(AForm const& rhs)
 	return *this;
 }
 
-std::ostream& operator<<(std::ostream &flux, AForm AForm)
+std::ostream& operator<<(std::ostream &flux, AForm &form)
 {
-	return flux << AForm.getName() << "\nAForm is signed: " << AForm.getSigned() << "\ngrade to signed: " << AForm.getGradeToSign() << "\ngrade to execute: " << AForm.getGradeToExecute();
+	return flux << form.getName() << "\nAForm is signed: " << form.getSigned() << "\ngrade to signed: " << form.getGradeToSign() << "\ngrade to execute: " << form.getGradeToExecute();
 }
 
 const std::string AForm::getName()
@@ -82,10 +82,17 @@ void	AForm::beSigned(Bureaucrat bureaucrat)
 	_signed = true;
 }
 
-void	AForm::signAForm(Bureaucrat bureaucrat, AForm AForm)
+void	AForm::signAForm(Bureaucrat bureaucrat, AForm &form)
 {
 	if (_signed == true)
-		std::cout << bureaucrat << "signed" << AForm << std::endl;
+		std::cout << bureaucrat << "signed" << form << std::endl;
 	else
-		std::cout << bureaucrat << "couldn't sign" << AForm << std::endl;
+		std::cout << bureaucrat << "couldn't sign" << form << std::endl;
+}
+
+void	AForm::execute(Bureaucrat const& executor)
+{
+	beSigned(executor);
+	if (executor.getGrade() > _gradeToExecute)
+		throw GradeTooLowException();
 }

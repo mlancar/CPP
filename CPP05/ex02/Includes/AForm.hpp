@@ -15,12 +15,12 @@
 
 #include "Bureaucrat.hpp"
 
-class AForm
+class AForm 
 {
 	public:
 		AForm(std::string const name, int const gradeToSign, int const gradeToExecute);
 		AForm(AForm const& copy);
-		~AForm();
+		virtual ~AForm();
 		AForm &operator=(AForm const& rhs);
 
 		std::string	const getName();
@@ -28,10 +28,11 @@ class AForm
 		int 	getGradeToSign();
 		int 	getGradeToExecute();
 		void	beSigned(Bureaucrat bureaucrat);
-		void	signAForm(Bureaucrat bureaucrat, AForm AForm);
+		void	signAForm(Bureaucrat bureaucrat, AForm &form);
+		virtual void	execute(Bureaucrat const& executor) = 0;
 
 
-	private:
+	protected:
 		AForm();
 		std::string const _name;
 		bool	_signed;
@@ -50,6 +51,6 @@ class AForm
 		};
 };
 
-std::ostream& operator<<(std::ostream &flux, AForm AForm);
+std::ostream& operator<<(std::ostream &flux, AForm &form);
 
 #endif

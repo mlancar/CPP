@@ -6,7 +6,7 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 15:47:10 by malancar          #+#    #+#             */
-/*   Updated: 2024/06/06 15:45:13 by malancar         ###   ########.fr       */
+/*   Updated: 2024/06/06 18:46:25 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ class Bureaucrat
 		Bureaucrat &operator=(Bureaucrat const &rhs);
 
 		std::string	getName();
-		int			getGrade();
+		int			getGrade() const;
 		void		incrementGrade();
 		void		decrementGrade();
 		
