@@ -6,7 +6,7 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 15:47:10 by malancar          #+#    #+#             */
-/*   Updated: 2024/06/06 18:46:25 by malancar         ###   ########.fr       */
+/*   Updated: 2024/06/10 18:03:34 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,9 @@
 
 #include <iostream>
 
+#include "AForm.hpp"
+
+class AForm;
 
 class Bureaucrat
 {
@@ -27,10 +30,11 @@ class Bureaucrat
 
 		Bureaucrat &operator=(Bureaucrat const &rhs);
 
-		std::string	getName();
+		std::string	getName() const;
 		int			getGrade() const;
 		void		incrementGrade();
 		void		decrementGrade();
+		void		executeForm(AForm const& form) ; 
 		
 		
 	

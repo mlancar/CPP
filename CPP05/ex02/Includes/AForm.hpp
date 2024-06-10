@@ -15,7 +15,9 @@
 
 #include "Bureaucrat.hpp"
 
-class AForm 
+class Bureaucrat;
+
+class AForm
 {
 	public:
 		AForm(std::string const name, int const gradeToSign, int const gradeToExecute);
@@ -23,13 +25,13 @@ class AForm
 		virtual ~AForm();
 		AForm &operator=(AForm const& rhs);
 
-		std::string	const getName();
-		bool	getSigned();
-		int 	getGradeToSign();
-		int 	getGradeToExecute();
+		std::string	const getName() const;
+		bool	getSigned() const;
+		int 	getGradeToSign() const;
+		int 	getGradeToExecute() const;
 		void	beSigned(Bureaucrat bureaucrat);
 		void	signAForm(Bureaucrat bureaucrat, AForm &form);
-		virtual void	execute(Bureaucrat const& executor) = 0;
+		virtual void	execute(Bureaucrat const& executor) const = 0;
 
 
 	protected:
@@ -45,6 +47,11 @@ class AForm
 				const char* what() const throw();
 		};
 		class GradeTooHighException : public std::exception
+		{
+			public:
+				const char* what() const throw();
+		};
+		class NotSignedException : public std::exception
 		{
 			public:
 				const char* what() const throw();

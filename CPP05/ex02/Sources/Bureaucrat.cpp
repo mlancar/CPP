@@ -6,7 +6,7 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 15:47:20 by malancar          #+#    #+#             */
-/*   Updated: 2024/06/06 18:52:44 by malancar         ###   ########.fr       */
+/*   Updated: 2024/06/10 18:03:42 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ std::ostream& operator<<(std::ostream &flux, Bureaucrat bureaucrat)
 	return flux << bureaucrat.getName() << ", bureaucrat grade " << bureaucrat.getGrade();
 }
 
-std::string	Bureaucrat::getName()
+std::string	Bureaucrat::getName() const
 {
 	return _name;
 }
@@ -74,4 +74,18 @@ const char* Bureaucrat::GradeTooLowException::what() const throw()
 const char* Bureaucrat::GradeTooHighException::what() const throw()
 {
 	return "Grade too high";
+}
+
+void	Bureaucrat::executeForm(AForm const& form) {
+
+	try {
+		form.execute(*this);
+	}
+	catch (std::exception &e) {
+		std::cout << _name << "couldn't execute " << form.getName() << ": " << e.what() << std::endl;
+		
+	}
+	std::cout << _name << "executed " << form.getName() << std::endl;
+	//std::cout << _name << " executed " << form << std::endl;
+	
 }

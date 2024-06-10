@@ -1,35 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
+/*   RobotomyRequestForm.hpp                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/23 15:47:10 by malancar          #+#    #+#             */
-/*   Updated: 2024/03/23 16:13:18 by malancar         ###   ########.fr       */
+/*   Created: 2024/06/10 15:33:22 by malancar          #+#    #+#             */
+/*   Updated: 2024/06/10 18:30:29 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BUREAUCRAT_HPP
-#define	BUREAUCRAT_HPP
+#ifndef ROBOTOMYREQUESTFORM_HPP
+#define ROBOTOMYREQUESTFORM_HPP
 
-#include <iostream>
+#include "AForm.hpp"
+#include <cstdlib>
 
-class Bureaucrat
-{
-	public:
-		Bureaucrat();
-		Bureaucrat(Bureaucrat const &copy);
-		~Bureaucrat();
-
-		Bureaucrat &operator=(Bureaucrat const rhs);
-
-		std::string	getName();
-		int			getGrade();
+class RobotomyRequestForm: public AForm {
 	
+	public:
+		RobotomyRequestForm();
+		RobotomyRequestForm(RobotomyRequestForm const& copy);
+		~RobotomyRequestForm();
+		
+		class robotomyFailed : public std::exception
+		{
+			public:
+				const char* what() const throw();
+		};
+		void	execute(Bureaucrat const& executor) const;
+		
 	private:
-		std::string	const name;
-		int	grades[150];
 };
 
 #endif

@@ -45,22 +45,22 @@ std::ostream& operator<<(std::ostream &flux, AForm &form)
 	return flux << form.getName() << "\nAForm is signed: " << form.getSigned() << "\ngrade to signed: " << form.getGradeToSign() << "\ngrade to execute: " << form.getGradeToExecute();
 }
 
-const std::string AForm::getName()
+const std::string AForm::getName() const
 {
 	return _name;
 }
 
-bool	AForm::getSigned()
+bool	AForm::getSigned() const
 {
 	return _signed;
 }
 
-int AForm::getGradeToSign()
+int AForm::getGradeToSign() const
 {
 	return _gradeToSign;
 }
 
-int AForm::getGradeToExecute()
+int AForm::getGradeToExecute() const
 {
 	return _gradeToExecute;
 }
@@ -73,6 +73,11 @@ const char* AForm::GradeTooLowException::what() const throw()
 const char* AForm::GradeTooHighException::what() const throw()
 {
 	return "Grade too high";
+}
+
+const char* AForm::NotSignedException::what() const throw()
+{
+	return "Form not sign";
 }
 
 void	AForm::beSigned(Bureaucrat bureaucrat)
@@ -90,9 +95,10 @@ void	AForm::signAForm(Bureaucrat bureaucrat, AForm &form)
 		std::cout << bureaucrat << "couldn't sign" << form << std::endl;
 }
 
-void	AForm::execute(Bureaucrat const& executor)
+void	AForm::execute(Bureaucrat const& executor) const
 {
-	beSigned(executor);
+	if (_signed == false)
+		throw AForm::NotSignedException();
 	if (executor.getGrade() > _gradeToExecute)
 		throw GradeTooLowException();
 }
