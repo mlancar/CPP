@@ -1,34 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   RobotomyRequestForm.hpp                            :+:      :+:    :+:   */
+/*   PresidentialPardonForm.hpp                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/10 15:33:22 by malancar          #+#    #+#             */
-/*   Updated: 2024/06/11 15:27:32 by malancar         ###   ########.fr       */
+/*   Created: 2024/06/11 15:25:14 by malancar          #+#    #+#             */
+/*   Updated: 2024/06/11 15:38:50 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ROBOTOMYREQUESTFORM_HPP
-#define ROBOTOMYREQUESTFORM_HPP
+#ifndef PRESIDENTIALPARDNFORM_HPP
+#define PRESIDENTIALPARDNFORM_HPP
 
 #include "AForm.hpp"
-#include <cstdlib>
-#include <ctime>
 
-class RobotomyRequestForm: public AForm {
-	
+class PresidentialPardonForm : public AForm
+{
 	public:
-		RobotomyRequestForm();
-		RobotomyRequestForm(RobotomyRequestForm const& copy);
-		~RobotomyRequestForm();
+		PresidentialPardonForm();
+		PresidentialPardonForm(PresidentialPardonForm const& copy);
+		~PresidentialPardonForm();
 		
-		class robotomyFailed : public std::exception
-		{
-			public:
-				const char* what() const throw();
-		};
 		void	execute(Bureaucrat const& executor) const;
 };
 

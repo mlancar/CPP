@@ -6,13 +6,13 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 15:33:14 by malancar          #+#    #+#             */
-/*   Updated: 2024/06/11 15:37:18 by malancar         ###   ########.fr       */
+/*   Updated: 2024/06/11 19:18:10 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RobotomyRequestForm.hpp"
 
-RobotomyRequestForm::RobotomyRequestForm(): AForm("RobotomyRequestForm", 72, 45) {
+RobotomyRequestForm::RobotomyRequestForm(): Form("RobotomyRequestForm", 72, 45) {
 	
 }
 
@@ -34,7 +34,7 @@ void	RobotomyRequestForm::execute(Bureaucrat const& executor) const{
 	
 	try {
 		std::cout << "Bzzz rzzzz" << std::endl;
-		AForm::execute(executor);
+		Form::execute(executor);
 		std::srand(std::time(NULL)); // use current time as seed for random generator
 		int random_value = std::rand();
 		if (random_value % 2 == 0)
