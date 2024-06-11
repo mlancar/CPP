@@ -6,7 +6,7 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 15:33:22 by malancar          #+#    #+#             */
-/*   Updated: 2024/06/11 15:27:32 by malancar         ###   ########.fr       */
+/*   Updated: 2024/06/11 20:55:21 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ class RobotomyRequestForm: public AForm {
 	
 	public:
 		RobotomyRequestForm();
+		RobotomyRequestForm(std::string target);
 		RobotomyRequestForm(RobotomyRequestForm const& copy);
 		~RobotomyRequestForm();
 		

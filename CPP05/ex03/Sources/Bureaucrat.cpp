@@ -6,7 +6,7 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 15:47:20 by malancar          #+#    #+#             */
-/*   Updated: 2024/06/11 19:18:10 by malancar         ###   ########.fr       */
+/*   Updated: 2024/06/10 18:03:42 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ const char* Bureaucrat::GradeTooHighException::what() const throw()
 	return "Grade too high";
 }
 
-void	Bureaucrat::executeForm(Form const& form) {
+void	Bureaucrat::executeForm(AForm const& form) {
 
 	try {
 		form.execute(*this);

@@ -6,17 +6,21 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 16:50:38 by malancar          #+#    #+#             */
-/*   Updated: 2024/06/10 18:15:09 by malancar         ###   ########.fr       */
+/*   Updated: 2024/06/11 21:02:14 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ShrubberyCreationForm.hpp"
 
-ShrubberyCreationForm::ShrubberyCreationForm(): AForm("ShrubberyCreationForm", 145, 137) {	
+ShrubberyCreationForm::ShrubberyCreationForm(): AForm() {	
 
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm const& copy): AForm("ShrubberyCreationForm", 145, 137) {
+ShrubberyCreationForm::ShrubberyCreationForm(std::string const target): AForm("ShrubberyCreationForm", 145, 137, target) {	
+
+}
+
+ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm const& copy): AForm("ShrubberyCreationForm", 145, 137, copy._target) {
 	(void)copy;
 }
 
@@ -29,9 +33,10 @@ void	ShrubberyCreationForm::execute(Bureaucrat const& executor) const{
 	{
 		AForm::execute(executor);
 		std::string tree;
+		std::string target = _target + "shrubbery";
          
 		tree = "  /\\\n /  \\\n/    \\\n  ||";
-		std::ofstream outfile("target_shrubbery.txt");
+		std::ofstream outfile(target.c_str());
 		if (outfile.is_open())
 			outfile << tree <<std::endl;
 		else

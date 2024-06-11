@@ -6,7 +6,7 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 15:25:14 by malancar          #+#    #+#             */
-/*   Updated: 2024/06/11 15:38:50 by malancar         ###   ########.fr       */
+/*   Updated: 2024/06/11 20:55:25 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ class PresidentialPardonForm : public AForm
 {
 	public:
 		PresidentialPardonForm();
+		PresidentialPardonForm(std::string const target);
 		PresidentialPardonForm(PresidentialPardonForm const& copy);
 		~PresidentialPardonForm();
 		

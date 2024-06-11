@@ -6,7 +6,7 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 15:49:52 by malancar          #+#    #+#             */
-/*   Updated: 2024/06/10 18:31:20 by malancar         ###   ########.fr       */
+/*   Updated: 2024/06/11 20:41:58 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ int main()
 	{
 		//check grade too low too high
 		Bureaucrat Floriane(30, "Floriane");
-		ShrubberyCreationForm form;
-		RobotomyRequestForm roboForm;
+		ShrubberyCreationForm form("target");
+		RobotomyRequestForm roboForm("target");
 		form.beSigned(Floriane);
 		form.execute(Floriane);
 

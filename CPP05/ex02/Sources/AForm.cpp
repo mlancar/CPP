@@ -16,7 +16,7 @@ AForm::AForm()
 {
 }
 
-AForm::AForm(std::string const name, int const gradeToSign, int const gradeToExecute): _name(name), _signed(false), _gradeToSign(gradeToSign), _gradeToExecute(gradeToExecute)
+AForm::AForm(std::string const name, int const gradeToSign, int const gradeToExecute, std::string const target): _name(name), _signed(false), _gradeToSign(gradeToSign), _gradeToExecute(gradeToExecute), _target(target)
 {
 	
 }
@@ -25,7 +25,7 @@ AForm::~AForm()
 {
 }
 
-AForm::AForm(AForm const& copy): _name(copy._name), _signed(copy._signed), _gradeToSign(copy._gradeToSign), _gradeToExecute(copy._gradeToExecute)
+AForm::AForm(AForm const& copy): _name(copy._name), _signed(copy._signed), _gradeToSign(copy._gradeToSign), _gradeToExecute(copy._gradeToExecute), _target(copy._target)
 {
 	
 }

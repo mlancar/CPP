@@ -6,7 +6,7 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 15:42:26 by malancar          #+#    #+#             */
-/*   Updated: 2024/06/11 20:00:49 by malancar         ###   ########.fr       */
+/*   Updated: 2024/06/11 21:13:53 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
-#include "Form.hpp"
+#include "AForm.hpp"
 
 class Intern
 {
@@ -25,13 +25,10 @@ class Intern
 		Intern(Intern const& copy);
 		~Intern();
 
-		Form*	makeForm(std::string form, std::string target);
-		Form*	makeShrubbery(std::string target);
-		Form*	makeRobotomy(std::string target);
-		Form*	makePardon(std::string target);
-	
-
-	
+		AForm*	makeForm(std::string form, std::string target);
+		AForm*	makeShrubbery(std::string target);
+		AForm*	makeRobotomy(std::string target);
+		AForm*	makePardon(std::string target);
 };
 
 #endif

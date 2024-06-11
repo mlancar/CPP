@@ -6,19 +6,20 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 15:25:14 by malancar          #+#    #+#             */
-/*   Updated: 2024/06/11 19:18:10 by malancar         ###   ########.fr       */
+/*   Updated: 2024/06/11 20:55:25 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PRESIDENTIALPARDNFORM_HPP
 #define PRESIDENTIALPARDNFORM_HPP
 
-#include "Form.hpp"
+#include "AForm.hpp"
 
-class PresidentialPardonForm : public Form
+class PresidentialPardonForm : public AForm
 {
 	public:
 		PresidentialPardonForm();
+		PresidentialPardonForm(std::string const target);
 		PresidentialPardonForm(PresidentialPardonForm const& copy);
 		~PresidentialPardonForm();
 		

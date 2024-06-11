@@ -6,7 +6,7 @@
 #    By: malancar <malancar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/11 17:31:42 by malancar          #+#    #+#              #
-#    Updated: 2024/06/11 19:18:10 by malancar         ###   ########.fr        #
+#    Updated: 2024/06/11 21:10:12 by malancar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,11 +16,12 @@ FLAGS = -Wall -Werror -Wextra -g -std=c++98
 
 NAME = Form
 
-SOURCES = Bureaucrat.cpp			\
-		  Form.cpp					\
-		  ShrubberyCreationForm.cpp	\
-		  RobotomyRequestForm.cpp	\
-		  Intern.cpp				\
+SOURCES = Bureaucrat.cpp				\
+		  AForm.cpp						\
+		  ShrubberyCreationForm.cpp		\
+		  RobotomyRequestForm.cpp		\
+		  PresidentialPardonForm.cpp	\
+		  Intern.cpp					\
 		  main.cpp
 
 OBJECTS =	$(SOURCES:.cpp=.o)

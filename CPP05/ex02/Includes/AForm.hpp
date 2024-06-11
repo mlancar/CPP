@@ -20,7 +20,7 @@ class Bureaucrat;
 class AForm
 {
 	public:
-		AForm(std::string const name, int const gradeToSign, int const gradeToExecute);
+		AForm(std::string const name, int const gradeToSign, int const gradeToExecute, std::string const target);
 		AForm(AForm const& copy);
 		virtual ~AForm();
 		AForm &operator=(AForm const& rhs);
@@ -40,6 +40,7 @@ class AForm
 		bool	_signed;
 		int  _gradeToSign;
 		int  _gradeToExecute;
+		std::string const _target;
 
 		class GradeTooLowException : public std::exception
 		{
