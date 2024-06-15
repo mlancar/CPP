@@ -1,21 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   B.hpp                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/12 14:47:51 by malancar          #+#    #+#             */
-/*   Updated: 2024/06/12 14:50:49 by malancar         ###   ########.fr       */
+/*   Created: 2024/06/15 18:36:54 by malancar          #+#    #+#             */
+/*   Updated: 2024/06/15 18:37:08 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScalarConverter.hpp"
 
-int main(int ac, char **av) {
+#ifndef B_HPP
+#define B_HPP
 
-	if (ac != 2)
-		return 0;
-	ScalarConverter::convert(av[1]);
-	
-}
+#include "Base.hpp"
+
+class B: public Base
+{
+
+};
+
+#endif

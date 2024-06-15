@@ -6,7 +6,7 @@
 #    By: malancar <malancar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/11 17:31:42 by malancar          #+#    #+#              #
-#    Updated: 2024/06/15 18:04:06 by malancar         ###   ########.fr        #
+#    Updated: 2024/06/15 18:29:20 by malancar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,9 +14,9 @@ CXX = c++
 
 FLAGS = -Wall -Werror -Wextra -g -std=c++98
 
-NAME = scalarconverter
+NAME = base
 
-SOURCES = ScalarConverter.cpp	\
+SOURCES = Base.cpp	\
 		  main.cpp
 
 OBJECTS =	$(SOURCES:.cpp=.o)

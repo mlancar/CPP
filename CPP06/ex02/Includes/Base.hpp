@@ -1,36 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScalarConverter.hpp                                :+:      :+:    :+:   */
+/*   Base.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/12 14:36:46 by malancar          #+#    #+#             */
-/*   Updated: 2024/06/15 16:22:38 by malancar         ###   ########.fr       */
+/*   Created: 2024/06/15 18:30:12 by malancar          #+#    #+#             */
+/*   Updated: 2024/06/15 19:27:02 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCALARCONVERTER_HPP
-#define SCALARCONVERTER_HPP
+#ifndef BASE_HPP
+#define BASE_HPP
 
 #include <iostream>
-#include <cstdlib>
-#include <stdio.h>
-#include <ctype.h>
-#include <limits>
-#include <cmath>
-#include <iomanip>
+#include <ctime>
 
-class ScalarConverter
+class Base
 {
 	public:
-		~ScalarConverter();
-		static void	convert(std::string literal);
+		Base();
+		~Base();
+		
 		
 	private:
-		ScalarConverter();
-		ScalarConverter(ScalarConverter const& copy);
-		
 };
 
 #endif
