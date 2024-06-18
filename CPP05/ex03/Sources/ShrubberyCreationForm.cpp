@@ -6,7 +6,7 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 16:50:38 by malancar          #+#    #+#             */
-/*   Updated: 2024/06/18 17:33:52 by malancar         ###   ########.fr       */
+/*   Updated: 2024/06/18 18:57:51 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,21 @@ ShrubberyCreationForm::ShrubberyCreationForm(): AForm() {
 
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(std::string const target): AForm("ShrubberyCreationForm", 145, 137, target) {	
+ShrubberyCreationForm::ShrubberyCreationForm(std::string const target): AForm("ShrubberyCreationForm", 145, 137), _target(target) {	
 
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm const& copy): AForm("ShrubberyCreationForm", 145, 137, copy._target) {
+ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm const& copy): AForm("ShrubberyCreationForm", 145, 137), _target(copy._target) {
 	(void)copy;
 }
 
 ShrubberyCreationForm::~ShrubberyCreationForm() {
+}
+
+ShrubberyCreationForm &ShrubberyCreationForm::operator=(ShrubberyCreationForm const& rhs) {
+	_target = rhs._target;
+	_signed = rhs._signed;
+	return *this;
 }
 
 void	ShrubberyCreationForm::execute(Bureaucrat const& executor) const{

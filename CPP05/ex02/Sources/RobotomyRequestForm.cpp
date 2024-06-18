@@ -6,7 +6,7 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 15:33:14 by malancar          #+#    #+#             */
-/*   Updated: 2024/06/18 17:23:25 by malancar         ###   ########.fr       */
+/*   Updated: 2024/06/18 18:55:51 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,11 @@
 RobotomyRequestForm::RobotomyRequestForm(): AForm() {
 }
 
-RobotomyRequestForm::RobotomyRequestForm(std::string const target): AForm("RobotomyRequestForm", 72, 45, target) {
+RobotomyRequestForm::RobotomyRequestForm(std::string const target): AForm("RobotomyRequestForm", 72, 45), _target(target) {
 	
 }
 
-RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm const& copy): AForm("RobotomyRequestForm", 72, 45, copy._target) {
-	(void)copy;
+RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm const& copy): AForm("RobotomyRequestForm", 72, 45), _target(copy._target){
 }
 
 
@@ -28,6 +27,11 @@ RobotomyRequestForm::~RobotomyRequestForm() {
 	
 }
 
+RobotomyRequestForm &RobotomyRequestForm::operator=(RobotomyRequestForm const& rhs) {
+	_target = rhs._target;
+	_signed = rhs._signed;
+	return *this;
+}
 const char* RobotomyRequestForm::robotomyFailed::what() const throw()
 {
 	return " robotomy has failed";

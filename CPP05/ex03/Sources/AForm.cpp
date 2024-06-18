@@ -16,7 +16,7 @@ AForm::AForm()
 {
 }
 
-AForm::AForm(std::string const name, int const gradeToSign, int const gradeToExecute, std::string const target): _name(name), _signed(false), _gradeToSign(gradeToSign), _gradeToExecute(gradeToExecute), _target(target)
+AForm::AForm(std::string const name, int const gradeToSign, int const gradeToExecute): _name(name), _signed(false), _gradeToSign(gradeToSign), _gradeToExecute(gradeToExecute)
 {
 	
 }
@@ -25,7 +25,7 @@ AForm::~AForm()
 {
 }
 
-AForm::AForm(AForm const& copy): _name(copy._name), _signed(copy._signed), _gradeToSign(copy._gradeToSign), _gradeToExecute(copy._gradeToExecute), _target(copy._target)
+AForm::AForm(AForm const& copy): _name(copy._name), _signed(copy._signed), _gradeToSign(copy._gradeToSign), _gradeToExecute(copy._gradeToExecute)
 {
 	
 }
@@ -34,9 +34,8 @@ AForm &AForm::operator=(AForm const& rhs)
 {
 	//_name = rhs._name;
 	_signed = rhs._signed;
-	// _gradeToSign = rhs._gradeToSign;
-	// _gradeToExecute = rhs._gradeToExecute;
-	
+	_gradeToSign = rhs._gradeToSign;
+	_gradeToExecute = rhs._gradeToExecute;
 	return *this;
 }
 
