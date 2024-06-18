@@ -1,36 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   AForm.cpp                                           :+:      :+:    :+:   */
+/*   Form.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 17:56:03 by malancar          #+#    #+#             */
-/*   Updated: 2024/06/06 16:36:23 by malancar         ###   ########.fr       */
+/*   Updated: 2024/06/18 15:34:39 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "AForm.hpp"
+#include "Form.hpp"
 
-AForm::AForm()
+Form::Form()
 {
 }
 
-AForm::AForm(std::string const name, int const gradeToSign, int const gradeToExecute): _name(name), _signed(false), _gradeToSign(gradeToSign), _gradeToExecute(gradeToExecute)
-{
-	
-}
-
-AForm::~AForm()
-{
-}
-
-AForm::AForm(AForm const& copy): _name(copy._name), _signed(copy._signed), _gradeToSign(copy._gradeToSign), _gradeToExecute(copy._gradeToExecute)
+Form::Form(std::string const name, int const gradeToSign, int const gradeToExecute): _name(name), _signed(false), _gradeToSign(gradeToSign), _gradeToExecute(gradeToExecute)
 {
 	
 }
 
-AForm &AForm::operator=(AForm const& rhs)
+Form::~Form()
+{
+}
+
+Form::Form(Form const& copy): _name(copy._name), _signed(copy._signed), _gradeToSign(copy._gradeToSign), _gradeToExecute(copy._gradeToExecute)
+{
+	
+}
+
+Form &Form::operator=(Form const& rhs)
 {
 	//_name = rhs._name;
 	_signed = rhs._signed;
@@ -40,52 +40,56 @@ AForm &AForm::operator=(AForm const& rhs)
 	return *this;
 }
 
-std::ostream& operator<<(std::ostream &flux, AForm AForm)
+std::ostream& operator<<(std::ostream &flux, Form form)
 {
-	return flux << AForm.getName() << "\nAForm is signed: " << AForm.getSigned() << "\ngrade to signed: " << AForm.getGradeToSign() << "\ngrade to execute: " << AForm.getGradeToExecute();
+	std::string form_signed;
+	if (form.getSigned() == false)
+		form_signed = "not signed";
+	else
+		form_signed = "signed";
+	return flux << form.getName() << "\nForm is " << form_signed << "\ngrade to signed: " << form.getGradeToSign() << "\ngrade to execute: " << form.getGradeToExecute();
 }
 
-const std::string AForm::getName()
+const std::string Form::getName()
 {
 	return _name;
 }
 
-bool	AForm::getSigned()
+bool	Form::getSigned()
 {
 	return _signed;
 }
 
-int AForm::getGradeToSign()
+int Form::getGradeToSign()
 {
 	return _gradeToSign;
 }
 
-int AForm::getGradeToExecute()
+int Form::getGradeToExecute()
 {
 	return _gradeToExecute;
 }
 
-const char* AForm::GradeTooLowException::what() const throw()
+const char* Form::GradeTooLowException::what() const throw()
 {
 	return "Grade too low";
 }
 
-const char* AForm::GradeTooHighException::what() const throw()
+const char* Form::GradeTooHighException::what() const throw()
 {
 	return "Grade too high";
 }
 
-void	AForm::beSigned(Bureaucrat bureaucrat)
-{
-	if (bureaucrat.getGrade() > _gradeToSign)
-		throw GradeTooLowException();
-	_signed = true;
+const char* Form::FormIsSigned::what() const throw() {
+	return "form already signed";
 }
 
-void	AForm::signAForm(Bureaucrat bureaucrat, AForm AForm)
+void	Form::beSigned(Bureaucrat const& bureaucrat)
 {
 	if (_signed == true)
-		std::cout << bureaucrat << "signed" << AForm << std::endl;
+		throw FormIsSigned();
+	else if (bureaucrat.getGrade() > _gradeToSign)
+		throw GradeTooLowException();
 	else
-		std::cout << bureaucrat << "couldn't sign" << AForm << std::endl;
+		_signed = true;
 }

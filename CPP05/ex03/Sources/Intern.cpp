@@ -6,7 +6,7 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 15:42:35 by malancar          #+#    #+#             */
-/*   Updated: 2024/06/11 21:14:08 by malancar         ###   ########.fr       */
+/*   Updated: 2024/06/18 18:09:34 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,20 +36,24 @@ AForm*	Intern::makePardon(std::string target) {
 	return new PresidentialPardonForm(target);
 }
 
-AForm*	Intern::makeForm(std::string form, std::string target) {
+const char* Intern::failCreateForm::what() const throw() {
+	return "Intern failed to create form";
+}
 
-	AForm*	(Intern::*createForm[3])(std::string const target) = {&Intern::makeShrubbery, &Intern::makeRobotomy, &Intern::makePardon};
+AForm*	Intern::makeForm(std::string form, std::string target) {
+	AForm*	(Intern::*createForm[3])(std::string const form) = {&Intern::makeShrubbery, &Intern::makeRobotomy, &Intern::makePardon};
 	std::string formName[] = {"shrubbery creation", "robotomy request", "presidential pardon"};
 	
-	int i = 3;
+	int i = 0;
 	while (i < 3)
 	{
 		if (formName[i] == form)
 		{
 			std::cout << "Intern creates " << form << std::endl;
 			return (this->*createForm[i])(target);
-			
 		}
+		i++;
 	}
-	 return (NULL);
+	throw failCreateForm();
+	return 0;
 }

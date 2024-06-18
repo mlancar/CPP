@@ -6,7 +6,7 @@
 #    By: malancar <malancar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/11 17:31:42 by malancar          #+#    #+#              #
-#    Updated: 2024/06/06 17:05:30 by malancar         ###   ########.fr        #
+#    Updated: 2024/06/18 15:12:00 by malancar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,10 +14,10 @@ CXX = c++
 
 FLAGS = -Wall -Werror -Wextra -g -std=c++98
 
-NAME = AForm
+NAME = form
 
 SOURCES = Bureaucrat.cpp	\
-		  AForm.cpp			\
+		  Form.cpp			\
 		  main.cpp
 
 OBJECTS =	$(SOURCES:.cpp=.o)

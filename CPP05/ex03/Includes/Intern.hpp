@@ -6,7 +6,7 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 15:42:26 by malancar          #+#    #+#             */
-/*   Updated: 2024/06/11 21:13:53 by malancar         ###   ########.fr       */
+/*   Updated: 2024/06/18 17:59:49 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,12 @@ class Intern
 		AForm*	makeShrubbery(std::string target);
 		AForm*	makeRobotomy(std::string target);
 		AForm*	makePardon(std::string target);
+
+		class failCreateForm : public std::exception
+		{
+			public:
+				const char* what() const throw();
+		};
 };
 
 #endif

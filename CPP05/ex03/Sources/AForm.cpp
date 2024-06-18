@@ -75,30 +75,31 @@ const char* AForm::GradeTooHighException::what() const throw()
 	return "Grade too high";
 }
 
+const char* AForm::FormIsSigned::what() const throw() {
+	return "form already signed";
+}
+
 const char* AForm::NotSignedException::what() const throw()
 {
 	return "Form not sign";
 }
 
-void	AForm::beSigned(Bureaucrat bureaucrat)
-{
-	if (bureaucrat.getGrade() > _gradeToSign)
-		throw GradeTooLowException();
-	_signed = true;
-}
-
-void	AForm::signAForm(Bureaucrat bureaucrat, AForm &form)
+void	AForm::beSigned(Bureaucrat const& bureaucrat)
 {
 	if (_signed == true)
-		std::cout << bureaucrat << "signed" << form << std::endl;
+		throw FormIsSigned();
+	else if (bureaucrat.getGrade() > _gradeToSign)
+		throw GradeTooLowException();
 	else
-		std::cout << bureaucrat << "couldn't sign" << form << std::endl;
+		_signed = true;
 }
 
 void	AForm::execute(Bureaucrat const& executor) const
 {
 	if (_signed == false)
+	{
 		throw AForm::NotSignedException();
-	if (executor.getGrade() > _gradeToExecute)
+	}
+	else if (executor.getGrade() > _gradeToExecute)
 		throw GradeTooLowException();
 }

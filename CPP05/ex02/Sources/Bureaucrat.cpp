@@ -6,7 +6,7 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 15:47:20 by malancar          #+#    #+#             */
-/*   Updated: 2024/06/10 18:03:42 by malancar         ###   ########.fr       */
+/*   Updated: 2024/06/18 17:10:46 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,16 +76,24 @@ const char* Bureaucrat::GradeTooHighException::what() const throw()
 	return "Grade too high";
 }
 
+void	Bureaucrat::signForm(AForm &form)
+{
+	try {
+		form.beSigned(*this);
+		std::cout << _name << " signed " << form.getName() << std::endl;
+	}
+	catch (const std::exception &e) {
+		std::cerr << _name << " couldn't sign " << form.getName() << " because " << e.what() << std::endl;
+	}
+}
+
 void	Bureaucrat::executeForm(AForm const& form) {
 
 	try {
 		form.execute(*this);
+		std::cout << _name << " executed " << form.getName() << std::endl;
 	}
 	catch (std::exception &e) {
-		std::cout << _name << "couldn't execute " << form.getName() << ": " << e.what() << std::endl;
-		
+		std::cout << _name << " couldn't execute " << form.getName() << ": " << e.what() << std::endl;
 	}
-	std::cout << _name << "executed " << form.getName() << std::endl;
-	//std::cout << _name << " executed " << form << std::endl;
-	
 }

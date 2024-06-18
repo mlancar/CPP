@@ -10,29 +10,29 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef AForm_HPP
-#define AForm_HPP
+#ifndef FORM_HPP
+#define FORM_HPP
 
 #include "Bureaucrat.hpp"
 
-class AForm
+class Bureaucrat;
+
+class Form
 {
 	public:
-		AForm(std::string const name, int const gradeToSign, int const gradeToExecute);
-		AForm(AForm const& copy);
-		~AForm();
-		AForm &operator=(AForm const& rhs);
+		Form(std::string const name, int const gradeToSign, int const gradeToExecute);
+		Form(Form const& copy);
+		~Form();
+		Form &operator=(Form const& rhs);
 
 		std::string	const getName();
 		bool	getSigned();
 		int 	getGradeToSign();
 		int 	getGradeToExecute();
-		void	beSigned(Bureaucrat bureaucrat);
-		void	signAForm(Bureaucrat bureaucrat, AForm AForm);
-
+		void	beSigned(Bureaucrat const& bureaucrat);
 
 	private:
-		AForm();
+		Form();
 		std::string const _name;
 		bool	_signed;
 		int  _gradeToSign;
@@ -48,8 +48,13 @@ class AForm
 			public:
 				const char* what() const throw();
 		};
+		class FormIsSigned : public std::exception
+		{
+			public:
+				const char* what() const throw();
+		};
 };
 
-std::ostream& operator<<(std::ostream &flux, AForm AForm);
+std::ostream& operator<<(std::ostream &flux, Form Form);
 
 #endif
