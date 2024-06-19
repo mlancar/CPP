@@ -6,7 +6,7 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 14:36:55 by malancar          #+#    #+#             */
-/*   Updated: 2024/06/15 18:06:35 by malancar         ###   ########.fr       */
+/*   Updated: 2024/06/19 16:28:23 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,60 +22,61 @@ ScalarConverter::ScalarConverter(ScalarConverter const& copy) {
 ScalarConverter::~ScalarConverter() {	
 }
 
+const char* ScalarConverter::cannotConvert::what() const throw() {
+	return "Cannot convert";
+}	
+
 void ScalarConverter::convert(std::string literal) {
-	char 	convertChar;
-	int		convertInt;
-	float	convertFloat;
-	double	convertDouble;
-	long	value;
-
-	(void)convertChar;
+	double	valueToConvert;
 	char *endptr;
-	convertInt = 0;
-	value = strtol(literal.c_str(), &endptr, 10);
-	convertDouble = strtod(literal.c_str(), &endptr);
-	//std::cout << "value = " << value << std::endl;
-	if (*endptr != '\0' && *endptr != 'f')
-		std::cerr << "int: erreur de conversion ou chaine vide" << std::endl;
-	else if (endptr == literal.c_str())
-		std::cerr << "int: caracteres non numeriques apres le nombre" << std::endl;
-	else if (value < std::numeric_limits<int>::min() || value> std::numeric_limits<int>::max())
-		std::cerr << "int: overflow" << std::endl;
-	else
-		std::cout << "int: " << static_cast<int>(convertDouble) << std::endl;
 	
-	convertFloat = strtof(literal.c_str(), &endptr);
-	if (*endptr != '\0' && *endptr != 'f')
-		std::cerr << "float: caracteres non numeriques apres le nombre" << std::endl;
-	else if (endptr == literal.c_str())
-		std::cerr << "float: caracteres non numeriques apres le nombre" << std::endl;
-	else if (std::isinf(convertFloat))
-		std::cerr << "float: infinie" << std::endl;
-	else if (convertFloat < -std::numeric_limits<float>::max() || convertFloat > std::numeric_limits<float>::max())
-		std::cerr << "float: overflow" << std::endl;
-	else
-		std::cout << "float: "  << std::fixed << std::setprecision(1) << static_cast<float>(convertDouble) << "f" << std::endl;
-
-	if (*endptr != '\0' && *endptr != 'f')
-		std::cerr << "double:  caracteres non numeriques apres le nombre" << std::endl;
-	else if (endptr == literal.c_str())
-		std::cerr << "double: caracteres non numeriques apres le nombre" << std::endl;
-	else if (std::isinf(convertDouble))
-		std::cerr << "double: infinie" << std::endl;
-	else if (convertDouble < -std::numeric_limits<double>::max() || convertDouble > std::numeric_limits<double>::max())
-		std::cerr << "double: overflow" << std::endl;
-	else
-		std::cout << "double: " << std::fixed << std::setprecision(1) << static_cast<double>(convertDouble) << std::endl;
-
-	convertChar = static_cast<char>(convertDouble);
-	if (isprint(convertChar))
-	{
-		//convertInt =(convertChar);
-		
-			std::cout << "char: " <<  convertChar << std::endl;
-		
-			//std::cerr << "char: impossible" << std::endl;
+	valueToConvert = strtof(literal.c_str(), &endptr);
+	
+	try {
+		if (*endptr != '\0' && *endptr != 'f')
+			throw cannotConvert();
+		else if (endptr == literal.c_str())
+			throw cannotConvert();
+		else if (valueToConvert < std::numeric_limits<int>::min() || valueToConvert> std::numeric_limits<int>::max())
+			throw std::overflow_error("int: overflow");
+		else if (valueToConvert < std::numeric_limits<int>::min() || valueToConvert> std::numeric_limits<int>::max())
+			throw std::overflow_error("int: overflow");
+		std::cout << "int: " << static_cast<int>(valueToConvert) << std::endl;
 	}
-	else
-		std::cerr << "char: non diplayable" << std::endl;
+	catch (const std::exception &e) {
+		std::cerr << e.what() << std::endl;
+	}
+	
+	try {
+		if (std::isinf(valueToConvert))
+			throw  std::overflow_error("float: infinite");
+		else if (valueToConvert < -std::numeric_limits<float>::max() || valueToConvert > std::numeric_limits<float>::max())
+			throw std::overflow_error("float: overflow");
+		// else if (valueToConvert != 0 && (std::fabs(valueToConvert) < std::numeric_limits<float>::min()))
+        // 	throw std::underflow_error("float: underflow");
+		std::cout << "float: "  << std::fixed << std::setprecision(1) << static_cast<float>(valueToConvert) << "f" << std::endl;
+	}
+	catch (const std::exception &e) {
+		std::cerr << e.what() << std::endl;
+	}
+
+	try {
+		if (std::isinf(valueToConvert))//peutetre mettre ca dans le main/cooonvert
+			throw  std::overflow_error("double: infinite");
+		else if (valueToConvert < -std::numeric_limits<double>::max() || valueToConvert > std::numeric_limits<double>::max())
+			throw std::overflow_error("double: overflow");
+		std::cout << "double: " << std::fixed << std::setprecision(1) << static_cast<double>(valueToConvert) << std::endl;
+	}
+	catch (const std::exception &e) {
+		std::cerr << e.what() << std::endl;
+	}
+	try {
+		if (isprint(static_cast<char>(valueToConvert)) != 0)
+				std::cout << "char: " <<   static_cast<char>(valueToConvert) << std::endl;
+		else
+			throw std::out_of_range("char: non diplayable");
+	}
+	catch (const std::exception &e) {
+		std::cerr << e.what() << std::endl;
+	}
 }

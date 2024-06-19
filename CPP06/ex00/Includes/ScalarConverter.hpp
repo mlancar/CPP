@@ -6,7 +6,7 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 14:36:46 by malancar          #+#    #+#             */
-/*   Updated: 2024/06/15 16:22:38 by malancar         ###   ########.fr       */
+/*   Updated: 2024/06/19 15:38:44 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,13 @@ class ScalarConverter
 	public:
 		~ScalarConverter();
 		static void	convert(std::string literal);
+		
+
+		class cannotConvert : public std::exception
+		{
+			public:
+				const char* what() const throw();
+		};
 		
 	private:
 		ScalarConverter();
