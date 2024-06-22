@@ -6,7 +6,7 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 14:36:55 by malancar          #+#    #+#             */
-/*   Updated: 2024/06/22 14:45:39 by malancar         ###   ########.fr       */
+/*   Updated: 2024/06/22 15:04:15 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,9 @@ void	ScalarConverter::convertInt(char *endptr, std::string literal, double value
 }
 
 void	ScalarConverter::convertFloat(char *endptr, std::string literal, double valueToConvert) {
-	if (isAlpha(literal, valueToConvert))
+	if (std::isnan(valueToConvert))
+		throw cannotConvert();
+	else if (isAlpha(literal, valueToConvert))
 		std::cout << "float: "  << std::fixed << std::setprecision(1) << static_cast<float>(literal.at(0)) << "f" << std::endl;
 	else if (*endptr == 'f' && literal.find('f') != literal.size() - 1)
 		throw cannotConvert();
@@ -78,7 +80,9 @@ void	ScalarConverter::convertFloat(char *endptr, std::string literal, double val
 }
 
 void	ScalarConverter::convertDouble(char *endptr, std::string literal, double valueToConvert) {
-	if (isAlpha(literal, valueToConvert))
+	if (std::isnan(valueToConvert))
+		throw cannotConvert();
+	else if (isAlpha(literal, valueToConvert))
 		std::cout << "double: " << std::fixed << std::setprecision(1) << static_cast<double>(literal.at(0)) << std::endl;
 	else if (*endptr == 'f' && literal.find('f') != literal.size() - 1)
 		throw cannotConvert();

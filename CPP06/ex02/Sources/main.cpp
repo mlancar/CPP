@@ -6,7 +6,7 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/15 18:40:39 by malancar          #+#    #+#             */
-/*   Updated: 2024/06/22 14:53:53 by malancar         ###   ########.fr       */
+/*   Updated: 2024/06/22 15:08:15 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ void	identify(Base *p) {
 		std::cout << "type: B" << std::endl;
 	else if (dynamic_cast<C*>(p) != 0)
 		std::cout << "type: C" << std::endl;
+	else
+		std::cout << "cannot identify type" << std::endl;
 }
 
 void	identify(Base &p) {
