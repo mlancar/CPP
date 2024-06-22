@@ -1,24 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   awesome.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/17 15:21:02 by malancar          #+#    #+#             */
-/*   Updated: 2024/06/22 15:50:51 by malancar         ###   ########.fr       */
+/*   Created: 2024/06/22 15:45:58 by malancar          #+#    #+#             */
+/*   Updated: 2024/06/22 16:20:00 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "iter.hpp"
-#include "awesome.hpp"
+#ifndef AWESOME_HPP
+#define AWESOME_HPP
 
-int main() {
-	int tab[] = {0, 1, 2, 3, 4};
-	awesome tab2[5];
+#include "iostream"
+
+class awesome
+{	
+	private:
+		int _n;
+	public:
+
+		~awesome() {
+			
+		}
+
+		awesome(): _n(42) {
+			return;
+		}
+		int get() const {
+			return _n;
+		}
+};
+
+std::ostream &operator<<(std::ostream &o, awesome const &rhs) {
+	return o << rhs.get();
 	
-	iter(tab, 5, print);
-	iter(tab2, 5, print);
-
-	return 0;
 }
+
+template<typename T>
+
+void print(T const &x) {
+	std::cout << x << std::endl;
+	return;
+}
+
+#endif
