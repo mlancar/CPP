@@ -6,7 +6,7 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/15 18:40:39 by malancar          #+#    #+#             */
-/*   Updated: 2024/06/17 14:51:09 by malancar         ###   ########.fr       */
+/*   Updated: 2024/06/22 14:53:53 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,21 +21,11 @@ Base*	generate() {
 	int random_value = std::rand();
 
 	if (random_value % 3 == 0)
-	{
-		
-		return new A();
-	}
+		return dynamic_cast<Base *>(new A);
 	else if (random_value % 3 == 1)
-	{
-		//B *one;
-		return new B();
-	}
-	else if (random_value % 3 == 2)
-	{
-		//C *two;
-		return new C();
-	}
-	return NULL;
+		return dynamic_cast<Base *>(new B);
+	else
+		return dynamic_cast<Base *>(new C);
 }
 
 void	identify(Base *p) {
@@ -90,11 +80,12 @@ int main() {
 	base2  = generate();
 	sleep(1);
 	base3 = generate();
-	
+	std::cout << "Identify by using pointer: " << std::endl;
 	identify(base);
 	identify(base2);
 	identify(base3);
-	
+	std::cout << std::endl;
+	std::cout << "Identify by using reference: " << std::endl;
 	identify(base);
 	identify(base2);
 	identify(base3);

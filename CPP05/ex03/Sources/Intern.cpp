@@ -6,7 +6,7 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 15:42:35 by malancar          #+#    #+#             */
-/*   Updated: 2024/06/18 18:09:34 by malancar         ###   ########.fr       */
+/*   Updated: 2024/06/18 19:18:37 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,11 @@ Intern::Intern(Intern const& copy) {
 
 Intern::~Intern() {
 	
+}
+
+Intern &Intern::operator=(Intern const& rhs) {
+	(void)rhs;
+	return *this;
 }
 
 AForm*	Intern::makeShrubbery(std::string target) {

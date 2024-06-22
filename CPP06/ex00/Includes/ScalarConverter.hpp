@@ -6,7 +6,7 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 14:36:46 by malancar          #+#    #+#             */
-/*   Updated: 2024/06/21 15:34:59 by malancar         ###   ########.fr       */
+/*   Updated: 2024/06/22 14:36:16 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ class ScalarConverter
 	public:
 		~ScalarConverter();
 		static void	convert(std::string literal);
-		static void	convertchar(char *endptr, std::string literal, double valueToConvert);
+		static bool	isAlpha(std::string literal, double valueToConvert);
+		static void	convertchar(std::string literal, double valueToConvert);
 		static void	convertInt(char *endptr, std::string literal, double valueToConvert);
 		static void	convertFloat(char *endptr, std::string literal, double valueToConvert);
 		static void	convertDouble(char *endptr, std::string literal, double valueToConvert);

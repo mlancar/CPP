@@ -6,7 +6,7 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 15:49:52 by malancar          #+#    #+#             */
-/*   Updated: 2024/06/18 17:34:43 by malancar         ###   ########.fr       */
+/*   Updated: 2024/06/18 19:14:24 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int main()
 	std::cout << std::endl;
 
 	ShrubberyCreationForm shrub = ShrubberyCreationForm("foret");
-	RobotomyRequestForm robob = RobotomyRequestForm("");
+	RobotomyRequestForm robob = RobotomyRequestForm("me");
 	PresidentialPardonForm pres = PresidentialPardonForm("Mathieu");
 
 	std::cout << std::endl;
