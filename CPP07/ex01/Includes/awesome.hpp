@@ -6,7 +6,7 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/22 15:45:58 by malancar          #+#    #+#             */
-/*   Updated: 2024/06/22 16:20:00 by malancar         ###   ########.fr       */
+/*   Updated: 2024/06/23 13:44:33 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,12 @@ class awesome
 	private:
 		int _n;
 	public:
-
-		~awesome() {
-			
-		}
-
 		awesome(): _n(42) {
 			return;
 		}
+		~awesome() {
+		}
+
 		int get() const {
 			return _n;
 		}
