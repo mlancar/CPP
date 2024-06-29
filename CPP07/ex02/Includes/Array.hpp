@@ -6,12 +6,12 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 17:14:58 by malancar          #+#    #+#             */
-/*   Updated: 2024/06/23 14:37:22 by malancar         ###   ########.fr       */
+/*   Updated: 2024/06/26 15:29:45 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ARRAY_HPP
-#define ARRAY_HPP
+# define ARRAY_HPP
 
 #include <iostream>
 
@@ -41,9 +41,6 @@ class Array
 		Array &operator=(Array const& rhs) {
 			_nbElement = rhs._nbElement;
 			_size = rhs._size;
-			// if (this != rhs) {
-			// 	delete[] _array;
-			// }
 			_array = new T[_size];
 			for (unsigned int i = 0; i < _nbElement; i++) {
 				_array[i] = rhs._array[i];
@@ -53,7 +50,7 @@ class Array
 
 		T &operator[](unsigned int index) {
 			if (index > _nbElement)
-				throw std::out_of_range("out of range");
+				throw std::out_of_range("Cannot access this index");
 			return _array[index];
 		}
 		
@@ -62,7 +59,7 @@ class Array
 		}
 		void	addElement(T element) {
 			if (_nbElement >= _size)
-				throw std::out_of_range("out_of_range");
+				throw std::out_of_range("Cannot add element");
 			_array[_nbElement] = element;
 			_nbElement++;
 		}

@@ -6,7 +6,7 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 17:42:50 by malancar          #+#    #+#             */
-/*   Updated: 2024/06/23 14:35:56 by malancar         ###   ########.fr       */
+/*   Updated: 2024/06/26 15:30:21 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int main() {
 
-	
 	try {
 		Array<int> array(3);
+		//array.displayArray();
 		
 		array.addElement(42);
 		Array<int> array2 = array;
@@ -26,7 +26,7 @@ int main() {
 		array.addElement(12);
 		array.addElement(1);
 		array.displayArray();
-		std::cout << "array = " <<  array[2] << std::endl;
+		//std::cout << "array = " <<  array[2] << std::endl;
 		array.addElement(99);
 		array.displayArray();
 

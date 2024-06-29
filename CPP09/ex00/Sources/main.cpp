@@ -6,7 +6,7 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 17:51:22 by malancar          #+#    #+#             */
-/*   Updated: 2024/06/28 19:45:53 by malancar         ###   ########.fr       */
+/*   Updated: 2024/06/29 20:00:50 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,19 @@ int main(int ac, char **av) {
 	}
 	//gros caca qui pue
 	//c'est moi hihihi
-	std::ifstream infile(av[1], std::ios_base::in);
-	if (!infile)
-	{
-		std::cerr << "Cannot open" << infile << std::endl;
-		return 0;
+	try {
+		bitcoinExchange.parseInput(av[1]);
+	}
+	catch (std::exception const& e) {
+		std::cerr <<  e.what() << std::endl;
 	}
 	try {
-		bitcoinExchange.fillData(av[1]);
+		bitcoinExchange.fillData();
 	}
 	catch (std::exception const& e) {
 		std::cerr << e.what() << std::endl;
 	}
+	//bitcoinExchange.displayData();
+	
 	return 0;
 }

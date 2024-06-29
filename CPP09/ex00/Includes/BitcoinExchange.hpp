@@ -6,7 +6,7 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 16:20:23 by malancar          #+#    #+#             */
-/*   Updated: 2024/06/28 19:38:32 by malancar         ###   ########.fr       */
+/*   Updated: 2024/06/29 18:33:45 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,9 @@
 #include <iostream>
 #include <map>
 #include <fstream>
+#include <cstdlib>
+#include <algorithm>
+#include <sstream>
 
 class BitcoinExchange
 {
@@ -23,10 +26,12 @@ class BitcoinExchange
 		BitcoinExchange();
 		~BitcoinExchange();
 		
-		void	fillData(char *file);
+		void	fillData();
+		void	parseInput(char *file);
+		void	displayData();
 		
 	private:
-		std::map<std::string, float> _data;
+		std::map<std::string, double> _data;
 };
 
 
