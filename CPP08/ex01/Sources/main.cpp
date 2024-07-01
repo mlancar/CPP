@@ -6,7 +6,7 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 13:46:11 by malancar          #+#    #+#             */
-/*   Updated: 2024/07/01 17:12:17 by malancar         ###   ########.fr       */
+/*   Updated: 2024/07/01 18:37:05 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@ int main() {
 		span.addNumber(11111111);
 		span.addNumber(9);
 		span.addNumber(11);
-
-		
 	}
 	catch (const std::exception &e) {
 		std::cerr << e.what() << std::endl;
@@ -44,7 +42,6 @@ int main() {
 		std::cout << span.longestSpan() << std::endl;
 		std::cout << span2.shortestSpan() << std::endl;
 		std::cout << span2.longestSpan() << std::endl;
-		
 	}
 	catch (const std::exception &e) {
 		std::cerr << e.what() << std::endl;
@@ -53,10 +50,19 @@ int main() {
 	std::cout << span.longestSpan() << std::endl;
 	
 	try {
-		Span span(11000);
+		std::cout << "TEST ADD 11000" << std::endl;
+		std::vector<int> vectorTest;
+
 		for (int i = 0; i < 11000; i++) {
-			span.addNumber(i);
+			vectorTest.push_back(i);
 		}
+		
+		Span span(11000);
+		std::vector<int>::iterator begin = vectorTest.begin();
+		std::vector<int>::iterator end = vectorTest.end();
+
+		span.addNumbers(begin, end);
+		
 		std::cout << span.shortestSpan() << std::endl;
 		std::cout << span.longestSpan() << std::endl;
 	}
