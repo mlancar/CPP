@@ -6,7 +6,7 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 13:48:10 by malancar          #+#    #+#             */
-/*   Updated: 2024/06/24 17:30:03 by malancar         ###   ########.fr       */
+/*   Updated: 2024/07/01 16:39:57 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,19 @@
 #include <vector>
 #include <limits>
 #include <limits.h>
+#include <sstream>
 
 class Span
 {
 	public:
-		Span(unsigned int number);
+		Span();
+		Span(int number);
 		Span(Span const& copy);
 		~Span();
 		
 		Span &operator=(Span const& rhs);
 	
-		void	addNumber(unsigned int numberToAdd);
+		void	addNumber(int numberToAdd);
 		int		shortestSpan();
 		int		longestSpan();
 		

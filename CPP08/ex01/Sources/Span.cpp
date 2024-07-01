@@ -6,64 +6,66 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 13:48:57 by malancar          #+#    #+#             */
-/*   Updated: 2024/06/24 18:24:58 by malancar         ###   ########.fr       */
+/*   Updated: 2024/07/01 17:08:26 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Span.hpp"
 
-Span::Span(unsigned int sizeMax): _sizeMax(sizeMax) {
+Span::Span(): _sizeMax(0) {
+}
+Span::Span(int sizeMax): _sizeMax(sizeMax) {
 }
 
-Span::Span(Span const& copy): _sizeMax(copy._sizeMax) {
-	
+Span::Span(Span const& copy) {
+	_sizeMax = copy._sizeMax;
+	_span = copy._span;
 }
 
 Span::~Span() {
-	
 }
 
 Span	&Span::operator=(Span const& rhs)  {
+	
 	_sizeMax = rhs._sizeMax;
+	_span = rhs._span;
 	return *this;
 }
 
-void	Span::addNumber(unsigned int numberToAdd) {
-	(void)numberToAdd;
+void	Span::addNumber(int numberToAdd) {
+	std::string number;
+	std::ostringstream convert;
+	convert << numberToAdd;
+	number = convert.str();
+	
 	if (_span.size() >= _sizeMax)
-		throw std::out_of_range("out of range");
+		throw std::out_of_range("Span is full, cannot add: " + number);
 	_span.push_back(numberToAdd);
 }
 
 int		Span::shortestSpan() {
 
+	if (_span.size() < 2)
+		throw std::invalid_argument("Cannot find shortest span, need at least to value");
 	std::sort(_span.begin(), _span.end());
 	int shortestSpan = INT_MAX;
-	// for (std::vector<int>::iterator i = _span.begin(); i != _span.end(); i++)
-	// 	std::cout << *i << std::endl;
 	int lastNumber = _span[0];
+	
 	for (std::vector<int>::iterator i = _span.begin() + 1 ; i != _span.end() ; i++) {
-		//std::cout << lastNumber << " - " << *i << " = " << *i - lastNumber << std::endl;
+		
 		if (*i - lastNumber < shortestSpan)
 			shortestSpan = *i - lastNumber;
 		lastNumber = *i;
 	}
-	//std::cout << "shortest span = " << shortestSpan << std::endl;
-	return 0;
+	return shortestSpan;
 }
 
 int		Span::longestSpan() {
-	// std::sort(_span.begin(), _span.end());
-	// std::vector<int>::iterator min = _span.begin();
-	// std::vector<int>::iterator max= _span.begin();
-	// for (std::vector<int>::iterator i = _span.begin() + 1 ; i != _span.end() ; i++) {
-	// 	if (std::min_element(*min, *i) == *i)
-	// 		min = i;
-	// 	if (std::max_element(*max,*i) == *i)
-	// 		max = i;
-	// }
-	// int maxnb = *max;
+	if (_span.size() < 2)
+	throw std::invalid_argument("Cannot find shortest span, need at least to value");
+
 	int min = *std::min_element(_span.begin(), _span.end());
 	int max = *std::max_element(_span.begin(), _span.end());
+	
 	return (max - min);
 }
