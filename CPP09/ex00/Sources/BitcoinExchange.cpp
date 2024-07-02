@@ -6,7 +6,7 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 16:20:31 by malancar          #+#    #+#             */
-/*   Updated: 2024/07/02 18:14:49 by malancar         ###   ########.fr       */
+/*   Updated: 2024/07/02 18:36:22 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,8 @@ void	BitcoinExchange::fillData() {
 	float value;
 	std::string tmp;
 	
+	_dataBase.clear();
+	_dataBase.seekg(0, _dataBase.beg);
 	while (getline(_dataBase, line)) {
 		key = line.substr(0, line.find(','));
 		tmp = (line.substr(line.find(',') + 1));
@@ -124,21 +126,29 @@ void	BitcoinExchange::displayData() {
 void	BitcoinExchange::exchange() {
 
 	std::string line;
+	std::string date;
+	double		value;
+	char separator = '|';
 	std::map<std::string, double>::iterator iterator;
 	
-	// std::cout << "is open = " << _inputFile.is_open() << std::endl;
-	// if (!_inputFile.is_open()) {
-    //     throw std::runtime_error("Cannot open input file: ");
-	// std::cout << "ici inputfile = " << &_inputFile << std::endl;
-    // // }
-	std::cout << getline(_inputFile, line) << std::endl;
+	_inputFile.clear();
+	_inputFile.seekg(0, _inputFile.beg);
 	while (getline(_inputFile, line)) {
-		std::cout << "test2" << std::endl;
-		if (line != "data | value") {
-			iterator = _data.find(line);
-			std::cout << "line = " << line << std::endl;
+		if (line != "date | value") {
+			//std::cout << "line = " << line << std::endl;
+			std::istringstream iss (line);
+
+			iss >> date >> separator >> value;
+			
+			iterator = _data.find(date);
+			//std::cout << "date = " << date << std::endl;
 			if (iterator != _data.end())
 				std::cout << "find: " << iterator->first << std::endl;
+			else {
+				std::cout << "couldn't find " << date << "in map" << std::endl;
+				
+			}
+				
 		}
 	}
 }

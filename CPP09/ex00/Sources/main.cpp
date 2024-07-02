@@ -6,7 +6,7 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 17:51:22 by malancar          #+#    #+#             */
-/*   Updated: 2024/07/02 17:52:08 by malancar         ###   ########.fr       */
+/*   Updated: 2024/07/02 18:34:36 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,10 @@ int main(int ac, char **av) {
 		bitcoinExchange.parseInputFile();
 		bitcoinExchange.fillData();
 		bitcoinExchange.exchange();
+		//bitcoinExchange.displayData();
 	}
 	catch (std::exception const& e) {
 		std::cerr <<  e.what() << std::endl;
 	}
-	//bitcoinExchange.displayData();
 	return 0;
 }
