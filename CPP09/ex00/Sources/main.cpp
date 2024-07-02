@@ -6,7 +6,7 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 17:51:22 by malancar          #+#    #+#             */
-/*   Updated: 2024/07/01 13:25:51 by malancar         ###   ########.fr       */
+/*   Updated: 2024/07/02 17:52:08 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,19 +24,14 @@ int main(int ac, char **av) {
 	//c'est moi hihihi
 	try {
 		bitcoinExchange.openFiles("data.csv", av[1]);
-		bitcoinExchange.parseDate(bitcoinExchange.getDataBase(), ',');
-		bitcoinExchange.parseDate(bitcoinExchange.getDataBase(), '|');
+		bitcoinExchange.parseDataBase();
+		bitcoinExchange.parseInputFile();
+		bitcoinExchange.fillData();
+		bitcoinExchange.exchange();
 	}
 	catch (std::exception const& e) {
 		std::cerr <<  e.what() << std::endl;
 	}
-	try {
-		bitcoinExchange.fillData();
-	}
-	catch (std::exception const& e) {
-		std::cerr << e.what() << std::endl;
-	}
 	//bitcoinExchange.displayData();
-	
 	return 0;
 }

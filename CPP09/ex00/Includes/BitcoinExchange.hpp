@@ -6,7 +6,7 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 16:20:23 by malancar          #+#    #+#             */
-/*   Updated: 2024/07/01 13:27:10 by malancar         ###   ########.fr       */
+/*   Updated: 2024/07/02 16:49:39 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,11 @@ class BitcoinExchange
 		std::ifstream*	getDataBase();
 		std::ifstream*	getInputFile();
 		void	openFiles(std::string const& dataBase, std::string const& inputFile);
+		void	parseDataBase();
+		void	parseInputFile();
 		void	fillData();
-		void	parseDate(std::ifstream *file, char separator);
 		void	displayData();
+		void	exchange();
 		
 	private:
 		std::map<std::string, double> _data;
