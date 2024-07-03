@@ -6,7 +6,7 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 16:20:31 by malancar          #+#    #+#             */
-/*   Updated: 2024/07/02 18:36:22 by malancar         ###   ########.fr       */
+/*   Updated: 2024/07/03 16:13:13 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,35 +68,40 @@ void	BitcoinExchange::parseDataBase() {
 	}
 }
 
-void	BitcoinExchange::parseInputFile() {
+bool	BitcoinExchange::isInputValid(std::string line, int i) {
 	
-	std::string line;
 	std::string year;
 	std::string month;
 	std::string day;
 	std::string date;
 	double		value;
 	char separator = '|';
-	int i = 0;
+
+	std::istringstream iss (line);
 	
-	// std::cout << "inputfile = " << _inputFile << std::endl;
-	while (getline(_inputFile, line)) {
-		std::istringstream iss (line);
-		
-		if (i == 0) {
-			if (line != "date | value")
-				std::cerr << "Syntax error: " + line << std::endl;
-		}
-		else {
-			struct tm tm;
-			iss >> date >> separator >> value;
-			if (iss.fail() == true)
-				std::cerr <<  "Syntax error: " << line << std::endl;
-			else if (!strptime(date.c_str(), "%F", &tm))
-				std::cerr << "Syntax error: " + line << std::endl;
-		}
-		i++;
+	if (i == 0) {
+		if (line != "date | value")
+			std::cerr << "Syntax error: " + line << std::endl;
+		else
+			return true;
 	}
+	else {
+		//check date
+		struct tm tm;
+		iss >> date >> separator >> value;
+		if (iss.fail() == true)
+			std::cerr <<  "Syntax error: " << line << std::endl;
+		else if (!strptime(date.c_str(), "%F", &tm))
+			std::cerr << "Syntax error: " + line << std::endl;
+		//check value
+		else if (value < 0)
+			std::cerr << "Number is not positive: " << value << std::endl;
+		else if (value > 1000)
+			std::cerr << "Number superior than 1000: " << value << std::endl;
+		else
+			return true;
+	}
+	return false;
 }
 
 void	BitcoinExchange::fillData() {
@@ -119,8 +124,20 @@ void	BitcoinExchange::fillData() {
 void	BitcoinExchange::displayData() {
 	
 	for (std::map<std::string, double>::iterator i = _data.begin(); i != _data.end(); i++) {
-		std::cout << i->first << i->second << std::endl;
+		std::cout << i->first << "," << i->second << std::endl;
 	}
+}
+
+std::map<std::string, double>::iterator	BitcoinExchange::findClosestDate(std::string date) {
+	std::map<std::string, double>::iterator iterator;
+
+	iterator = _data.upper_bound(date);
+	if (iterator == _data.begin()) {//return quelque chose
+		std::cerr << "All dates in the dataBase are greater than ther date the inputFile" << std::endl;
+	}
+	--iterator;
+	//std::cout << "closest date in database: " << iterator->first << std::endl;
+	return iterator;
 }
 
 void	BitcoinExchange::exchange() {
@@ -128,27 +145,29 @@ void	BitcoinExchange::exchange() {
 	std::string line;
 	std::string date;
 	double		value;
+	double		result;
 	char separator = '|';
+	int i = 0;
 	std::map<std::string, double>::iterator iterator;
+	
 	
 	_inputFile.clear();
 	_inputFile.seekg(0, _inputFile.beg);
 	while (getline(_inputFile, line)) {
-		if (line != "date | value") {
-			//std::cout << "line = " << line << std::endl;
+		if (isInputValid(line, i) == true && line != "date | value") {
 			std::istringstream iss (line);
-
 			iss >> date >> separator >> value;
-			
 			iterator = _data.find(date);
-			//std::cout << "date = " << date << std::endl;
-			if (iterator != _data.end())
-				std::cout << "find: " << iterator->first << std::endl;
-			else {
-				std::cout << "couldn't find " << date << "in map" << std::endl;
-				
+			if (iterator != _data.end()) {
+				result = value * iterator->second;
+				std::cout << iterator->first << " => " << value << " = " << result << std::endl;
 			}
-				
+			else {
+				iterator = findClosestDate(date);//check return
+				result = value * iterator->second;
+				std::cout << iterator->first << " => " << value << " = " << result << std::endl;
+			}
 		}
+		i++;
 	}
 }
