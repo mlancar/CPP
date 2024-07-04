@@ -6,7 +6,7 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 16:16:17 by malancar          #+#    #+#             */
-/*   Updated: 2024/07/03 19:00:33 by malancar         ###   ########.fr       */
+/*   Updated: 2024/07/04 15:01:29 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 #include <algorithm>
 #include <vector>
 #include <cstring>
+#include <list>
 
 class RPN
 {
@@ -32,7 +33,7 @@ class RPN
 		void	casio90plusE();
 		
 	private:
-		std::vector<std::string>	_rpn;
+		std::list<std::string>	_rpn;
 };
 
 #endif

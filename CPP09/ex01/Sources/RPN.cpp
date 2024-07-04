@@ -6,7 +6,7 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 16:16:09 by malancar          #+#    #+#             */
-/*   Updated: 2024/07/03 19:38:29 by malancar         ###   ########.fr       */
+/*   Updated: 2024/07/04 16:53:38 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,9 @@ void	RPN::parseInput(char *arg) {
 
 	//check que chaque input soit separe d'un seul espace ?
 	while (inputStream >> input) {
-		//std::cout << input << std::endl;
 		inputNumber = atoi(input.c_str());
-		if (!inputNumber)
+		if (!inputNumber && input != "0")
 		{
-			//std::cout << "is not digit = " << input << std::endl;
 			if (input != "+" && input != "-" && input != "/" && input != "*")
 				throw std::invalid_argument("Bad input: " + input + "\nOperator allowed: '+', '-', '/' or '*'");
 		}
@@ -53,50 +51,75 @@ void	RPN::parseInput(char *arg) {
 		}
 		_rpn.push_back(input);
 	}
-	//std::cout << std::endl;
-	// for (std::vector<std::string>::iterator it = _rpn.begin(); it != _rpn.end(); it++) {
-	// 	std::cout << "vector = " << *it << std::endl;
-	// }
 }
+
+//"1 2 * 2 / 2 * 2 4 - +"
+//cet input est invalide ?
 
 void	RPN::casio90plusE() {
 	
 	int sumValue = 0;
-	//faire dans une boucle qui appelle les bonnes condition aux bons moments
-	//parce que la ca marcghe pas si les operateurs sont pas dans cet ordre
-	//mais on a une bonne base je pense
-	std::vector<std::string>::iterator itPlus = find(_rpn.begin(), _rpn.end(), "+");
-	std::vector<std::string>::iterator itStart = _rpn.begin();
-	if (itPlus != _rpn.end()) {
-		for (std::vector<std::string>::iterator it = itStart; it != itPlus; it++) {
-			sumValue += atoi((*it).c_str());			
+	std::list<std::string>::iterator itPlus = find(_rpn.begin(), _rpn.end(), "+");
+	std::list<std::string>::iterator itStart = _rpn.begin();
+	std::list<std::string>::iterator itMinus = find(_rpn.begin(), _rpn.end(), "-");
+	std::list<std::string>::iterator itMultiply = find(_rpn.begin(), _rpn.end(), "*");
+	std::list<std::string>::iterator itDivide = find(_rpn.begin(), _rpn.end(), "/");
+	
+	for (std::list<std::string>::iterator iterator = _rpn.begin(); iterator != _rpn.end();iterator++) {
+		if (*iterator == "+") {
+			if (itStart != _rpn.begin()) {
+			for (std::list<std::string>::iterator it = itStart; it != itPlus; it++) {
+				sumValue += atoi((*it).c_str());			
+			}
+			itStart = itPlus;
+			itStart++;
+			itPlus = find(itStart, _rpn.end(), "+");
+			}
+			//std::cout << "+ result = " << sumValue << std::endl;
 		}
-		itStart = itPlus + 1;
-	}
-	std::cout << "+ result = " << sumValue << std::endl;
-	std::vector<std::string>::iterator itMinus = find(_rpn.begin(), _rpn.end(), "-");
-	if (itMinus != _rpn.end()) {
-		for (std::vector<std::string>::iterator it = itStart; it != itMinus; it++) {
-			sumValue -= atoi((*it).c_str());
-		}
-		itStart = itMinus + 1;
-	}
-	std::cout << "- result = " << sumValue << std::endl;
-	std::vector<std::string>::iterator itMultiply = find(_rpn.begin(), _rpn.end(), "*");
-	if (itMultiply != _rpn.end()) {
-		for (std::vector<std::string>::iterator it = itStart; it != itMultiply; it++) {
-			sumValue *= atoi((*it).c_str());
-		}
-		itStart = itMultiply + 1;
-	}
-	std::cout << "* result = " << sumValue << std::endl;
+		else if (*iterator == "-") {
+			if (itStart != itMinus) {
+			for (std::list<std::string>::iterator it = itStart; it != itMinus; it++) {
+				if (it == _rpn.begin())
+					sumValue += atoi((*it).c_str());
+				else
+					sumValue -= atoi((*it).c_str());
+				//std::cout << "- result = " << sumValue << std::endl;
+				
+			}
+			itStart = itMinus;
+			itStart++;
+			itMinus = find(itStart, _rpn.end(), "-");
 
-	std::vector<std::string>::iterator itDivide = find(_rpn.begin(), _rpn.end(), "/");
-	if (itDivide != _rpn.end()) {
-		for (std::vector<std::string>::iterator it = itStart; it != itDivide; it++) {
-			sumValue /= atoi((*it).c_str());			
 		}
-		itStart = itDivide + 1;
+		}
+		else if (*iterator == "*") {
+			if (itStart != itMultiply) {
+				for (std::list<std::string>::iterator it = itStart; it != itMultiply; it++) {
+					if (it == _rpn.begin())
+						sumValue = 1;
+					sumValue *= atoi((*it).c_str());
+				}
+				itStart = itMultiply;
+				itStart++;
+				itMultiply = find(itStart, _rpn.end(), "*");
+			}
+			//std::cout << "* result = " << sumValue << std::endl;
+		}
+		else if (*iterator == "/") {
+			if (itStart != itDivide) {
+				for (std::list<std::string>::iterator it = itStart; it != itDivide; it++) {
+					if (it == _rpn.begin())
+						sumValue = atoi((*it).c_str());
+					else
+						sumValue /= atoi((*it).c_str());		
+				}
+				itStart = itDivide;
+				itStart++;
+				itDivide = find(itStart, _rpn.end(), "/");
+			}
+			//std::cout << "/ result = " << sumValue << std::endl;
+		}
 	}
-	std::cout << "/ result = " << sumValue << std::endl;
+	std::cout << sumValue << std::endl;
 }
