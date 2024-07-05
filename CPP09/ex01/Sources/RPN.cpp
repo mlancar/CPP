@@ -6,7 +6,7 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 16:16:09 by malancar          #+#    #+#             */
-/*   Updated: 2024/07/05 19:18:39 by malancar         ###   ########.fr       */
+/*   Updated: 2024/07/05 19:42:53 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,12 +82,14 @@ void	RPN::casio90plusE(char *arg) {
 				throw std::invalid_argument("Bad input: " + input + "\nOperator allowed: '+', '-', '/' or '*'");
 			else if (input == "+" && _rpn.size() > 1)
 				addition();
-			else if (input == "-")
+			else if (input == "-" && _rpn.size() > 1)
 				substraction();
-			else if (input == "*")
+			else if (input == "*" && _rpn.size() > 1)
 				multiplication();
-			else if (input == "/")
+			else if (input == "/" && _rpn.size() > 1)
 				division();
+			else
+				std::cout << "Error" << std::endl;
 		}
 		else {
 			if (input != "0" && (inputNumber <= 0 || inputNumber > 9)) {
