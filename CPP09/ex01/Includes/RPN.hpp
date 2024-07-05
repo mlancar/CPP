@@ -6,7 +6,7 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 16:16:17 by malancar          #+#    #+#             */
-/*   Updated: 2024/07/04 21:50:22 by malancar         ###   ########.fr       */
+/*   Updated: 2024/07/05 19:18:06 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,16 @@ class RPN
 		~RPN();
 		
 		RPN &operator=(RPN const& rhs);
-		void	parseInput(char *arg);
-		void	casio90plusE();
+		void	casio90plusE(char *arg);
+		void	addition();
+		void	substraction();
+		void	multiplication();
+		void	division();
 		
 	private:
-		std::stack<std::string>	_rpn;
+		std::stack<int>	_rpn;
+		int	_sumValue;
+		
 };
 
 #endif

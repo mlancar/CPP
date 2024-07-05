@@ -6,7 +6,7 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 16:16:09 by malancar          #+#    #+#             */
-/*   Updated: 2024/07/04 22:24:57 by malancar         ###   ########.fr       */
+/*   Updated: 2024/07/05 19:18:39 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,100 +30,73 @@ RPN&	RPN::operator=(RPN const& rhs) {
 	return *this;
 }
 
-void	RPN::parseInput(char *arg) {
+
+void	RPN::addition() {
+
+	int tmp = _rpn.top();
+	_rpn.pop();
+	_sumValue =_rpn.top() + tmp;
+	_rpn.pop();
+	_rpn.push(_sumValue);
+}
+
+void	RPN::substraction() {
+
+	int tmp = _rpn.top();
+	_rpn.pop();
+	_sumValue =_rpn.top() - tmp;
+	_rpn.pop();
+	_rpn.push(_sumValue);
+}
+
+void	RPN::multiplication() {
+
+	int tmp = _rpn.top();
+	_rpn.pop();
+	_sumValue =_rpn.top() * tmp;
+	_rpn.pop();
+	_rpn.push(_sumValue);
+}
+
+void	RPN::division() {
+
+	int tmp = _rpn.top();
+	_rpn.pop();
+	_sumValue =_rpn.top() / tmp;
+	_rpn.pop();
+	_rpn.push(_sumValue);
+}
+
+void	RPN::casio90plusE(char *arg) {
 	
 	std::stringstream inputStream(arg);
 	std::string input;
 	int inputNumber;
+	_sumValue = 0;
 
-	//check que chaque input soit separe d'un seul espace ?
 	while (inputStream >> input) {
 		inputNumber = atoi(input.c_str());
-		if (!inputNumber && input != "0")
+		if (inputNumber == 0 && input != "0")
 		{
-			if (input != "+" && input != "-" && input != "/" && input != "*")
+			if (input != "+" && input != "-" && input != "*" && input != "/")
 				throw std::invalid_argument("Bad input: " + input + "\nOperator allowed: '+', '-', '/' or '*'");
-			if (std::stack )
+			else if (input == "+" && _rpn.size() > 1)
+				addition();
+			else if (input == "-")
+				substraction();
+			else if (input == "*")
+				multiplication();
+			else if (input == "/")
+				division();
 		}
 		else {
-			if (inputNumber < 0 || inputNumber > 9) {
+			if (input != "0" && (inputNumber <= 0 || inputNumber > 9)) {
 				throw std::invalid_argument("Bad input: " + input + "\nExpected number between 0 and 9");
 			}
+			else
+				_rpn.push(inputNumber);
 		}
-		
-		_rpn.push(input);
-		
 	}
+	if (_rpn.size() > 0)
+		std::cout << _rpn.top() << std::endl;
 }
-
-void	RPN::casio90plusE() {
-		
-}
-
-// void	RPN::casio90plusE() {
-	
-// 	int sumValue = 0;
-// 	std::list<std::string>::iterator itPlus = find(_rpn.begin(), _rpn.end(), "+");
-// 	std::list<std::string>::iterator itStart = _rpn.begin();
-// 	std::list<std::string>::iterator itMinus = find(_rpn.begin(), _rpn.end(), "-");
-// 	std::list<std::string>::iterator itMultiply = find(_rpn.begin(), _rpn.end(), "*");
-// 	std::list<std::string>::iterator itDivide = find(_rpn.begin(), _rpn.end(), "/");
-	
-// 	for (std::list<std::string>::iterator iterator = _rpn.begin(); iterator != _rpn.end();iterator++) {
-// 		if (*iterator == "+") {
-// 			if (itStart != _rpn.begin()) {
-// 				for (std::list<std::string>::iterator it = itStart; it != itPlus; it++) {
-// 					sumValue += atoi((*it).c_str());
-// 			}
-// 			itStart = itPlus;
-// 			itStart++;
-// 			itPlus = find(itStart, _rpn.end(), "+");
-// 			}
-// 			//std::cout << "+ result = " << sumValue << std::endl;
-// 		}
-// 		else if (*iterator == "-") {
-// 			if (itStart != itMinus) {
-// 				for (std::list<std::string>::iterator it = itStart; it != itMinus; it++) {
-// 					if (it == _rpn.begin())
-// 					sumValue += atoi((*it).c_str());
-// 				else
-// 					sumValue -= atoi((*it).c_str());
-// 				//std::cout << "- result = " << sumValue << std::endl;
-				
-// 			}
-// 			itStart = itMinus;
-// 			itStart++;
-// 			itMinus = find(itStart, _rpn.end(), "-");
-
-// 		}
-// 		}
-// 		else if (*iterator == "*") {
-// 			if (itStart != itMultiply) {
-// 				for (std::list<std::string>::iterator it = itStart; it != itMultiply; it++) {
-// 					if (it == _rpn.begin())
-// 						sumValue = 1;
-// 					sumValue *= atoi((*it).c_str());
-// 				}
-// 				itStart = itMultiply;
-// 				itStart++;
-// 				itMultiply = find(itStart, _rpn.end(), "*");
-// 			}
-// 			//std::cout << "* result = " << sumValue << std::endl;
-// 		}
-// 		else if (*iterator == "/") {
-// 			if (itStart != itDivide) {
-// 				for (std::list<std::string>::iterator it = itStart; it != itDivide; it++) {
-// 					if (it == _rpn.begin())
-// 						sumValue = atoi((*it).c_str());
-// 					else
-// 						sumValue /= atoi((*it).c_str());		
-// 				}
-// 				itStart = itDivide;
-// 				itStart++;
-// 				itDivide = find(itStart, _rpn.end(), "/");
-// 			}
-// 			//std::cout << "/ result = " << sumValue << std::endl;
-// 		}
-// 	}
-// 	std::cout << sumValue << std::endl;
-// }
