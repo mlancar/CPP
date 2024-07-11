@@ -6,11 +6,12 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 17:34:50 by malancar          #+#    #+#             */
-/*   Updated: 2024/07/10 17:58:20 by malancar         ###   ########.fr       */
+/*   Updated: 2024/07/11 21:04:58 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
+
 
 int main(int ac, char **av) {
 	
@@ -20,15 +21,19 @@ int main(int ac, char **av) {
 	}
 	PmergeMe	test;
 	try {
-		test.parse(av);
+		std::vector<int> list;
+		int index = 0;
+		int size = 0;
+		
+		test.parse(av, list);
+		std::cout << "ETAPE 0" << std::endl << std::endl;
+		test.displayVector(list);
+		//test.swapInsidePair(list);
 		std::cout << "ETAPE 1" << std::endl << std::endl;
-		test.displayVector();
-		test.swapInsidePair();
+		test.displayVector(list);
+		test.sortFJ(list, index, size);
 		std::cout << "ETAPE 2" << std::endl << std::endl;
-		test.displayVector();
-		test.swapPair();
-		std::cout << "ETAPE 3" << std::endl << std::endl;
-		test.displayVector();
+		test.displayVector(list);
 
 	}
 	catch (std::exception const& e) {
