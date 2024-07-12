@@ -6,7 +6,7 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 17:32:56 by malancar          #+#    #+#             */
-/*   Updated: 2024/07/11 21:05:33 by malancar         ###   ########.fr       */
+/*   Updated: 2024/07/12 18:49:44 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <vector>
 # include <list>
 # include <cstdlib>
+# include <algorithm>
 
 class PmergeMe
 {
@@ -27,8 +28,8 @@ class PmergeMe
 
 		void	parse(char **arg, std::vector<int> &list);
 		void	displayVector(std::vector<int> list);
-		void	sortPair(std::vector<int> &list);
-		void	sortFJ(std::vector<int> &list, int index, int size);
+		void	sortElement(std::vector<int> &list, int sizeElement);
+		void	sortFJ(std::vector<int> &list, int index, int sizeElement);
 	private:
 		std::vector<int> _ceciEstUnVector;
 		std::vector<std::pair<int, int> >	_ceciEstUnVectorDePaires;

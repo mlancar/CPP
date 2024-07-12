@@ -6,7 +6,7 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 17:34:50 by malancar          #+#    #+#             */
-/*   Updated: 2024/07/11 21:04:58 by malancar         ###   ########.fr       */
+/*   Updated: 2024/07/12 18:50:34 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,15 @@ int main(int ac, char **av) {
 	try {
 		std::vector<int> list;
 		int index = 0;
-		int size = 0;
+		int size = 1;
 		
 		test.parse(av, list);
 		std::cout << "ETAPE 0" << std::endl << std::endl;
 		test.displayVector(list);
-		//test.swapInsidePair(list);
+
 		std::cout << "ETAPE 1" << std::endl << std::endl;
 		test.displayVector(list);
+		
 		test.sortFJ(list, index, size);
 		std::cout << "ETAPE 2" << std::endl << std::endl;
 		test.displayVector(list);
