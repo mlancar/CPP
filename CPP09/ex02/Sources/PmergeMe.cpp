@@ -6,7 +6,7 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 17:32:49 by malancar          #+#    #+#             */
-/*   Updated: 2024/07/12 18:50:13 by malancar         ###   ########.fr       */
+/*   Updated: 2024/07/12 19:46:08 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,26 +102,55 @@ void	PmergeMe::sortElement(std::vector<int> &list, int sizeElement) {
 			if (index == ((size_t)cursor - 1))
 				previousIndex = index;
 		}
-		
 	}
+}
+
+void	PmergeMe::binarySearch(std::vector<int> &list, std::vector<int> nonSorted, std::vector<int> sorted) {
+
+	(void)	list;
+	(void)sorted;
+	(void)nonSorted;
+	// for (size_t i = 0; i < list.size(); i++)
+	// 	std::cout << list[i] << std::endl;
+	// std::cout << std::endl;
+	// for (size_t i = 0; i < nonSorted.size(); i++)
+	// 	std::cout << nonSorted[i] << std::endl;
+	// std::cout << std::endl;
+	// for (size_t i = 0; i < sorted.size(); i++)
+	// 	std::cout << sorted[i] << std::endl;
 }
 
 void	PmergeMe::sortFJ(std::vector<int> &list, int index, int sizeElement) {
 	
 	int nbElement = list.size() / sizeElement;
-
-	if (nbElement <= 1)
+	std::cout << "nb elemetn = " << nbElement << std::endl;
+	std::cout << "SIZE ELEMENT = " << sizeElement << std::endl;
+	if (nbElement <=  1)
 		return ;
-	
 	sortElement(list, sizeElement);
 	sizeElement *= 2;
 	index++;
 	std::cout << "RECURSSION: " << index << std::endl;
 	displayVector(list);
 	sortFJ(list, index, sizeElement);
-	std::cout << "RECURSSION: " << index << std::endl;
+	std::cout << "APRES RECURSSION: " << index << std::endl;
 	index--;
+	
+	std::vector<int> sorted;
+	std::vector<int> nonSorted;
+	// for (std::vector<int>::iterator i = list.begin(); i != list.end(); i++) {
+	// 	sorted.push_back(*i);
+	// 	if (*i != 0 && *i % 2 == 0)
+	// 	{
+	// 		nonSorted.push_back(*i);
+	// 		list.erase(i);
+	// 	}
+	// }
+	
+	binarySearch(list, nonSorted, sorted);
+	//displayVector(toRemember);
 	displayVector(list);
+	
 }
 	
 	
