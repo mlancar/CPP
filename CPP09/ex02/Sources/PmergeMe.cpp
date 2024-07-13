@@ -6,7 +6,7 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 17:32:49 by malancar          #+#    #+#             */
-/*   Updated: 2024/07/12 19:46:08 by malancar         ###   ########.fr       */
+/*   Updated: 2024/07/13 16:36:25 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,54 +54,41 @@ void	PmergeMe::parse(char **arg, std::vector<int> &list) {
 		throw std::invalid_argument(input);
 }
 
-void	PmergeMe::sortElement(std::vector<int> &list, int sizeElement) {
+void	PmergeMe::swapElement(std::vector<int> &list, size_t sizeElement, size_t index) {
+
+	//std::cout << "index = " << index << "sizeElement = " << sizeElement << std::endl;
+	//std::cout << "index - size element = " << index - (sizeElement) << std::endl;
+	//std::cout << "SWAP" << std::endl;
+	for (size_t i = 0; i < sizeElement; i++) {
+		//std::cout << " i = " << i << std::endl;
+		//std::cout << "index = " << index - i << "to " << (index + sizeElement) - i << std::endl;
+		//std::cout << "swap = " << list[index - i] << " to = " << list[(index + sizeElement) - i] << std::endl;
+		std::swap(list[index - i], list[(index + sizeElement) - i]);
+	}
+	//std::cout << "PLUS SWAP" << std::endl;
+	//displayVector(list);
+
+}
+
+void	PmergeMe::sortElement(std::vector<int> &list, size_t sizeElement) {
 
 	std::cout << std::endl;
-	int previousIndex = 0;
 	size_t cursor = sizeElement;
-
-	if (cursor == 1)
-		return;
-	if (sizeElement == 2)
-	{
-		for (size_t index = 0; index < list.size(); index++)
+	//std::cout << "size element / 2 = " << sizeElement / 2 << std::endl;
+	//attention list impaire pas index < list.size(); nelement je crois?
+	//int nbElement = 
+	for (size_t index = (sizeElement -1); index < list.size(); index += (sizeElement * 2))
+	{	
+		//std::cout << "cursor = " << cursor - 1 << std::endl;
+		//std::cout << "index = " << index << std::endl;
+		//std::cout << "index to cmp = " << index + (sizeElement) << std::endl;
+		std::cout << "cmp = " << list[index] << " to = " << list[index + (sizeElement)] << std::endl;
+		if (list[index] > list[index + (sizeElement)])
 		{
-			if (index % 2 == 0)
-				previousIndex = index;
-			else if (index % 2 == 1)
-			{
-				if (list[index] < list[previousIndex])
-					std::swap(list[index], list[previousIndex]);
-			}
+			std::cout << std::endl;
+			swapElement(list, sizeElement, index);
 		}
-	}
-	else
-	{
-		for (size_t index = 0; index < list.size(); index++)
-		{	
-			//std::cout << "index = " << index << std::endl;
-			//std::cout << "cursor = " << cursor - 1 << std::endl;
-			if (index == (size_t)sizeElement &&  index == ((size_t)cursor - 1))
-				previousIndex = index;
-			if ((cursor - 1 ) == index)
-			{
-				//std::cout << "cmp = " << list[index] << " to = " << list[previousIndex] << std::endl;
-				if (list[index] < list[previousIndex])
-				{
-					std::cout << std::endl;
-					for (size_t i = index; i > index - (sizeElement ); --i) {
-						
-						//std::cout << "swap = " << i << " to = " << previousIndex << std::endl;
-						std::swap(list[i], list[previousIndex]);
-						previousIndex--;
-					}
-				}
-			}
-			if (index == cursor)
-				cursor += cursor;
-			if (index == ((size_t)cursor - 1))
-				previousIndex = index;
-		}
+		cursor += sizeElement;
 	}
 }
 
@@ -120,7 +107,7 @@ void	PmergeMe::binarySearch(std::vector<int> &list, std::vector<int> nonSorted, 
 	// 	std::cout << sorted[i] << std::endl;
 }
 
-void	PmergeMe::sortFJ(std::vector<int> &list, int index, int sizeElement) {
+void	PmergeMe::sortFJ(std::vector<int> &list, int index, size_t sizeElement) {
 	
 	int nbElement = list.size() / sizeElement;
 	std::cout << "nb elemetn = " << nbElement << std::endl;
@@ -136,8 +123,8 @@ void	PmergeMe::sortFJ(std::vector<int> &list, int index, int sizeElement) {
 	std::cout << "APRES RECURSSION: " << index << std::endl;
 	index--;
 	
-	std::vector<int> sorted;
-	std::vector<int> nonSorted;
+	//std::vector<int> sorted;
+	//std::vector<pair vector, int> nonSorted;
 	// for (std::vector<int>::iterator i = list.begin(); i != list.end(); i++) {
 	// 	sorted.push_back(*i);
 	// 	if (*i != 0 && *i % 2 == 0)
@@ -147,7 +134,7 @@ void	PmergeMe::sortFJ(std::vector<int> &list, int index, int sizeElement) {
 	// 	}
 	// }
 	
-	binarySearch(list, nonSorted, sorted);
+	//binarySearch(list, nonSorted, sorted);
 	//displayVector(toRemember);
 	displayVector(list);
 	
