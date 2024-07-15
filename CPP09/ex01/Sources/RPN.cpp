@@ -6,7 +6,7 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 16:16:09 by malancar          #+#    #+#             */
-/*   Updated: 2024/07/08 17:09:07 by malancar         ###   ########.fr       */
+/*   Updated: 2024/07/15 17:20:06 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ void	RPN::division() {
 	_rpn.push(_sumValue);
 }
 
+// check division par zero
 void	RPN::casio90plusE(char *arg) {
 	
 	std::stringstream inputStream(arg);

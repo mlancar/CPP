@@ -6,7 +6,7 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 17:32:49 by malancar          #+#    #+#             */
-/*   Updated: 2024/07/13 16:36:25 by malancar         ###   ########.fr       */
+/*   Updated: 2024/07/15 19:19:40 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,19 +92,31 @@ void	PmergeMe::sortElement(std::vector<int> &list, size_t sizeElement) {
 	}
 }
 
-void	PmergeMe::binarySearch(std::vector<int> &list, std::vector<int> nonSorted, std::vector<int> sorted) {
+void	PmergeMe::binarySearch(std::vector<int> &list, std::vector<int> nonSorted) {
 
-	(void)	list;
-	(void)sorted;
-	(void)nonSorted;
-	// for (size_t i = 0; i < list.size(); i++)
-	// 	std::cout << list[i] << std::endl;
-	// std::cout << std::endl;
-	// for (size_t i = 0; i < nonSorted.size(); i++)
-	// 	std::cout << nonSorted[i] << std::endl;
-	// std::cout << std::endl;
-	// for (size_t i = 0; i < sorted.size(); i++)
-	// 	std::cout << sorted[i] << std::endl;
+
+}
+
+template <typename T>
+void printList(const std::string &str, T &container, size_t sizeElement)
+{
+    typename T::iterator begin = container.begin();
+    if (!str.empty()) {
+		std::cout<<str<<" ";
+	}
+	
+	std::cout << "{";
+    for (size_t i = 0; begin != container.end();begin++ , i++)
+    {  
+        if (i == sizeElement)
+        {
+            std::cout<<"} {";
+            i = 0;
+        }
+        std::cout<<*begin<<" ";
+    }
+    std::cout<<"}";
+    std::cout<<std::endl;
 }
 
 void	PmergeMe::sortFJ(std::vector<int> &list, int index, size_t sizeElement) {
@@ -115,27 +127,51 @@ void	PmergeMe::sortFJ(std::vector<int> &list, int index, size_t sizeElement) {
 	if (nbElement <=  1)
 		return ;
 	sortElement(list, sizeElement);
-	sizeElement *= 2;
 	index++;
-	std::cout << "RECURSSION: " << index << std::endl;
+	std::cout << "LA DESCENTE AU ENFER NIVEAU: " << index << std::endl;
 	displayVector(list);
-	sortFJ(list, index, sizeElement);
-	std::cout << "APRES RECURSSION: " << index << std::endl;
+	std::cout << "____________________________________________________________________________________________" << std::endl;
+
+	sortFJ(list, index, sizeElement * 2);
+	std::cout << "_____________________________________________________________________________________________" << std::endl;
+	std::cout << "REMONTADA AU PARADIS NIVEAU: " << index << std::endl;
 	index--;
 	
-	//std::vector<int> sorted;
-	//std::vector<pair vector, int> nonSorted;
-	// for (std::vector<int>::iterator i = list.begin(); i != list.end(); i++) {
-	// 	sorted.push_back(*i);
-	// 	if (*i != 0 && *i % 2 == 0)
-	// 	{
-	// 		nonSorted.push_back(*i);
-	// 		list.erase(i);
-	// 	}
-	// }
+
+	std::vector<std::pair<std::vector<int>, int> >nonSorted;
+	// for (int i = sizeElement; i < nbElement; i += sizeElement) {
 	
-	//binarySearch(list, nonSorted, sorted);
-	//displayVector(toRemember);
+	// 	// if (*i != 0 && )
+	// 	// {
+	// 	// 	nonSorted.push_back(*i);
+	// 	// 	list.erase(i);
+	// 	// }
+	// }
+	std::cout << "nb elemetn = " << nbElement << std::endl;
+	std::cout << "SIZE ELEMENT = " << sizeElement << std::endl;
+	printList("", list, sizeElement);
+	if (nbElement < 3)
+		return;
+	int currrentElement = 2 * (sizeElement );
+	std::vector<int>::iterator start = list.begin() + currrentElement;
+	std::vector<int>::iterator end = list.begin() + (currrentElement + sizeElement);
+	for (int i = 2; i < nbElement; i += sizeElement) {
+		nonSorted.push_back(std::make_pair(std::vector<int>(start, end), list[currrentElement + sizeElement]));
+		currrentElement += sizeElement;
+		start = list.begin() + currrentElement;
+		end = list.begin() + (currrentElement + (sizeElement - 1));
+	}
+	for (size_t i = 0; i < nonSorted.size(); ++i) {
+        std::cout << "Pair " << i << ": [";
+        for (size_t j = 0; j < nonSorted[i].first.size(); ++j) {
+            std::cout << nonSorted[i].first[j];
+            if (j < nonSorted[i].first.size() - 1) {
+                std::cout << ", ";
+            }
+        }
+        std::cout << "] " << nonSorted[i].second << std::endl;
+    }
+	binarySearch(list, nonSorted);
 	displayVector(list);
 	
 }
