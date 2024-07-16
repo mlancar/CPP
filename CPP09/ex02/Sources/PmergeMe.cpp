@@ -6,7 +6,7 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 17:32:49 by malancar          #+#    #+#             */
-/*   Updated: 2024/07/15 19:19:40 by malancar         ###   ########.fr       */
+/*   Updated: 2024/07/16 19:15:05 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,9 +92,44 @@ void	PmergeMe::sortElement(std::vector<int> &list, size_t sizeElement) {
 	}
 }
 
-void	PmergeMe::binarySearch(std::vector<int> &list, std::vector<int> nonSorted) {
-
-
+void	PmergeMe::binarySearch(std::vector<int> &list, std::vector<std::pair<std::vector<int>, int> > nonSorted) {
+	int max;
+	int min;
+	size_t mid;
+	
+	for (size_t i = 0; i < nonSorted.size(); i++) {
+		//std::cout << "size = " << nonSorted.size() << std::endl;
+		for (size_t j = 0; j < nonSorted[j].first.size(); j++) {
+			//std::cout << "size nonSorted = " << nonSorted[i].first.size() << std::endl;
+			max = nonSorted[i].second;
+			min = 0;
+			for (size_t k = 0; k < list.size();k++)
+			{
+				if (list[k] == max)
+				{
+					max = k;
+					break;
+				}
+			}
+			int index = 0;
+			mid = (min + (max - min)) / 2;
+			while (index < 3)//pas la bonne condition. c'est du caca mais j'y reflechirai demain
+			{
+				
+				// std::cout << "index mid = " << mid << std::endl;
+				// std::cout << "index max = " << max << std::endl;
+				// std::cout << "index min = " << min << std::endl;
+				std::cout << std::endl;
+				// std::cout << "cmp = " << nonSorted[i].first[i]  << "to = " << list[mid] << std::endl;
+				if (nonSorted[i].first[j] < list[mid])
+					max = mid;
+				mid = (min + (max - min)) / 2;
+				index++;
+			}
+			std::vector<int>::iterator iterator = list.begin() + (mid + 1);
+			list.insert(iterator, nonSorted[i].first[j]);
+		}
+	}
 }
 
 template <typename T>
@@ -122,8 +157,8 @@ void printList(const std::string &str, T &container, size_t sizeElement)
 void	PmergeMe::sortFJ(std::vector<int> &list, int index, size_t sizeElement) {
 	
 	int nbElement = list.size() / sizeElement;
-	std::cout << "nb elemetn = " << nbElement << std::endl;
-	std::cout << "SIZE ELEMENT = " << sizeElement << std::endl;
+	//std::cout << "nb elemetn = " << nbElement << std::endl;
+	//std::cout << "SIZE ELEMENT = " << sizeElement << std::endl;
 	if (nbElement <=  1)
 		return ;
 	sortElement(list, sizeElement);
@@ -139,28 +174,45 @@ void	PmergeMe::sortFJ(std::vector<int> &list, int index, size_t sizeElement) {
 	
 
 	std::vector<std::pair<std::vector<int>, int> >nonSorted;
-	// for (int i = sizeElement; i < nbElement; i += sizeElement) {
 	
-	// 	// if (*i != 0 && )
-	// 	// {
-	// 	// 	nonSorted.push_back(*i);
-	// 	// 	list.erase(i);
-	// 	// }
-	// }
-	std::cout << "nb elemetn = " << nbElement << std::endl;
-	std::cout << "SIZE ELEMENT = " << sizeElement << std::endl;
+	nbElement = list.size() / sizeElement;
+	//std::cout << "nb elemetn = " << nbElement << std::endl;
+	//std::cout << "SIZE ELEMENT = " << sizeElement << std::endl;
 	printList("", list, sizeElement);
 	if (nbElement < 3)
 		return;
-	int currrentElement = 2 * (sizeElement );
-	std::vector<int>::iterator start = list.begin() + currrentElement;
-	std::vector<int>::iterator end = list.begin() + (currrentElement + sizeElement);
+	
+	//int currrentElement = 2 * (sizeElement );
+	// std::vector<int>::iterator start = list.begin() + currentElement;
+	// std::vector<int>::iterator end = list.begin() + (currentElement + sizeElement);
+	// for (int i = 2; i < nbElement; i += sizeElement) {
+		// nonSorted.push_back(std::make_pair(std::vector<int>(start, end), list[currrentElement + sizeElement]));
+		// currrentElement += sizeElement;
+		// start = list.begin() + currrentElement;
+		// end = list.begin() + (currrentElement + (sizeElement - 1));
+	// }
+	
+	std::vector<int>::iterator currentElement = list.begin() + (2 * sizeElement);
+	std::vector<int>::iterator start = currentElement;
+	std::vector<int>::iterator end = currentElement + sizeElement;
+
+	
 	for (int i = 2; i < nbElement; i += sizeElement) {
-		nonSorted.push_back(std::make_pair(std::vector<int>(start, end), list[currrentElement + sizeElement]));
-		currrentElement += sizeElement;
-		start = list.begin() + currrentElement;
-		end = list.begin() + (currrentElement + (sizeElement - 1));
+		if (i % 2 == 0)
+		{
+			//std::cout << "i = " << i << std::endl;
+			//std::cout << "current element =  " << *currentElement << std::endl;
+			//std::cout << "start = " << *start << std::endl;
+			//std::cout << "end = " << *end << std::endl;
+			nonSorted.push_back(std::make_pair(std::vector<int>(start, end), *end ));
+			list.erase(start, end);
+			//std::cout << "i = " << i << std::endl;
+			currentElement += sizeElement;
+			start = currentElement;
+			end = currentElement + (sizeElement );
+		}
 	}
+	
 	for (size_t i = 0; i < nonSorted.size(); ++i) {
         std::cout << "Pair " << i << ": [";
         for (size_t j = 0; j < nonSorted[i].first.size(); ++j) {
@@ -171,6 +223,7 @@ void	PmergeMe::sortFJ(std::vector<int> &list, int index, size_t sizeElement) {
         }
         std::cout << "] " << nonSorted[i].second << std::endl;
     }
+	printList("", list, sizeElement);
 	binarySearch(list, nonSorted);
 	displayVector(list);
 	
