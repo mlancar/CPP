@@ -6,7 +6,7 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 17:32:56 by malancar          #+#    #+#             */
-/*   Updated: 2024/07/16 10:35:28 by malancar         ###   ########.fr       */
+/*   Updated: 2024/07/18 17:30:04 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ class PmergeMe
 		void	displayVector(std::vector<int> list);
 		void	sortElement(std::vector<int> &list, size_t sizeElement);
 		void	swapElement(std::vector<int> &list, size_t sizeElement, size_t index);
-		void	binarySearch(std::vector<int> &list, std::vector<std::pair<std::vector<int>, int> > nonSorted);
+		void	binarySearch(size_t sizeElement, std::vector<int> &list, std::vector<std::pair<std::vector<int>, int> > nonSorted);
 		void	sortFJ(std::vector<int> &list, int index, size_t sizeElement);
 	private:
 		std::vector<int> _ceciEstUnVector;

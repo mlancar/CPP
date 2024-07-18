@@ -6,7 +6,7 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 17:32:49 by malancar          #+#    #+#             */
-/*   Updated: 2024/07/16 19:15:05 by malancar         ###   ########.fr       */
+/*   Updated: 2024/07/18 17:56:04 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,45 +92,6 @@ void	PmergeMe::sortElement(std::vector<int> &list, size_t sizeElement) {
 	}
 }
 
-void	PmergeMe::binarySearch(std::vector<int> &list, std::vector<std::pair<std::vector<int>, int> > nonSorted) {
-	int max;
-	int min;
-	size_t mid;
-	
-	for (size_t i = 0; i < nonSorted.size(); i++) {
-		//std::cout << "size = " << nonSorted.size() << std::endl;
-		for (size_t j = 0; j < nonSorted[j].first.size(); j++) {
-			//std::cout << "size nonSorted = " << nonSorted[i].first.size() << std::endl;
-			max = nonSorted[i].second;
-			min = 0;
-			for (size_t k = 0; k < list.size();k++)
-			{
-				if (list[k] == max)
-				{
-					max = k;
-					break;
-				}
-			}
-			int index = 0;
-			mid = (min + (max - min)) / 2;
-			while (index < 3)//pas la bonne condition. c'est du caca mais j'y reflechirai demain
-			{
-				
-				// std::cout << "index mid = " << mid << std::endl;
-				// std::cout << "index max = " << max << std::endl;
-				// std::cout << "index min = " << min << std::endl;
-				std::cout << std::endl;
-				// std::cout << "cmp = " << nonSorted[i].first[i]  << "to = " << list[mid] << std::endl;
-				if (nonSorted[i].first[j] < list[mid])
-					max = mid;
-				mid = (min + (max - min)) / 2;
-				index++;
-			}
-			std::vector<int>::iterator iterator = list.begin() + (mid + 1);
-			list.insert(iterator, nonSorted[i].first[j]);
-		}
-	}
-}
 
 template <typename T>
 void printList(const std::string &str, T &container, size_t sizeElement)
@@ -153,6 +114,63 @@ void printList(const std::string &str, T &container, size_t sizeElement)
     std::cout<<"}";
     std::cout<<std::endl;
 }
+
+void	PmergeMe::binarySearch(size_t sizeElement, std::vector<int> &list, std::vector<std::pair<std::vector<int>, int> > nonSorted) {
+	int max;
+	int min;
+	size_t mid;
+	int cmp = 0;
+	
+	for (size_t i = 0; i < nonSorted.size(); i++) {
+		//std::cout << "size = " << nonSorted.size() << std::endl;
+		for (size_t j = 0; j < nonSorted[j].first.size(); j++) {
+			//std::cout << "size nonSorted = " << nonSorted[i].first.size() << std::endl;
+			max = nonSorted[i].second;
+			min = 0;
+			for (size_t k = 0; k < list.size();k++)
+			{
+				if (list[k] == max)
+				{
+					max = k;
+					break;
+				}
+			}
+			int index = 0;
+			while (min < max)//je suis nulle
+			{
+				//std::cout << "index = " << index << std::endl;
+				mid = (min + (max - min)) / 2;
+				// std::cout << std::endl;
+				// std::cout << "max = " << list[max] << std::endl;
+				// std::cout << "min = " << list[min] << std::endl;
+				// std::cout << "cmp = " << nonSorted[i].first[j] << "to " << list[mid] << std::endl;
+				// std::cout << "index max = " << max << std::endl;
+				// std::cout << "index min = " << min << std::endl;
+				// std::cout << "index cmp = " << mid << std::endl;
+			
+				if (nonSorted[i].first[j] < list[mid])
+				{
+					//std::cout << "inferieur" << std::endl;
+					max = mid;
+					cmp++;
+				}
+				else {
+					//std::cout << "superieur" << std::endl;
+					min = mid + 1;
+					cmp++;
+				}
+				index++;
+				
+			}
+			//std::cout << "insert here = " << min << std::endl;
+			std::vector<int>::iterator iterator = list.begin() + (min);
+			list.insert(iterator, nonSorted[i].first[j]);
+			printList("", list, sizeElement);
+		}
+		std::cout << "cmp = " << cmp << std::endl;
+	}
+}
+
 
 void	PmergeMe::sortFJ(std::vector<int> &list, int index, size_t sizeElement) {
 	
@@ -223,8 +241,8 @@ void	PmergeMe::sortFJ(std::vector<int> &list, int index, size_t sizeElement) {
         }
         std::cout << "] " << nonSorted[i].second << std::endl;
     }
-	printList("", list, sizeElement);
-	binarySearch(list, nonSorted);
+	//printList("", list, sizeElement);
+	binarySearch(sizeElement, list, nonSorted);
 	displayVector(list);
 	
 }
