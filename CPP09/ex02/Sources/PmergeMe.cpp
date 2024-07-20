@@ -6,7 +6,7 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 17:32:49 by malancar          #+#    #+#             */
-/*   Updated: 2024/07/18 17:56:04 by malancar         ###   ########.fr       */
+/*   Updated: 2024/07/20 22:11:06 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,16 +115,50 @@ void printList(const std::string &str, T &container, size_t sizeElement)
     std::cout<<std::endl;
 }
 
-void	PmergeMe::binarySearch(size_t sizeElement, std::vector<int> &list, std::vector<std::pair<std::vector<int>, int> > nonSorted) {
+int	PmergeMe::binarySearch(std::vector<int> &list, int min, int max, int value, size_t sizeElement) {
+	size_t mid;
+	
+	(void)sizeElement;
+	max--;
+	//std::cout << "max =" << max << std::endl;
+	while (min < max) {
+		mid = (min + max) / 2;
+		std::cout << std::endl;
+		std::cout << "max = " << list[max] << std::endl;
+		std::cout << "min = " << list[min] << std::endl;
+		std::cout << "cmp = " << value << "to " << list[mid] << std::endl;
+		//std::cout << "index max = " << max << std::endl;
+		//std::cout << "index min = " << min << std::endl;
+		//std::cout << "index cmp = " << mid << std::endl;
+		if (value > list[mid])
+		{
+			std::cout << "superieur" << std::endl;
+			min = mid + 1;
+			
+		}
+		else {
+			std::cout << "inferieur" << std::endl;
+			max = mid - 1;
+		}
+	}
+	return min;
+}
+
+
+void	PmergeMe::insertion(size_t sizeElement, std::vector<int> &list, std::vector<std::pair<std::vector<int>, int> > nonSorted) {
+	
 	int max;
 	int min;
-	size_t mid;
+	//size_t mid;
 	int cmp = 0;
+	int toInsert;
 	
+	//std::cout << "size element = " << sizeElement << std::endl;
 	for (size_t i = 0; i < nonSorted.size(); i++) {
-		//std::cout << "size = " << nonSorted.size() << std::endl;
-		for (size_t j = 0; j < nonSorted[j].first.size(); j++) {
-			//std::cout << "size nonSorted = " << nonSorted[i].first.size() << std::endl;
+		
+			//std::cout << "size = " << nonSorted[i].first.size() << std::endl;
+			//std::cout << "nonSorted = " << nonSorted[i].first[j] << std::endl;
+			//print[i][j]
 			max = nonSorted[i].second;
 			min = 0;
 			for (size_t k = 0; k < list.size();k++)
@@ -135,38 +169,17 @@ void	PmergeMe::binarySearch(size_t sizeElement, std::vector<int> &list, std::vec
 					break;
 				}
 			}
-			int index = 0;
-			while (min < max)//je suis nulle
+			toInsert = binarySearch(list, min, max, nonSorted[i].first[sizeElement - 1], sizeElement);
+			std::vector<int>::iterator iterator;
+			for (int j = sizeElement - 1 ; j >= 0; j--)
 			{
-				//std::cout << "index = " << index << std::endl;
-				mid = (min + (max - min)) / 2;
-				// std::cout << std::endl;
-				// std::cout << "max = " << list[max] << std::endl;
-				// std::cout << "min = " << list[min] << std::endl;
-				// std::cout << "cmp = " << nonSorted[i].first[j] << "to " << list[mid] << std::endl;
-				// std::cout << "index max = " << max << std::endl;
-				// std::cout << "index min = " << min << std::endl;
-				// std::cout << "index cmp = " << mid << std::endl;
-			
-				if (nonSorted[i].first[j] < list[mid])
-				{
-					//std::cout << "inferieur" << std::endl;
-					max = mid;
-					cmp++;
-				}
-				else {
-					//std::cout << "superieur" << std::endl;
-					min = mid + 1;
-					cmp++;
-				}
-				index++;
+				std::cout << "position to insert = " << toInsert << std::endl;
+				iterator = list.begin() + (toInsert);
+				//std::cout << "to insert = " << nonSorted[i].first[j] << std::endl;
+				list.insert(iterator, nonSorted[i].first[j]);
 				
 			}
-			//std::cout << "insert here = " << min << std::endl;
-			std::vector<int>::iterator iterator = list.begin() + (min);
-			list.insert(iterator, nonSorted[i].first[j]);
 			printList("", list, sizeElement);
-		}
 		std::cout << "cmp = " << cmp << std::endl;
 	}
 }
@@ -242,7 +255,7 @@ void	PmergeMe::sortFJ(std::vector<int> &list, int index, size_t sizeElement) {
         std::cout << "] " << nonSorted[i].second << std::endl;
     }
 	//printList("", list, sizeElement);
-	binarySearch(sizeElement, list, nonSorted);
+	insertion(sizeElement, list, nonSorted);
 	displayVector(list);
 	
 }
