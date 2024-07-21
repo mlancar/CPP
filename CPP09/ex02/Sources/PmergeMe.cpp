@@ -6,7 +6,7 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 17:32:49 by malancar          #+#    #+#             */
-/*   Updated: 2024/07/20 22:11:06 by malancar         ###   ########.fr       */
+/*   Updated: 2024/07/21 02:26:12 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,27 +120,29 @@ int	PmergeMe::binarySearch(std::vector<int> &list, int min, int max, int value, 
 	
 	(void)sizeElement;
 	max--;
+	//toujours regarder la valeur la plus a droite de l'élement
 	//std::cout << "max =" << max << std::endl;
-	while (min < max) {
+	while (min <= max) {
 		mid = (min + max) / 2;
 		std::cout << std::endl;
-		std::cout << "max = " << list[max] << std::endl;
-		std::cout << "min = " << list[min] << std::endl;
-		std::cout << "cmp = " << value << "to " << list[mid] << std::endl;
-		//std::cout << "index max = " << max << std::endl;
-		//std::cout << "index min = " << min << std::endl;
+		// std::cout << "max = " << list[max] << std::endl;
+		// std::cout << "min = " << list[min] << std::endl;
+		//std::cout << "cmp = " << value << "to " << list[mid] << std::endl;
 		//std::cout << "index cmp = " << mid << std::endl;
 		if (value > list[mid])
 		{
-			std::cout << "superieur" << std::endl;
-			min = mid + 1;
+			//std::cout << "superieur" << std::endl;
+			min = mid + sizeElement;
+			//std::cout << "min = " << min << std::endl;
 			
 		}
 		else {
-			std::cout << "inferieur" << std::endl;
-			max = mid - 1;
+			//std::cout << "inferieur" << std::endl;
+			max = mid - sizeElement;
+			//std::cout << "max = " << max << std::endl;
 		}
 	}
+	
 	return min;
 }
 
@@ -150,7 +152,7 @@ void	PmergeMe::insertion(size_t sizeElement, std::vector<int> &list, std::vector
 	int max;
 	int min;
 	//size_t mid;
-	int cmp = 0;
+	//int cmp = 0;
 	int toInsert;
 	
 	//std::cout << "size element = " << sizeElement << std::endl;
@@ -171,16 +173,16 @@ void	PmergeMe::insertion(size_t sizeElement, std::vector<int> &list, std::vector
 			}
 			toInsert = binarySearch(list, min, max, nonSorted[i].first[sizeElement - 1], sizeElement);
 			std::vector<int>::iterator iterator;
-			for (int j = sizeElement - 1 ; j >= 0; j--)
+			for (int j = sizeElement - 1 ; j >= 0; j--)//FAIRE DANS LE SENS INVERSE PARCE QUE LA CA PART EN NEGATIF !
 			{
-				std::cout << "position to insert = " << toInsert << std::endl;
-				iterator = list.begin() + (toInsert);
+				//std::cout << "position to insert = " << toInsert << std::endl;
+				iterator = list.begin() + (toInsert - (sizeElement - 1));
 				//std::cout << "to insert = " << nonSorted[i].first[j] << std::endl;
 				list.insert(iterator, nonSorted[i].first[j]);
-				
 			}
+		
+			
 			printList("", list, sizeElement);
-		std::cout << "cmp = " << cmp << std::endl;
 	}
 }
 
