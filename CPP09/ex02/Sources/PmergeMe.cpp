@@ -6,7 +6,7 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 17:32:49 by malancar          #+#    #+#             */
-/*   Updated: 2024/07/22 20:05:41 by malancar         ###   ########.fr       */
+/*   Updated: 2024/07/23 18:31:45 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,7 +128,14 @@ int	PmergeMe::binarySearch(std::vector<int> &list, int min, int max, int value, 
 	//toujours regarder la valeur la plus a droite de l'élement
 	//std::cout << "max =" << max << std::endl;
 	while (min <= max) {
-		mid = (min + max) / 2;
+		mid = ((max + min) / 2) - (sizeElement - 1);
+		
+		if (min == (int)list.size())
+		{
+			
+			return list.size();
+		}
+		
 		std::cout << std::endl;
 		std::cout << "max = " << list[max] << std::endl;
 		std::cout << "min = " << list[min] << std::endl;
@@ -138,13 +145,13 @@ int	PmergeMe::binarySearch(std::vector<int> &list, int min, int max, int value, 
 		{
 			//std::cout << "superieur" << std::endl;
 			min = mid + sizeElement;
-			//std::cout << "min = " << min << std::endl;
+			std::cout << "ici min = " << min << std::endl;
 			
 		}
 		else {
 			//std::cout << "inferieur" << std::endl;
 			max = mid - sizeElement;
-			//std::cout << "max = " << max << std::endl;
+			std::cout << "ici max = " << max << std::endl;
 		}
 	}
 	
@@ -161,7 +168,7 @@ void	PmergeMe::insertion(size_t sizeElement, std::vector<int> &list, std::vector
 	for (size_t i = 0; i < nonSorted.size(); i++) {
 
 		max = nonSorted[i].second;
-		min = 0;
+		min = sizeElement - 1;
 		for (size_t k = 0; k < list.size();k++)
 		{
 			if (list[k] == max)
