@@ -6,7 +6,7 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 17:34:50 by malancar          #+#    #+#             */
-/*   Updated: 2024/07/13 16:07:28 by malancar         ###   ########.fr       */
+/*   Updated: 2024/07/23 20:59:27 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@ int main(int ac, char **av) {
 		size_t size = 1;
 		
 		test.parse(av, list);
-		std::cout << "ETAPE 0" << std::endl << std::endl;
-		test.displayVector(list);
+		//std::cout << "ETAPE 0" << std::endl << std::endl;
+		//test.displayVector(list);
 
-		std::cout << "ETAPE 1" << std::endl << std::endl;
+		//std::cout << "ETAPE 1" << std::endl << std::endl;
 		//test.displayVector(list);
 		
 		test.sortFJ(list, index, size);
