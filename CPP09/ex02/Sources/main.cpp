@@ -6,7 +6,7 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 17:34:50 by malancar          #+#    #+#             */
-/*   Updated: 2024/07/23 20:59:27 by malancar         ###   ########.fr       */
+/*   Updated: 2024/07/24 19:19:24 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,23 +19,25 @@ int main(int ac, char **av) {
 		std::cerr << "Expected at least one parameter" << std::endl;
 		return 0;
 	}
-	PmergeMe	test;
 	try {
 		std::vector<int> list;
-		int index = 0;
 		size_t size = 1;
+		clock_t start = clock();
 		
-		test.parse(av, list);
-		//std::cout << "ETAPE 0" << std::endl << std::endl;
-		//test.displayVector(list);
+		parse(av, list);
+		std::cout << "Before: ";
+		displayVector(list);
+		std::cout << std::endl;
+		sortFJ(list, size);
 
-		//std::cout << "ETAPE 1" << std::endl << std::endl;
-		//test.displayVector(list);
-		
-		test.sortFJ(list, index, size);
-		//std::cout << "ETAPE 2" << std::endl << std::endl;
-		test.displayVector(list);
-
+		clock_t end = clock();
+		double duration = static_cast<double>(end - start) / CLOCKS_PER_SEC;
+		std::cout << "After: ";
+		displayVector(list);
+		std::cout << std::endl;
+		std::cout << "Time to preocess a range of " << list.size() << " with std::vector : " << std::fixed << std::setprecision(6) <<  RED << duration << " s" << RESET << std::endl;
+		std::cout << std::endl;
+		//displayVector(list);
 	}
 	catch (std::exception const& e) {
 		std::cerr << e.what() << std::endl;
