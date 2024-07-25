@@ -6,7 +6,7 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 17:32:49 by malancar          #+#    #+#             */
-/*   Updated: 2024/07/24 19:32:47 by malancar         ###   ########.fr       */
+/*   Updated: 2024/07/25 18:54:30 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,8 +137,13 @@ int	binarySearch(std::vector<int> &list, int min, int max, int value, size_t siz
 	return min;
 }
 
-void	jacobsthal() {
+int	jacobsthal(int index, size_t size) {
 
+	(void)size;
+	size_t jacobsthal[] = {1, 1, 3, 5, 11, 21, 43, 85, 171, 341, 683, 1365, 2731, 5461, 10923};
+	
+	return jacobsthal[index];
+	
 	
 }
 
@@ -147,40 +152,56 @@ void	insertion(size_t sizeElement, std::vector<int> &list, std::vector<std::pair
 	int max;
 	int min;
 	int toInsert;
+	int	toSearch = 0;
+	size_t previous = 0;
 	
-	for (size_t i = 0; i < nonSorted.size(); i++) {
-
-		max = nonSorted[i].second;
-		min = sizeElement - 1;
-		for (size_t k = 0; k < list.size();k++)
-		{
-			if (list[k] == max)
+	
+	for (size_t j = 0; j < nonSorted.size(); j++) {
+		toSearch = jacobsthal(j, nonSorted.size());
+		std::cout << "tosearch = " << toSearch << std::endl;
+		for (size_t i = toSearch; i > previous; i--) {
+			
+			displayPair(nonSorted);
+			max = nonSorted[i].second;
+			std::cout << "i = " << i << std::endl;
+			std::cout << "max = " << max << std::endl;
+			min = sizeElement - 1;
+			for (size_t k = 0; k < list.size();k++)
 			{
-				max = k;
-				break;
+				if (list[k] == max)
+				{
+					max = k;
+					break;
+				}
 			}
-		}
-		max--;
-		if (nonSorted[i].second == -1)
-			max = list.size() ;
-		toInsert = binarySearch(list, min, max, nonSorted[i].first[sizeElement - 1], sizeElement);
-		std::vector<int>::iterator iterator;
-		if (sizeElement == 1)
-		{
-			iterator = list.begin() + toInsert;
-			list.insert(iterator, nonSorted[i].first[0]);
-		}
-		else 
-		{
-			for (int j = sizeElement - 1 ; j >= 0; j--)
+			max--;
+			if (nonSorted[i].second == -1)
+				max = list.size();
+			
+			std::cout << "test ici = " << nonSorted[i].first[sizeElement - 1] << std::endl;
+			toInsert = binarySearch(list, min, max, nonSorted[i].first[sizeElement - 1], sizeElement);
+			std::vector<int>::iterator iterator;
+			if (sizeElement == 1)
 			{
-				if (toInsert == 0)
-					iterator = list.begin();
-				else
-					iterator = list.begin() + (toInsert - (sizeElement - 1));
-				list.insert(iterator, nonSorted[i].first[j]);
+				
+				iterator = list.begin() + toInsert;
+				list.insert(iterator, nonSorted[i].first[sizeElement - 1]);
 			}
+			else 
+			{
+				for (int l = sizeElement - 1 ; l >= 0; l--)
+				{
+					std::cout << "test" << std::endl;
+					if (toInsert == 0)
+						iterator = list.begin();
+					else
+						iterator = list.begin() + (toInsert - (sizeElement - 1));
+					list.insert(iterator, nonSorted[i].first[l]);
+				}
+			}
+			
 		}
+		previous = toSearch;
 	}
 	//printList("", list, sizeElement);
 }
@@ -224,14 +245,14 @@ void	sortFJ(std::vector<int> &list, size_t sizeElement) {
 	//std::cout << std::endl;
 	std::vector<std::pair<std::vector<int>, int> >nonSorted;
 	nbElement = list.size() / sizeElement;
-	//printList("", list, sizeElement);
+	printList("", list, sizeElement);
 	if (nbElement < 1)//j'avais mis 3
 		return;
 	extraction(nonSorted, list, sizeElement, nbElement);
-	//std::cout << std::endl;
-	//printList("", list, sizeElement);
+	std::cout << std::endl;
+	printList("", list, sizeElement);
 	//displayPair(nonSorted);
-	//std::cout << std::endl;
+	std::cout << std::endl;
 	insertion(sizeElement, list, nonSorted);
 	//std::cout << "sorted : " << is_sorted(list, sizeElement) << std::endl;
 }
