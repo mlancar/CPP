@@ -6,7 +6,7 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 17:32:56 by malancar          #+#    #+#             */
-/*   Updated: 2024/07/24 19:17:18 by malancar         ###   ########.fr       */
+/*   Updated: 2024/07/26 18:25:00 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,18 @@
 # include <algorithm>
 # include <ctime>
 # include <iomanip>
+# include <deque>
 
+extern int g_cmp;
 
 	void	parse(char **arg, std::vector<int> &list);
 	void	displayVector(std::vector<int> list);
-	void	sortElement(std::vector<int> &list, size_t sizeElement, int nbElement);
-	void	swapElement(std::vector<int> &list, size_t sizeElement, size_t firstElement, size_t secondElement);
-	void	insertion(size_t sizeElement, std::vector<int> &list, std::vector<std::pair<std::vector<int>, int> > nonSorted);
-	int		binarySearch(std::vector<int> &list, int min, int max, int value, size_t sizeElement);
 	void	sortFJ(std::vector<int> &list, size_t sizeElement);
+
+	void	parseDeque(char **arg, std::deque<int> &list);
+
+	void	displayDeque(std::deque<int> list);
+	void	sortFJDeque(std::deque<int> &list, size_t sizeElement);
 
 
 #endif
