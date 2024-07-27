@@ -6,7 +6,7 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 16:16:09 by malancar          #+#    #+#             */
-/*   Updated: 2024/07/15 17:20:06 by malancar         ###   ########.fr       */
+/*   Updated: 2024/07/27 19:24:45 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,8 @@ void	RPN::multiplication() {
 void	RPN::division() {
 
 	int tmp = _rpn.top();
+	if (tmp == 0)
+		throw std::invalid_argument("Error");
 	_rpn.pop();
 	_sumValue =_rpn.top() / tmp;
 	_rpn.pop();
@@ -90,7 +92,7 @@ void	RPN::casio90plusE(char *arg) {
 			else if (input == "/" && _rpn.size() > 1)
 				division();
 			else
-				std::cout << "Error" << std::endl;
+				throw std::invalid_argument("Error");
 		}
 		else {
 			if (input != "0" && (inputNumber <= 0 || inputNumber > 9)) {

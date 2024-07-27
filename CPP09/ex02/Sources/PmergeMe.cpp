@@ -6,7 +6,7 @@
 /*   By: malancar <malancar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 17:32:49 by malancar          #+#    #+#             */
-/*   Updated: 2024/07/26 18:24:40 by malancar         ###   ########.fr       */
+/*   Updated: 2024/07/27 18:47:18 by malancar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,6 @@ void	sortElement(std::vector<int> &list, size_t sizeElement, int nbElement) {
 	
 	for (int index = 0; index < (nbElement / 2); index++)
 	{
-		g_cmp++;
 		if (list[index * sizePair + (sizeElement - 1)] > list[index * sizePair + (sizePair - 1)])	
 			swapElement(list, sizeElement, index * sizePair + (sizeElement - 1), index * sizePair + (sizePair - 1));
 	}
@@ -243,19 +242,19 @@ void	sortFJ(std::vector<int> &list, size_t sizeElement) {
 
 	if (nbElement <=  1)
 		return ;
+	std::cout << std::endl;
+	printList("", list, sizeElement);
+	std::cout << "________________________________________________________________" << std::endl;
 	sortElement(list, sizeElement, nbElement);
-	//printList("", list, sizeElement);
 	sortFJ(list, sizeElement * 2);
-	//std::cout << std::endl;
 	std::vector<std::pair<std::vector<int>, int> >nonSorted;
 	nbElement = list.size() / sizeElement;
-	//printList("", list, sizeElement);
-	if (nbElement < 1)//j'avais mis 3
+	if (nbElement < 1)
 		return;
 	extraction(nonSorted, list, sizeElement, nbElement);
-	//std::cout << std::endl;
-	//printList("", list, sizeElement);
-	//std::cout << std::endl;
+	std::cout << std::endl;
+	printList("", list, sizeElement);
+	std::cout << "________________________________________________________________" << std::endl;
 	insertion(sizeElement, list, nonSorted);
 	//std::cout << "sorted : " << is_sorted(list, sizeElement) << std::endl;
 }
@@ -303,7 +302,6 @@ void	sortElementDeque(std::deque<int> &list, size_t sizeElement, int nbElement) 
 	
 	for (int index = 0; index < (nbElement / 2); index++)
 	{
-		g_cmp++;
 		if (list[index * sizePair + (sizeElement - 1)] > list[index * sizePair + (sizePair - 1)])	
 			swapElementDeque(list, sizeElement, index * sizePair + (sizeElement - 1), index * sizePair + (sizePair - 1));
 	}
@@ -423,19 +421,20 @@ void	sortFJDeque(std::deque<int> &list, size_t sizeElement) {
 
 	if (nbElement <=  1)
 		return ;
+	std::cout << "";
 	sortElementDeque(list, sizeElement, nbElement);
-	//printList("", list, sizeElement);
+	std::cout << std::endl;
+	printList("", list, sizeElement);
+	std::cout << "________________________________________________________________" << std::endl;
 	sortFJDeque(list, sizeElement * 2);
-	//std::cout << std::endl;
 	std::deque<std::pair<std::deque<int>, int> >nonSorted;
 	nbElement = list.size() / sizeElement;
-	//printList("", list, sizeElement);
-	if (nbElement < 1)//j'avais mis 3
+	if (nbElement < 1)
 		return;
 	extractionDeque(nonSorted, list, sizeElement, nbElement);
-	//std::cout << std::endl;
-	//printList("", list, sizeElement);
-	//std::cout << std::endl;
+	std::cout << std::endl;
+	printList("", list, sizeElement);
+	std::cout << "________________________________________________________________" << std::endl;
 	insertionDeque(sizeElement, list, nonSorted);
 	//std::cout << "sorted : " << is_sorted(list, sizeElement) << std::endl;
 }
